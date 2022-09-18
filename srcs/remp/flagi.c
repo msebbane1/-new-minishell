@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:01:52 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/15 15:59:42 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/18 16:01:10 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	flagi(t_parse *parse, t_exp *atc)
 {
-	char *doll;
+	char *str;
 	int i;
 	int d;
 	int h;
@@ -49,7 +49,7 @@ void	flagi(t_parse *parse, t_exp *atc)
 	}
 	h = i;
 	i = 0;
-//	printf("CMD2 ===== %s\n", parse->flag);
+	printf("CMD2 ===== %s\n", parse->flag);
 	while (parse->flag[i])
 	{
 		if (!ft_cmpchar(parse->flag[i], '\''))
@@ -62,8 +62,8 @@ void	flagi(t_parse *parse, t_exp *atc)
 //				return (parse);
 			else if (ft_isdigit(parse->flag[i]) || (d != 0 && c != 0))
 			{
-				doll = dollar(parse->flag);
-				parse->flag = doll;
+				str = dollar(parse->flag);
+				parse->flag = str;
 				printf("PIIPIP ====== %s\n\n", parse->flag);
 //				return (parse);
 			}
@@ -72,14 +72,14 @@ void	flagi(t_parse *parse, t_exp *atc)
 				if (r != 0)
 				{
 					d = 0;
-					doll = malloc(sizeof(char) * (g - 1));
+					str = malloc(sizeof(char) * (g - 1));
 					while (parse->flag[i])
 					{
 						if (!ft_cmpchar(parse->flag[i], '\"') && c == 0)
 							break ;
 						if (!ft_cmpchar(parse->flag[i], '\'') && c == 0)
 							break ;
-						doll[d] = parse->flag[i];
+						str[d] = parse->flag[i];
 						i++;
 						d++;
 					}
@@ -88,35 +88,43 @@ void	flagi(t_parse *parse, t_exp *atc)
 				else
 				{
 					d = 0;
-					doll = malloc(sizeof(char) * (g));
+					str = malloc(sizeof(char) * (g));
+					printf("str1 ===== %s\n", str);
 					while (parse->flag[i])
 					{
-						printf("%d\n", i);
 						if (!ft_cmpchar(parse->flag[i], '\''))
 							break ;
-						doll[d] = parse->flag[i];
+						str[d] = parse->flag[i];
 						i++;
 						d++;
 					}
+					str[d] = '\0';
 					g = i;
+					printf("str2 ===== %s\n", str);
 				}
 				d = 0;
 				i = 0;
 				while (atc)
 				{
-					if (!ft_strcmp(doll, atc->name))
+					if (!ft_strcmp(str, atc->name))
 					{
-						doll = atc->mean;
+						str = atc->mean;
 						d++;
 					}
 					atc = atc->next;
 				}
 				if (d == 0)
-					doll = NULL;
+					str = NULL;
+				else
+				{
+					d = 0;
+					while (str[d])
+						d++;
+				}
 				lala = malloc(sizeof(char) * (h - g + d));
 				d = 0;
 				h = 0;
-//				printf("DOLL ===== %s\n", doll);
+				printf("str ===== %s\n", str);
 				while (parse->flag[i])
 				{
 					if (!ft_cmpchar(parse->flag[i], '\"') && c == 0)
@@ -125,19 +133,20 @@ void	flagi(t_parse *parse, t_exp *atc)
 						i++;
 					if (!ft_cmpchar(parse->flag[i], '$'))
 					{
-						if (doll != NULL)
+						if (str != NULL)
 						{
-							while (ft_isprint(doll[h]) == 1)
+							while (ft_isprint(str[h]) == 1)
 							{
 //								if (!ft_cmpchar(parse->flag[i], '\"') && c == 0)
 //									i++;
-								lala[d] = doll[h];
+								lala[d] = str[h];
 								d++;
 								h++;
 							}
 						}
 						while (i < g)
 							i++;
+//							free (str);
 					}
 					if (!ft_cmpchar(parse->flag[i], '\"') && c == 0)
 						i++;
@@ -148,7 +157,8 @@ void	flagi(t_parse *parse, t_exp *atc)
 					d++;
 				}
 				parse->flag = lala;
-//				printf("PAAPAP ====== %s\n\n", parse->flag);
+//				free (lala);
+				printf("PAAPAP ====== %s\n\n", parse->flag);
 //				return (parse);
 			}
 		}

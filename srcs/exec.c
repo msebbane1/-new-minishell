@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/17 14:58:05 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:51:36 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	ft_execve(t_parse *parse, t_list *alst, char **lab)
 			g_global.status = 127;
 			exit(EXIT_FAILURE);
 		}
-		putenv_in_tab(alst);
+//		putenv_in_tab(alst);
 	}
 	else
 		waitpid(pid, &status, 0);

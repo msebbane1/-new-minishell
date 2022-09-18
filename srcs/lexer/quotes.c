@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:42:54 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/17 16:43:20 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:34:43 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	gestion_quotes(char *line, int i, t_parse *parse)
 	}
 	else
 	{
-		i = len_envp(parse->arg) - 1;
+		i = len_envp(parse->arg);
+		printf("gestion quotes i =%i\n", i);
 		parse->arg = ft_realloc2char(parse->arg, len_envp(parse->arg) + 1);
 		ft_memcpy(parse->arg[i], nextw, ft_strlen(nextw));
 	}
