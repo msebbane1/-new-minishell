@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/18 16:59:58 by lbally           ###   ########.fr       */
+=======
+/*   Updated: 2022/09/18 17:09:39 by vl-hotel         ###   ########.fr       */
+>>>>>>> 76db8d65bccd4a271a7cc2892b5d1f7577ee2789
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +45,6 @@ typedef struct s_parse
 	int				outfile;
 	int				fd_kill;
 }				t_parse;
-
-typedef struct s_env
-{
-	char			*key;
-	void			*value;
-
-}	t_env;
 
 typedef struct s_exp
 {
@@ -99,10 +96,13 @@ char	*cut_arg(char *line, int i);
 char	*check_path_access(t_list *alst, char *cmd);
 char	*ft_concatenate(char *line, char *bf);
 char	*tolower2(char *cmd);
+<<<<<<< HEAD
 char	*dollar(char *str, int c);
 char	**ft_realloc2char(char **src, int size);
+=======
+char	*dollar(char *str);
+>>>>>>> 76db8d65bccd4a271a7cc2892b5d1f7577ee2789
 
-void	free_tab(char **tab);
 void	insert_env(char **envp, t_list **alst);
 void	insert_exp(char **envp, t_exp **atc);
 void	print_list(t_list *alst);
@@ -126,8 +126,6 @@ void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab);
 void	exec(t_parse *parse, t_list *alst, int *cmd);
 void	ft_execve(t_parse *parse, t_list *alst, char **lab);
 void	my_exec(t_list *alst, t_exp *atc);
-void	free_lst(t_list *alst);
-void	free_atc(t_exp *alst);
 void	flagi(t_parse *parse, t_exp *atc);
 void	argi(t_parse *parse, t_exp *atc, char *arg, int w);
 void	cmdi(t_parse *parse, t_exp *atc);
@@ -164,7 +162,7 @@ t_parse	*ft_lstmove(t_parse *lst, int indice);
 void	lexer(char *line);
 char	*ft_strjoin_no_spc(const char *s1,const char *s2);
 t_parse	*ft_lstnew_parse(void);
-char	**ft_realloc2char(char **src, int size);
+char	**ft_realloc2char(char **src, int size, int start);
 int		ft_cmd_arg(char *line, int i, t_parse *tete);
 void	heredoc(char *stop, t_parse *parse);
 void	ft_lstadd_back_parse(t_parse **alst, t_parse *new);
@@ -187,5 +185,11 @@ void	change_dir(t_parse *parse, t_list *alst);
 void	built_in_cd(char *path);
 void	destroy(t_list **alst, t_exp **atc);
 void	port(t_exp *atc, t_list *alst);
+
+/* *************************** FREE-ALL ************************** */
+void	free_all(void);
+void	free_tab(char **tab);
+void	free_lst(t_list *alst);
+void	free_atc(t_exp *alst);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/18 13:27:57 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/18 17:11:02 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,6 @@ void	line_prompt(char *line, char **argv, int argc)
 	argv = ft_split(line, ' '); // leaks
 }
 
-void	killhere(void)
-{
-	t_parse	*tete;
-
-	tete = g_global.parse;
-	while (tete)
-	{
-		if (tete->fd_kill > 0)
-		{
-			close(tete->fd_kill);
-		}
-	}
-}
-
 void	init_global(char **envp)
 {
 	g_global.parse = malloc(sizeof(t_parse)); // free toute la struct avant de free global.parse
@@ -80,6 +66,7 @@ int	main(int ac, char **av, char **envp)
 		printf("test = |%s|\n", g_global.parse->flag);
 		printf("test = |%s|\n", g_global.parse->arg[0]);
 		my_exec(alst, atc);
+		free_all();
 		//killhere();
 		//free(g_global.parse);
 		//free_lst(alst);

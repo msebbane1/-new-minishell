@@ -3,6 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:42:54 by vl-hotel          #+#    #+#             */
@@ -11,6 +12,12 @@
 /* ************************************************************************** */
 
 /*   Updated: 2022/09/17 20:09:58 by vl-hotel         ###   ########.fr       */
+=======
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/18 16:35:23 by vl-hotel          #+#    #+#             */
+/*   Updated: 2022/09/18 16:35:27 by vl-hotel         ###   ########.fr       */
+>>>>>>> 76db8d65bccd4a271a7cc2892b5d1f7577ee2789
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +44,8 @@ int	gestion_quotes(char *line, int i, t_parse *parse)
 	{
 		i = len_envp(parse->arg);
 		printf("gestion quotes i =%i\n", i);
-		parse->arg = ft_realloc2char(parse->arg, len_envp(parse->arg) + 1);
-		ft_memcpy(parse->arg[i], nextw, ft_strlen(nextw));
+		parse->arg = ft_realloc2char(parse->arg, len_envp(parse->arg) + 1, 0);
+		ft_memcpy(parse->arg[i], nextw, ft_strlen(nextw) + 1);
 	}
 	return (j);
 }
