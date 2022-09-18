@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 14:42:54 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/18 14:36:19 by vl-hotel         ###   ########.fr       */
+/*   Created: 2022/09/18 16:35:23 by vl-hotel          #+#    #+#             */
+/*   Updated: 2022/09/18 16:35:27 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	gestion_quotes(char *line, int i, t_parse *parse)
 	{
 		i = len_envp(parse->arg);
 		printf("gestion quotes i =%i\n", i);
-		parse->arg = ft_realloc2char(parse->arg, len_envp(parse->arg) + 1);
+		parse->arg = ft_realloc2char(parse->arg, len_envp(parse->arg) + 1, 0);
 		ft_memcpy(parse->arg[i], nextw, ft_strlen(nextw) + 1);
 	}
 	return (j);

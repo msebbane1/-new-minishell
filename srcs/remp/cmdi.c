@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:00:55 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/15 15:59:29 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/18 15:58:40 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	cmdi(t_parse *parse, t_exp *atc)
 {
-	char *doll;
-	int i;
-	int d;
-	int h;
-	int g;
-	int r;
-	int c;
-	char *lala;
+	char	*doll;
+	int		i;
+	int		d;
+	int		h;
+	int		g;
+	int		r;
+	int		c;
+	char	*lala;
 
 	i = 0;
 	d = 0;
@@ -49,7 +49,7 @@ void	cmdi(t_parse *parse, t_exp *atc)
 	}
 	h = i;
 	i = 0;
-//	printf("CMD2 ===== %s\n", parse->cmd);
+	printf("CMD2 ===== %s\n", parse->cmd);
 	while (parse->cmd[i])
 	{
 		if (!ft_cmpchar(parse->cmd[i], '\''))
@@ -89,9 +89,9 @@ void	cmdi(t_parse *parse, t_exp *atc)
 				{
 					d = 0;
 					doll = malloc(sizeof(char) * (g));
+					printf("DOLL2 ===== %s\n", doll);
 					while (parse->cmd[i])
 					{
-						printf("%d\n", i);
 						if (!ft_cmpchar(parse->cmd[i], '\''))
 							break ;
 						doll[d] = parse->cmd[i];
@@ -113,6 +113,12 @@ void	cmdi(t_parse *parse, t_exp *atc)
 				}
 				if (d == 0)
 					doll = NULL;
+				else
+				{
+					d = 0;
+					while (doll[d])
+						d++;
+				}
 				lala = malloc(sizeof(char) * (h - g + d));
 				d = 0;
 				h = 0;
@@ -136,6 +142,7 @@ void	cmdi(t_parse *parse, t_exp *atc)
 								h++;
 							}
 						}
+//						free (doll);
 						while (i < g)
 							i++;
 					}

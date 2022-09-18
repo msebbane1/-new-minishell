@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:29:52 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/17 15:50:52 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:06:33 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,31 @@ t_exp	*add(t_exp *atc, char *str)
 {
 	t_exp	*tmp;
 	t_exp	*new;
+	t_exp	*baba;
 	char	**prt;
+	int		g;
 
 	new = malloc(sizeof(*tmp));
+	g = 0;
 	tmp = atc;
+	baba = atc;
 	prt = (char **)malloc(sizeof(char *) * 3);
 	prt = ft_split(str, '=');
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	tmp->next = new;
-	new->name = prt[0];
-	new->mean = prt[1];
-	new->next = NULL;
+	while (baba)
+	{
+		if (!ft_strcmp(baba->name, prt[0]))
+			g++;
+		baba = baba->next;
+	}
+	if (g == 0)
+	{
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = new;
+		new->name = prt[0];
+		new->mean = prt[1];
+		new->next = NULL;
+	}
 	return (atc);
 }
 
@@ -86,15 +99,28 @@ t_exp	*add3(t_exp *atc, char *str)
 {
 	t_exp	*tmp;
 	t_exp	*new;
+	t_exp	*baba;
+	int		g;
 
+	g = 0;
+	baba = atc;
 	new = malloc(sizeof(*tmp));
 	tmp = atc;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	tmp->next = new;
-	new->name = str;
-	new->mean = "(null)";
-	new->next = NULL;
+	while (baba)
+	{
+		if (!ft_strcmp(baba->name, str))
+			g++;
+		baba = baba->next;
+	}
+	if (g == 0)
+	{
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = new;
+		new->name = str;
+		new->mean = "(null)";
+		new->next = NULL;
+	}
 	return (atc);
 }
 
@@ -103,24 +129,37 @@ t_exp	*add4(t_exp *atc, char *str)
 	t_exp	*tmp;
 	t_exp	*new;
 	char	**prt;
+	t_exp	*baba;
+	int		g;
 	int		i;
 
 	i = 3;
+	g = 0;
+	baba = atc;
 	new = malloc(sizeof(*tmp));
 	tmp = atc;
 	prt = ft_split(str, '=');
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	tmp->next = new;
-	new->name = prt[0];
-	new->mean = ft_concatenate(prt[1], "=");
-	new->mean = ft_concatenate(new->mean, prt[2]);
-	while (prt[i])
+	while (baba)
 	{
-		new->mean = ft_concatenate(new->mean, "=");
-		new->mean = ft_concatenate(new->mean, prt[i]);
-		i++;
+		if (!ft_strcmp(baba->name, prt[0]))
+			g++;
+		baba = baba->next;
 	}
-	new->next = NULL;
+	if (g == 0)
+	{
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = new;
+		new->name = prt[0];
+		new->mean = ft_concatenate(prt[1], "=");
+		new->mean = ft_concatenate(new->mean, prt[2]);
+		while (prt[i])
+		{
+			new->mean = ft_concatenate(new->mean, "=");
+			new->mean = ft_concatenate(new->mean, prt[i]);
+			i++;
+		}
+		new->next = NULL;
+	}
 	return (atc);
 }

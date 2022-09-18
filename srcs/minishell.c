@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/18 16:27:37 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:30:45 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ int	main(int ac, char **av, char **envp)
 		init_global(envp);
 		lexer(line);
 		print_global();
+		remplace(g_global.parse, atc);
 		printf("test = |%s|\n", g_global.parse->cmd);
 		printf("test = |%s|\n", g_global.parse->flag);
 		printf("test = |%s|\n", g_global.parse->arg[0]);
-		remplace(g_global.parse, atc);
 		my_exec(alst, atc);
 		//killhere();
-		free(g_global.parse);
+		//free(g_global.parse);
 		//free_lst(alst);
 		//free_atc(atc);
 		//free(line);

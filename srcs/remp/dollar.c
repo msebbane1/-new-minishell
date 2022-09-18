@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 11:26:14 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/15 15:59:36 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/18 15:54:39 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ char	*dollar(char *str)
 	else
 	{
 		doll = malloc(sizeof(char) * (j - 2));
+		printf("DOLL ===== %s\n", doll);
 		i = 0;
 		h = 0;
 		while (str[i])
@@ -75,6 +76,7 @@ char	*dollar(char *str)
 			i++;
 			h++;
 		}
+		doll[h] = '\0';
 		return (doll);
 	}
 	return (NULL);
