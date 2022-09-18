@@ -6,7 +6,7 @@
 #    By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/09/18 16:28:46 by vl-hotel         ###   ########.fr        #
+#    Updated: 2022/09/18 16:56:49 by vl-hotel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS = srcs/minishell.c \
 		$(addprefix srcs/, print_init.c signal.c exec.c check_path.c) \
 		$(addprefix srcs/utils/, utils1.c utils2.c utils3.c utils4.c utils5.c) \
 		$(addprefix srcs/remp/, remplace.c cmdi.c flagi.c argi.c dollar.c argtoflag.c) \
+		$(addprefix srcs/free_proc/, free_proc.c) \
 
 OBJS = $(SRCS:.c=.o)
 

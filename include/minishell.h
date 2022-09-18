@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/18 16:30:12 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/18 17:09:39 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ char	*ft_concatenate(char *line, char *bf);
 char	*tolower2(char *cmd);
 char	*dollar(char *str);
 
-void	free_tab(char **tab);
 void	insert_env(char **envp, t_list **alst);
 void	insert_exp(char **envp, t_exp **atc);
 void	print_list(t_list *alst);
@@ -118,8 +117,6 @@ void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab);
 void	exec(t_parse *parse, t_list *alst, int *cmd);
 void	ft_execve(t_parse *parse, t_list *alst, char **lab);
 void	my_exec(t_list *alst, t_exp *atc);
-void	free_lst(t_list *alst);
-void	free_atc(t_exp *alst);
 void	flagi(t_parse *parse, t_exp *atc);
 void	argi(t_parse *parse, t_exp *atc, char *arg, int w);
 void	cmdi(t_parse *parse, t_exp *atc);
@@ -178,5 +175,11 @@ void	change_dir(t_parse *parse, t_list *alst);
 void	built_in_cd(char *path);
 void	destroy(t_list **alst, t_exp **atc);
 void	port(t_exp *atc, t_list *alst);
+
+/* *************************** FREE-ALL ************************** */
+void	free_all(void);
+void	free_tab(char **tab);
+void	free_lst(t_list *alst);
+void	free_atc(t_exp *alst);
 
 #endif
