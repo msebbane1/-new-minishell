@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/17 17:14:13 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:27:37 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	killhere(void)
 		if (tete->fd_kill > 0)
 		{
 			close(tete->fd_kill);
+			tete = tete->next;
 		}
 	}
 }
