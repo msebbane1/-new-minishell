@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 07:16:25 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/17 15:52:12 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/18 16:20:18 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,10 @@ void	port(t_exp *atc, t_list *alst)
 			else if (i == 2)
 				add3(atc, elem->arg[elem->i]);
 			else
+			{
 				add4(atc, elem->arg[elem->i]); // export 2 fois ajouter aussi dans env
+				add5(alst, elem->arg[elem->i]);
+			}	
 		}		
 	}
 }

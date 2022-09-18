@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/18 13:00:19 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/18 16:59:58 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	*cut_arg(char *line, int i);
 char	*check_path_access(t_list *alst, char *cmd);
 char	*ft_concatenate(char *line, char *bf);
 char	*tolower2(char *cmd);
-char	*dollar(char *str);
+char	*dollar(char *str, int c);
 char	**ft_realloc2char(char **src, int size);
 
 void	free_tab(char **tab);
@@ -143,6 +143,7 @@ t_exp	*add(t_exp *atc, char *str);
 t_list	*add2(t_list *alst, char *str);
 t_exp	*add3(t_exp *atc, char *str);
 t_exp	*add4(t_exp *atc, char *str);
+t_list	*add5(t_list *alst, char *str);
 t_parse	*remplace(t_parse *parse, t_exp *atc);
 
 /* *************************** INIT ************************** */
