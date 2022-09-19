@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/18 14:51:36 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/19 15:52:13 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 	else if (!ft_strcmp(tolower2(parse->cmd), "pwd"))
 		ft_pwd(alst);
 	else if (!ft_strncmp(parse->cmd, "cd", 2))
-		change_dir(parse, alst);
+		cd(parse, alst);
 	else if (!ft_strcmp(parse->cmd, "unset"))
 		destroy(&alst, &atc);
 	else if (!ft_strcmp(parse->cmd, "export"))

@@ -6,7 +6,11 @@
 #    By: lbally <lbally@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/09/19 17:44:22 by lbally           ###   ########.fr        #
+=======
+#    Updated: 2022/09/19 15:27:14 by vl-hotel         ###   ########.fr        #
+>>>>>>> dcf2f8051de5c3989ff3757fb82f3d997f88d938
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +39,7 @@ READ	=	-lreadline ./include/libreadline.a -lcurses -o
 
 SRCS = srcs/minishell.c \
 		$(addprefix srcs/lexer/, lexer.c lexer_utils.c here_doc.c quotes.c redirection.c cmd_and_arg.c) \
-		$(addprefix srcs/builtins/, env.c path_dir.c unset.c export.c exp.c exit.c echo.c pwd.c) \
+		$(addprefix srcs/builtins/, env.c path_dir.c unset.c export.c exp.c exit.c echo.c pwd.c cd.c) \
 		$(addprefix srcs/, print_init.c signal.c exec.c check_path.c) \
 		$(addprefix srcs/utils/, utils1.c utils2.c utils3.c utils4.c utils5.c) \
 		$(addprefix srcs/remp/, remplace.c cmdi.c flagi.c argi.c dollar.c argtoflag.c) \

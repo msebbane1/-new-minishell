@@ -6,7 +6,11 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/19 15:33:23 by lbally           ###   ########.fr       */
+=======
+/*   Updated: 2022/09/18 19:48:25 by vl-hotel         ###   ########.fr       */
+>>>>>>> dcf2f8051de5c3989ff3757fb82f3d997f88d938
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +115,14 @@ A FIX :
 - Gerer les termios
 
 - CD :
-	- cd .. apres la suppression d'un fichier creer segfault
+	- cd .. apres la suppression d'un fichier creer segfault																		A REGLER(pipe exceve: MARIE)
+	si je unset home puis que je fais cd et enfin pwd ---> cela segfault
 - EXPORT :
-	- a=b=d=c ----> sáffiche dans env
-	- quand il y a la meme lettre ne dois pas s'afficher 2 fois dois remplacer le a- export 2 fois le meme (a gerer)
+	- a=b=d=c ----> sáffiche dans env 																								OKKKKKKKKK
+	- quand il y a la meme lettre ne dois pas s'afficher 2 fois dois remplacer le a- export 2 fois le meme (a gerer)				OKKKKKKKKK
 - HERE DOC :
-	- >>a ls ---> doit faire ls que avec la 1ere lettre (ex = asdf execute quand meme la cmd)
-	- << a ls | << b ls | << v ls ------> affiche 3 fois ls dois afficher qu'une fois
+	- >>a ls ---> doit faire ls que avec la 1ere lettre (ex = asdf execute quand meme la cmd)										PAS COMPRIS
+	- << a ls | << b ls | << v ls ------> affiche 3 fois ls dois afficher qu'une fois												A REGLER(pipe exceve: MARIE)
 	- << a ls --> ctrl\D -> doit executer la commande(ici segfault) ctrl\C doit quitter le here_doc
 	
 - $ :
@@ -147,7 +152,7 @@ A FIX :
 	cat + ctrl \ doit afficher = ^\Quit: 3
 	exit sur la meme ligne
 - PIPE :
-	- ls | cat doit executer qu'une commande
+	- ls | cat doit executer qu'une commande																						A REGLER(pipe exceve: MARIE)
 	- mkdir test1 | ls ----> segfault
 	- mkdir "test1" | ls --> ne dois pas creer un dossier avec les quotes
 

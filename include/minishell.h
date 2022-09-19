@@ -6,7 +6,11 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/19 11:57:49 by lbally           ###   ########.fr       */
+=======
+/*   Updated: 2022/09/19 15:54:34 by vl-hotel         ###   ########.fr       */
+>>>>>>> dcf2f8051de5c3989ff3757fb82f3d997f88d938
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +98,10 @@ char	*check_path_access(t_list *alst, char *cmd);
 char	*ft_concatenate(char *line, char *bf);
 char	*tolower2(char *cmd);
 char	*dollar(char *str, int c);
+<<<<<<< HEAD
 //char	**ft_realloc2char(char **src, int size);
+=======
+>>>>>>> dcf2f8051de5c3989ff3757fb82f3d997f88d938
 
 void	insert_env(char **envp, t_list **alst);
 void	insert_exp(char **envp, t_exp **atc);
@@ -178,6 +185,11 @@ void	change_dir(t_parse *parse, t_list *alst);
 void	built_in_cd(char *path);
 void	destroy(t_list **alst, t_exp **atc);
 void	port(t_exp *atc, t_list *alst);
+
+/* ****************** CD *******************/
+void	cd(t_parse *parse, t_list *alst);
+int		cd_only(t_list *alst);
+void	update_env2(t_list *alst);
 
 /* *************************** FREE-ALL ************************** */
 void	free_all(void);
