@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:23:38 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/18 16:23:28 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/19 15:11:03 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	update_env(t_list *alst, char *path)
 	char	*new_content;
 
 	list = alst;
+	printf("[update_env]PWD|%s|\n", getenv("PWD"));
+	printf("[update_env]OLDPWD|%s|\n", getenv("OLDPWD"));
 	while (list)
 	{
 		if (!ft_strcmp(list->key, "PWD"))

@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:53:53 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/18 15:57:21 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/19 15:14:05 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,5 @@ char	**ft_realloc2char(char **src, int size, int start)
 		start++;
 	}
 	free_tab(src);
-	// free(src);
 	return (dest);
 }
