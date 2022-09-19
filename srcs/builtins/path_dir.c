@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_dir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:23:49 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/17 15:48:41 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/18 19:30:25 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	change_dir(t_parse *parse, t_list *alst)
 		//old_path = getcwd(NULL, 0);
 		new_path = ft_substr(getcwd(NULL, 0), 0, search_slash(getcwd(NULL, 0))); // segfault avec le dossier supprimer
 		chdir((const char *)new_path);
-		update_env(alst, new_path);
+		update_env(alst, "new_path");
 		//update_env(alst, old_path);
 		//printf("new path = %s\n", new_path);
 	}
