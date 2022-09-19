@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:29:06 by lbally            #+#    #+#             */
-/*   Updated: 2022/07/22 12:29:10 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/19 17:23:36 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	ft_bzero(void *dest, size_t len)
 
 	a = (unsigned char *)dest;
 	v = 0;
-	while (len > 0 && len-- != 0)
+	while (len-- > 0)
 		a[v++] = '\0';
 }

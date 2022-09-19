@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:00:55 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/18 17:17:03 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/19 12:48:29by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ void cmdi(t_parse *parse, t_exp *atc)
 	r = 0;
 	c = 0;
 	lala = parse->cmd;
-	//	if (!parse->cmd)
-	//		return (parse);
+//	if (!parse->cmd)
+//		return (parse);
 	while (parse->cmd[i])
 	{
+		if (!ft_cmpchar(parse->cmd[i], '\"'))
+			r++;
+		if (!ft_cmpchar(parse->cmd[i], '\'') && r == 0)
+			c++;
 		if (!ft_cmpchar(parse->cmd[i], '$'))
 		{
 			while (parse->cmd[i])
@@ -52,18 +56,43 @@ void cmdi(t_parse *parse, t_exp *atc)
 	printf("CMD2 ===== %s\n", parse->cmd);
 	if (g == 0)
 	{
-		doll = malloc(sizeof(char) * (h - r - c));
-		while (parse->cmd[i])
+		if (c == 0)
 		{
-			if ((!ft_cmpchar(parse->cmd[i], '\'')) || (!ft_cmpchar(parse->cmd[i], '\"')))
+			doll = NULL;
+			doll = malloc(sizeof(char) * (h - r + 1));
+			while (i < h)
+			{
+				if (!ft_cmpchar(parse->cmd[i], '\"'))
+				{
+					i++;
+					continue ;
+				}
+				doll[d] = parse->cmd[i];
 				i++;
-			doll[d] = parse->cmd[i];
-			i++;
-			d++;
+				d++;
+			}
+			doll[d] = '\0';
+			free (parse->cmd);
+			parse->cmd = NULL;
+			parse->cmd = doll;
 		}
-		doll[d] = '\0';
-		parse->cmd = doll;
-		printf("PIIPIP ====== %s\n\n", parse->cmd);
+		else
+		{
+			doll = malloc(sizeof(char) * (h - c + 1));
+			while (parse->cmd[i])
+			{
+				if (!ft_cmpchar(parse->cmd[i], '\''))
+				{
+					i++;
+					continue ;
+				}
+				doll[d] = parse->cmd[i];
+				i++;
+				d++;
+			}
+			doll[d] = '\0';
+			parse->cmd = doll;
+		}
 	}
 	else
 	{
@@ -177,7 +206,7 @@ void cmdi(t_parse *parse, t_exp *atc)
 					//				return (parse);
 				}
 			}
-		i++;
+			i++;
 		}
 	}
 }

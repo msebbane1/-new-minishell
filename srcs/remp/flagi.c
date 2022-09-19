@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:01:52 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/18 17:27:45 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/19 20:23:21 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ void flagi(t_parse *parse, t_exp *atc)
 	r = 0;
 	c = 0;
 	lala = parse->flag;
-	//	if (!parse->flag)
-	//		return (parse);
 	while (parse->flag[i])
 	{
+		if (!ft_cmpchar(parse->flag[i], '\"'))
+			r++;
+		if (!ft_cmpchar(parse->flag[i], '\'') && r == 0)
+			c++;
 		if (!ft_cmpchar(parse->flag[i], '$'))
 		{
 			while (parse->flag[i])
@@ -50,21 +52,45 @@ void flagi(t_parse *parse, t_exp *atc)
 	h = i;
 	i = 0;
 	printf("CMD2 ===== %s\n", parse->flag);
-	if (ft_strlen(parse->flag) == 1)
-		parse->flag = parse->flag;
-	else if (g == 0)
+	if (g == 0)
 	{
-		str = malloc(sizeof(char) * (h - r - c));
-		while (parse->flag[i])
+		printf("CCCC ==== %d     RRRRR ==== %d\n", c, r);
+		if (c == 0)
 		{
-			if ((!ft_cmpchar(parse->flag[i], '\'')) || (!ft_cmpchar(parse->flag[i], '\"')))
+			str = NULL;
+			str = malloc(sizeof(char) * (h - r + 1));
+			while (i < h)
+			{
+				if (!ft_cmpchar(parse->flag[i], '\"'))
+				{
+					i++;
+					continue ;
+				}
+				str[d] = parse->flag[i];
+				d++;
 				i++;
-			str[d] = parse->flag[i];
-			i++;
-			d++;
+			}
+			str[d] = '\0';
+			parse->flag = str;
 		}
-		str[d] = '\0';
-		parse->flag = str;
+		else
+		{
+			str = NULL;
+			str = malloc(sizeof(char) * (h - c + 1));
+			while (parse->flag[i])
+			{
+				if (!ft_cmpchar(parse->flag[i], '\''))
+				{
+					i++;
+					continue ;
+				}
+				str[d] = parse->flag[i];
+				i++;
+				d++;
+			}
+			str[d] = '\0';
+			parse->flag = str;
+		}
 	}
 	else
 	{

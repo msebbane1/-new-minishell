@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 11:26:14 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/18 17:07:06 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/19 12:59:52 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*dollar(char *str, int c)
 	}
 	j = i;
 	i = 0;
-	if (t != 0 && c == 0)
+	if (t != 0 && c != 0)
 	{
 		doll = malloc(sizeof(char) * (j - 2));
 		j = 0;
@@ -65,7 +65,6 @@ char	*dollar(char *str, int c)
 	else
 	{
 		doll = malloc(sizeof(char) * (j - 2));
-		printf("DOLL ===== %s\n", doll);
 		i = 0;
 		h = 0;
 		while (str[i])
