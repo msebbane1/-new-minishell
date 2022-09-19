@@ -6,13 +6,13 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 11:26:14 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/18 15:54:39 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/18 17:07:06 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-char	*dollar(char *str)
+char	*dollar(char *str, int c)
 {
 	int		i;
 	int		j;
@@ -36,7 +36,7 @@ char	*dollar(char *str)
 	}
 	j = i;
 	i = 0;
-	if (t != 0)
+	if (t != 0 && c == 0)
 	{
 		doll = malloc(sizeof(char) * (j - 2));
 		j = 0;
