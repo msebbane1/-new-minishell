@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flagi.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:01:52 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/19 20:23:21 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/23 17:58:40 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void flagi(t_parse *parse, t_exp *atc)
 	}
 	h = i;
 	i = 0;
-	printf("CMD2 ===== %s\n", parse->flag);
+	// printf("CMD2 ===== %s\n", parse->flag);
 	if (g == 0)
 	{
-		printf("CCCC ==== %d     RRRRR ==== %d\n", c, r);
+		// printf("CCCC ==== %d     RRRRR ==== %d\n", c, r);
 		if (c == 0)
 		{
 			str = NULL;
@@ -108,7 +108,7 @@ void flagi(t_parse *parse, t_exp *atc)
 				{
 					str = dollar(parse->flag, c);
 					parse->flag = str;
-					printf("PIIPIP ====== %s\n\n", parse->flag);
+					// printf("PIIPIP ====== %s\n\n", parse->flag);
 					//				return (parse);
 				}
 				else
@@ -133,7 +133,7 @@ void flagi(t_parse *parse, t_exp *atc)
 					{
 						d = 0;
 						str = malloc(sizeof(char) * (g));
-						printf("str1 ===== %s\n", str);
+						// printf("str1 ===== %s\n", str);
 						while (parse->flag[i])
 						{
 							if (!ft_cmpchar(parse->flag[i], '\''))
@@ -144,7 +144,7 @@ void flagi(t_parse *parse, t_exp *atc)
 						}
 						str[d] = '\0';
 						g = i;
-						printf("str2 ===== %s\n", str);
+						// printf("str2 ===== %s\n", str);
 					}
 					d = 0;
 					i = 0;
@@ -168,7 +168,7 @@ void flagi(t_parse *parse, t_exp *atc)
 					lala = malloc(sizeof(char) * (h - g + d));
 					d = 0;
 					h = 0;
-					printf("str ===== %s\n", str);
+					// printf("str ===== %s\n", str);
 					while (parse->flag[i])
 					{
 						if (!ft_cmpchar(parse->flag[i], '\"') && c == 0)
@@ -202,7 +202,7 @@ void flagi(t_parse *parse, t_exp *atc)
 					}
 					parse->flag = lala;
 					//				free (lala);
-					printf("PAAPAP ====== %s\n\n", parse->flag);
+					// printf("PAAPAP ====== %s\n\n", parse->flag);
 					//				return (parse);
 				}
 			}

@@ -3,28 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 14:42:54 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/19 17:33:00 by lbally           ###   ########.fr       */
-=======
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:42:54 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/19 15:12:29 by vl-hotel         ###   ########.fr       */
->>>>>>> dcf2f8051de5c3989ff3757fb82f3d997f88d938
-/*                                                                            */
-/* ************************************************************************** */
-
-/*   Updated: 2022/09/17 20:09:58 by vl-hotel         ###   ########.fr       */
-<<<<<<< HEAD
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 16:35:23 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/18 16:35:27 by vl-hotel         ###   ########.fr       */
-=======
->>>>>>> dcf2f8051de5c3989ff3757fb82f3d997f88d938
+/*   Updated: 2022/09/25 12:25:02 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +21,7 @@ int	gestion_quotes(char *line, int i, t_parse *parse)
 	nextw = nextword(line + i, &j);
 	if (nextw[1] == '-' && nextw[2] != '-')
 	{
-		nextw = trflag(nextw); // tu retourne le calloc nextw est free mais nouveau malloc dans nextw
+		nextw = trflag(nextw);
 		parse->flag = ft_strjoin_no_spc(parse->flag, nextw);
 	}
 	else if (parse->first == 0)

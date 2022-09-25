@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 07:16:25 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/18 16:20:18 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/21 20:09:37 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,17 +154,18 @@ void	port(t_exp *atc, t_list *alst)
 			perror("export");
 		else
 		{
+			printf("[port] valeur de elem->i =%i\n", elem->i);
 			if (i == 1)
 			{
-				add(atc, elem->arg[elem->i]);
-				add2(alst, elem->arg[elem->i]);
+				add(atc, elem->arg[0]);
+				add2(alst, elem->arg[0]);
 			}
 			else if (i == 2)
-				add3(atc, elem->arg[elem->i]);
+				add3(atc, elem->arg[0]);
 			else
 			{
-				add4(atc, elem->arg[elem->i]); // export 2 fois ajouter aussi dans env
-				add5(alst, elem->arg[elem->i]);
+				add4(atc, elem->arg[0]); // export 2 fois ajouter aussi dans env
+				add5(alst, elem->arg[0]);
 			}	
 		}		
 	}

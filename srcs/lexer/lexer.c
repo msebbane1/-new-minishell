@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:02 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/17 16:42:05 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/25 12:25:16 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,19 @@ t_parse	*ft_lstnew_parse(void)
 {
 	t_parse	*newlist;
 
+	g_global.indice[0] += 1;
 	newlist = malloc(sizeof(t_parse));
 	if (!newlist)
 		return (NULL);
 	newlist->first = 0;
-	newlist->i = 0;
+	newlist->indice = g_global.indice[0];
 	newlist->infile = 0;
+	newlist->i = 0;
 	newlist->outfile = 1;
 	newlist->fd_kill = 0;
 	newlist->next = NULL;
-	newlist->flag = ft_strncpy("-", 1); // leaks
-	newlist->arg = malloc(sizeof(char *)); // leaks
+	newlist->flag = ft_strncpy("-", 1);
+	newlist->arg = malloc(sizeof(char *));
 	newlist->arg[0] = NULL;
 	newlist->cmd = NULL;
 	return (newlist);

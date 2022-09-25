@@ -6,11 +6,11 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/19 15:52:13 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/25 12:38:28 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
 char	**check_elem(t_parse *parse, t_list *alst, char **lab)
 {
@@ -85,33 +85,15 @@ void	ft_execve(t_parse *parse, t_list *alst, char **lab)
 		if (execve(check_path_access(alst, parse->cmd),
 				lab, enov(alst)) == -1)
 		{
+			perror(parse->cmd);
 			printf("%s: command not found dd\n", parse->cmd);
 			g_global.status = 127;
 			exit(EXIT_FAILURE);
 		}
-//		putenv_in_tab(alst);
 	}
 	else
 		waitpid(pid, &status, 0);
 }
-
-/*
-void	cmp_cmd(t_parse *parse, t_list *alst, t_exp *atc)
-{
-	if (!ft_strcmp(parse->cmd, "unset"))
-		destroy(&alst, &atc);
-	else if (!ft_strcmp(parse->cmd, "export"))
-		port(atc, alst);
-	else if (!ft_strcmp(parse->cmd, "$?"))
-		printf(" %i: command not found\n", g_global.status);
-	else if (!ft_cmpchar(parse->cmd[0], '$'))
-		dollar(alst, parse->cmd + 1);
-	else
-	{
-		printf("%s: command not found ss\n", parse->cmd);
-		g_global.status = 127;
-	}
-}*/
 
 void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 {
@@ -131,35 +113,12 @@ void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 		port(atc, alst);
 	else if (!ft_strcmp(parse->cmd, "$?"))
 		printf(" %i: command not found\n", g_global.status);
-	//else if (!ft_cmpchar(parse->cmd[0], '$'))
-		//dollar(alst, parse->cmd + 1);
 	else if (parse->cmd)
 		ft_execve(parse, alst, lab);
 	else
 	{
-		printf("%s: command not found ss\n", parse->cmd);
+		perror(parse->cmd);
+		// printf("%s: command not found ss\n", parse->cmd);
 		g_global.status = 127;
-	}
-}
-
-void	my_exec(t_list *alst, t_exp *atc)
-{
-	t_parse	*elem;
-	char	**lab;
-	int		i;
-
-	elem = g_global.parse;
-	i = 0;
-	while (elem)
-	{
-		lab = check_elem(elem, alst, lab);
-		if (lab[0] == NULL)
-		{
-			signals();
-			return ;
-		}
-		exec_cmd(elem, alst, atc, lab);
-		//free_tab(lab);
-		elem = elem->next;
 	}
 }

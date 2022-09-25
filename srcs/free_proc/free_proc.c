@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:45:22 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/18 17:10:38 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/25 11:13:04 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,7 @@ void	free_all(void)
 		free(tete->flag);
 		tete = tete->next;
 	}
+	free(g_global.indice);
+	dup2(g_global.old_stdin, STDIN_FILENO);
+	dup2(g_global.old_stdout, STDOUT_FILENO);
 }

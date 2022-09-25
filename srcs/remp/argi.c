@@ -28,7 +28,7 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 	g = 0;
 	r = 0;
 	c = 0;
-	printf("CMD3 ===== %s\n", arg);
+	// printf("CMD3 ===== %s\n", arg);
 	while (arg[i])
 	{
 		if (!ft_cmpchar(arg[i], '\"'))
@@ -48,12 +48,12 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 			}
 		}
 		i++;
-		printf("CMD2 ===== %c\n", arg[i]);
+		// printf("CMD2 ===== %c\n", arg[i]);
 	}
 	h = i;
 	i = 0;
-	printf("CMD2 ===== %s\n", arg);
-	printf("GGGG ===== %d\n", g);
+	// printf("CMD2 ===== %s\n", arg);
+	// printf("GGGG ===== %d\n", g);
 	if (g == 0)
 	{
 		if (c == 0)
@@ -107,7 +107,7 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 				{
 					dolli = dollar(arg, c);
 					parse->arg[w] = dolli;
-					printf("PIIPIP ====== %s\n\n", parse->arg[w]);
+					// printf("PIIPIP ====== %s\n\n", parse->arg[w]);
 				}
 				else
 				{
@@ -124,7 +124,7 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 							d++;
 						}
 						dolli[d] = '\0';
-						printf("dolli1 ===== %s 1\n", dolli);
+						// printf("dolli1 ===== %s 1\n", dolli);
 					}
 					else
 					{
@@ -164,7 +164,7 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 					lala = malloc(sizeof(char) * (h - g + d));
 					d = 0;
 					h = 0;
-					printf("dolli ===== %s\n", dolli);
+					// printf("dolli ===== %s\n", dolli);
 					while (arg[i])
 					{
 						if (!ft_cmpchar(arg[i], '\"') && c == 0)
@@ -198,7 +198,7 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 					}
 					parse->arg[w] = lala;
 					//	free (lala);
-					printf("PAAPAP ====== %s\n\n", parse->arg[w]);
+					// printf("PAAPAP ====== %s\n\n", parse->arg[w]);
 				}
 			}
 			i++;

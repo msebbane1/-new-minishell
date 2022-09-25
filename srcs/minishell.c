@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/19 15:33:23 by lbally           ###   ########.fr       */
-=======
-/*   Updated: 2022/09/18 19:48:25 by vl-hotel         ###   ########.fr       */
->>>>>>> dcf2f8051de5c3989ff3757fb82f3d997f88d938
+/*   Updated: 2022/09/25 12:29:32 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +32,10 @@ char	*rl_gets(void)
 void	line_prompt(char *line, char **argv, int argc)
 {
 	(void)argc;
-	if (!line)
+	if (!line) {
+		printf("NULL test\n");
 		signal_exit();
+	}
 	line = ft_strtrim(line, " "); // leaks
 	argv = ft_split(line, ' '); // leaks
 }
@@ -46,6 +44,8 @@ void	init_global(char **envp)
 {
 	g_global.parse = malloc(sizeof(t_parse)); // free toute la struct avant de free global.parse
 	g_global.env = envp;
+	g_global.indice = malloc(sizeof(int) * 1);
+	g_global.indice[0] = 0;
 }
 
 int	main(int ac, char **av, char **envp)
@@ -55,6 +55,8 @@ int	main(int ac, char **av, char **envp)
 	t_list	*alst;
 
 	alst = NULL;
+	g_global.old_stdin = dup(STDIN_FILENO);
+	g_global.old_stdout = dup(STDOUT_FILENO);
 	insert_env(envp, &alst);
 	insert_exp(envp, &atc);
 	signals();
@@ -66,16 +68,10 @@ int	main(int ac, char **av, char **envp)
 		lexer(line);
 		print_global();
 		remplace(g_global.parse, atc);
-		printf("test = |%s|\n", g_global.parse->cmd);
-		printf("test = |%s|\n", g_global.parse->flag);
-		printf("test = |%s|\n", g_global.parse->arg[0]);
-		my_exec(alst, atc);
+		brain(alst, atc);
 		free_all();
+		// perror("end process");
 		//killhere();
-		//free(g_global.parse);
-		//free_lst(alst);
-		//free_atc(atc);
-		//free(line);
 	}
 }
 

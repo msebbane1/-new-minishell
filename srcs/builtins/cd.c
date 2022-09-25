@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:34:19 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/19 20:18:04 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:34:24 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,20 @@ int	cd_only(t_list *alst)
 	return (i);
 }
 
+char *findpwd(t_list	*alst)
+{
+	t_list	*list;
+
+	list = alst;
+	while (list)
+	{
+		if (!ft_strcmp(list->key, "PWD"))
+			return (list->content);
+		list = list->next;
+	}
+	return (ft_strdup(""));
+}
+
 void	update_env2(t_list *alst)
 {
 	t_list	*list;
@@ -39,19 +53,23 @@ void	update_env2(t_list *alst)
 	char	*pwd;
 
 	list = alst;
-	oldpwd = getenv("OLDPWD");
+	oldpwd = NULL;
 	pwd = getcwd(NULL, 0);
 	while (list)
 	{
 		if (!ft_strcmp(list->key, "PWD"))
 		{
-			free(list->content);
+			if (oldpwd == NULL)
+				oldpwd = list->content;
 			list->content = ft_strdup(pwd);
 		}
 		if (!ft_strcmp(list->key, "OLDPWD"))
 		{
 			free(list->content);
-			list->content = ft_strdup(oldpwd);
+			if (oldpwd == NULL)
+				list->content = findpwd(alst);
+			else
+				list->content = (oldpwd);
 		}
 		list = list->next;
 	}

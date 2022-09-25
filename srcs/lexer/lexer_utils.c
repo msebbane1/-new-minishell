@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 16:13:36 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/17 16:41:25 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/25 12:24:45 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*nextword(char *line, int *j)
 		i = verif_quotes(line, i);
 	}
 	*j += i;
-	return (ft_strncpy(line + start, i - start)); // leaks perd le pointeur (faire un substr ??)
+	return (ft_strncpy(line + start, i - start));
 }
 
 char	*ft_strjoin_no_spc(const char *s1, const char *s2)
@@ -101,6 +101,7 @@ void	print_global(void)
 	while (tete)
 	{
 		printf("\nParse numero %i\n", count);
+		printf("\nindice %i\n", tete->indice);
 		printf("cmd = %s, flag = %s\n", tete->cmd, tete->flag);
 		printf("infile = %i, outfile = %i\n", tete->infile, tete->outfile);
 		while (tete->arg && tete->arg[i])
@@ -108,6 +109,7 @@ void	print_global(void)
 			printf("argument n: %i = %s\n", i, tete->arg[i]);
 			i++;
 		}
+		i = 0;
 		tete = tete->next;
 		count++;
 	}

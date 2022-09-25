@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 15:11:15 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/17 16:43:55 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/25 11:06:24 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int	redirection_v(char *line, int i, t_parse *parse)
 		nextw = nextword(line + i + 1, &j);
 		open_file(nextw, 1, parse);
 	}
-	j = redirection_v2(line, i, parse);
+	else
+		j = redirection_v2(line, i, parse);
 	return (j);
 }
 

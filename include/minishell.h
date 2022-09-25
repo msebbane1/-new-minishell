@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/19 11:57:49 by lbally           ###   ########.fr       */
-=======
-/*   Updated: 2022/09/19 15:54:34 by vl-hotel         ###   ########.fr       */
->>>>>>> dcf2f8051de5c3989ff3757fb82f3d997f88d938
+/*   Updated: 2022/09/25 12:29:36 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +38,7 @@ typedef struct s_parse
 	char			*flag;
 	int				first;
 	int				i;
+	int				indice;
 	int				infile;
 	int				outfile;
 	int				fd_kill;
@@ -60,7 +57,10 @@ typedef struct s_global
 	t_parse		*parse;
 	int			status;
 	int			nb_cmd;
+	int			*indice;
 	char		**env;
+	int			old_stdin;
+	int			old_stdout;
 }	t_global;
 
 extern struct s_global	g_global;
@@ -98,10 +98,6 @@ char	*check_path_access(t_list *alst, char *cmd);
 char	*ft_concatenate(char *line, char *bf);
 char	*tolower2(char *cmd);
 char	*dollar(char *str, int c);
-<<<<<<< HEAD
-//char	**ft_realloc2char(char **src, int size);
-=======
->>>>>>> dcf2f8051de5c3989ff3757fb82f3d997f88d938
 
 void	insert_env(char **envp, t_list **alst);
 void	insert_exp(char **envp, t_exp **atc);
@@ -110,7 +106,6 @@ void	add_back(t_parse **parse, t_parse *new);
 void	get_path(void);
 void	print_arg(void);
 void	update_env(t_list *alst, char *path);
-void	my_exec(t_list *alst, t_exp *atc);
 void	print_list(t_list *alst);
 void	print_exp(t_exp *atc);
 //void	dollar(t_list *alst, char *str);
@@ -125,7 +120,6 @@ void	ft_quote(char *cmd);
 void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab);
 void	exec(t_parse *parse, t_list *alst, int *cmd);
 void	ft_execve(t_parse *parse, t_list *alst, char **lab);
-void	my_exec(t_list *alst, t_exp *atc);
 void	flagi(t_parse *parse, t_exp *atc);
 void	argi(t_parse *parse, t_exp *atc, char *arg, int w);
 void	cmdi(t_parse *parse, t_exp *atc);
@@ -190,6 +184,17 @@ void	port(t_exp *atc, t_list *alst);
 void	cd(t_parse *parse, t_list *alst);
 int		cd_only(t_list *alst);
 void	update_env2(t_list *alst);
+char	*findpwd(t_list	*alst);
+
+/* *************************** EXEC ************************** */
+
+void	brain(t_list *alst, t_exp *atc);
+int		len_parse(void);
+int		cmdin_parse(t_parse *parse);
+void	execlab(t_parse *elem, t_list *alst, t_exp *atc);
+void	ft_fils(t_parse *elem, t_list *alst, t_exp *atc, int fdin);
+void	exec_cmdmulti(t_parse *parse, t_list *alst, t_exp *atc, char **lab);
+char	**enov(t_list *alst);
 
 /* *************************** FREE-ALL ************************** */
 void	free_all(void);
