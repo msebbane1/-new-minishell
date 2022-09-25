@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:18:59 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/09 14:02:26 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/25 17:21:12 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	destroy(t_list **alst, t_exp **atc)
+void	unset(t_list **alst, t_exp **atc)
 {
 	t_list	*head;
 	t_list	*temp;

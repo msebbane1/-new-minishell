@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:34:19 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/21 16:34:24 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/25 16:20:18 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char *findpwd(t_list	*alst)
 	return (ft_strdup(""));
 }
 
-void	update_env2(t_list *alst)
+void	update_env(t_list *alst)
 {
 	t_list	*list;
 	char	*oldpwd;
@@ -92,6 +92,6 @@ void	cd(t_parse *parse, t_list *alst)
 	{
 		printf("minishell: cd: %s: no such file or directory\n", parse->arg[0]);
 	}
-	update_env2(alst);
+	update_env(alst);
 	return ;
 }

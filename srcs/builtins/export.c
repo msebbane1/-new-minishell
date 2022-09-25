@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 07:16:25 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/21 20:09:37 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/25 17:02:00 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check(void)
 	j = 0;
 	while (pp->arg[g][i])
 	{
-		if (!is_letter(pp->arg[g][0]))
+		if (!ft_isalpha(pp->arg[g][0]))
 			return (0);
 		if (pp->arg[g][i] == ' ')
 			return (0);

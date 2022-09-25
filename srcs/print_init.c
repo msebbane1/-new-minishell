@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:23:58 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/08 15:09:37 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/25 21:00:42 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,40 @@ void	print_list(t_list *alst)
 	g_global.status = 0;
 }
 
-// void	print_arg()
-// {
-// 	t_parse	*tac;
-// 	int		i;
-// 	int		j;
+void	print_tab(char ** tab)
+{
+	int	i;
+	i = 0;
+	while (tab && tab[i])
+	{
+		printf("%s\n", tab[i]);
+		i++;	
+	}
+}
 
-// 	tac = parse;
-// 	i = 0;
-// 	j = -1;
-// 	while (tac)
-// 	{
-// 		printf("cmd%d ===>%s\n", i, tac->cmd);
-// 		if (tac->flag != NULL)
-// 			printf("option%d ===>%s\n", i, tac->flag);
-// 		if (tac->arg != NULL)
-// 			printf("arg%d ===>[%s]\n", i, tac->arg);
-// 		if (tac->dir != NULL)
-// 		{
-// 			while (tac->dir[++j])
-// 				printf("command%d-> redirec:[%d] ==>%s\n", i, j, tac->dir[j]);
-// 			j = -1;
-// 		}
-// 		if (tac->pipe)
-// 			printf("pipe[%d] existant = [%d]\n", i, tac->pipe);
-// 		i++;
-// 		tac = tac->next;
-// 	}
-// }
+void	print_global(void)
+{
+	int		i;
+	t_parse	*tete;
+	int		count;
+
+	i = 0;
+	count = 0;
+	printf("debut de print global\n");
+	tete = g_global.parse;
+	while (tete)
+	{
+		printf("\nParse numero %i\n", count);
+		printf("\nindice %i\n", tete->indice);
+		printf("cmd = %s, flag = %s\n", tete->cmd, tete->flag);
+		printf("infile = %i, outfile = %i\n", tete->infile, tete->outfile);
+		while (tete->arg && tete->arg[i])
+		{
+			printf("argument n: %i = %s\n", i, tete->arg[i]);
+			i++;
+		}
+		i = 0;
+		tete = tete->next;
+		count++;
+	}
+}

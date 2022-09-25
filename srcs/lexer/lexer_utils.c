@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 16:13:36 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/25 12:24:45 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/25 21:00:31 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,47 +70,4 @@ char	*ft_strncpy(char *s, int j)
 	}
 	str[i] = '\0';
 	return (str);
-}
-
-t_parse	*ft_lstmove(t_parse *lst, int indice)
-{
-	int	s;
-
-	if (lst)
-	{
-		s = 1;
-		while (s < indice)
-		{
-			lst = lst->next;
-			s++;
-		}
-	}
-	return (lst);
-}
-
-void	print_global(void)
-{
-	int		i;
-	t_parse	*tete;
-	int		count;
-
-	i = 0;
-	count = 0;
-	printf("debut de print global\n");
-	tete = g_global.parse;
-	while (tete)
-	{
-		printf("\nParse numero %i\n", count);
-		printf("\nindice %i\n", tete->indice);
-		printf("cmd = %s, flag = %s\n", tete->cmd, tete->flag);
-		printf("infile = %i, outfile = %i\n", tete->infile, tete->outfile);
-		while (tete->arg && tete->arg[i])
-		{
-			printf("argument n: %i = %s\n", i, tete->arg[i]);
-			i++;
-		}
-		i = 0;
-		tete = tete->next;
-		count++;
-	}
 }

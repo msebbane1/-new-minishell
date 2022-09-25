@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:02 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/25 12:25:16 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/25 20:44:52 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	msg_error(char *err)
 	exit (1);
 }
 
-// si un flag existe deja, je le rajoute.
 int	ft_flag(char *line, int i, t_parse *tete)
 {
 	int		j;

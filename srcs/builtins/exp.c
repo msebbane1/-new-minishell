@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:29:52 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/18 16:06:33 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/25 20:08:44 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void	insert_exp(char **envp, t_exp **atc)
 		new = expnew(tab[1], tab[0]);
 		ft_exp(atc, new);
 		free(tab);
+	}
+	if (envp[0] == NULL)
+	{
+		printf("insert_env envp[o]\n");
+		new = expnew(ft_strdup(getcwd(NULL, 0)), "PWD=");
+		ft_exp(atc, new);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/25 12:29:32 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/25 20:51:03 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	line_prompt(char *line, char **argv, int argc)
 {
 	(void)argc;
 	if (!line) {
-		printf("NULL test\n");
 		signal_exit();
 	}
 	line = ft_strtrim(line, " "); // leaks
@@ -70,39 +69,8 @@ int	main(int ac, char **av, char **envp)
 		remplace(g_global.parse, atc);
 		brain(alst, atc);
 		free_all();
-		// perror("end process");
-		//killhere();
 	}
 }
-
-/*
-void	free_lst(t_list *alst)
-{
-	t_list	*tmp;
-
-	while (alst)
-	{
-		tmp = alst->next;
-		free(alst->content);
-		free(alst->key);
-		free(alst);
-		alst = tmp;
-	}
-}
-
-void	free_atc(t_exp *alst)
-{
-	t_exp	*tmp;
-
-	while (alst)
-	{
-		tmp = alst->next;
-		free(alst->name);
-		free(alst->mean);
-		free(alst);
-		alst = tmp;
-	}
-}*/
 
 /*
 A FIX :
@@ -154,4 +122,21 @@ A FIX :
 
 + LEAKS
 
+
+NEW PROBLEMES:
+env -i = segfault														probleme dans check_path_access									OK
+env -i -> export	trop de freee															
+cat-d
+enlever les espace ou tab dans l'historique
+echo $?																	probleme dans extend
+Unset path -> pwd = segfault
+cat + ctr-c	ou ctr-\ 		double prompteur								signaux
+Here_doc 		si signaux, segfault										signaux
+here_doc + ctr-D		segfault											Signaux
+Unset PATH puis commande = segfault																										OK
+export 		trop de freee
+export aaaaaa		naffiche pas
+export aaaaa=bs puis export aaaaa=fdfdsfds   ne remplace pas
+export a=b c=fd d j=t ne fait que le premier export et pas les autres
+					
 */

@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:36:02 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/25 12:36:01 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/25 20:42:06 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	exec_cmdmulti(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 	else if (!ft_strcmp(tolower2(parse->cmd), "echo"))
 		ft_echo(parse);
 	else if (!ft_strcmp(tolower2(parse->cmd), "pwd"))
-		ft_pwd(alst);
+		printf("%s\n", getcwd(NULL, 0));
 	else if (!ft_strncmp(parse->cmd, "cd", 2))
 		cd(parse, alst);
 	else if (!ft_strcmp(parse->cmd, "unset"))
-		destroy(&alst, &atc);
+		unset(&alst, &atc);
 	else if (!ft_strcmp(parse->cmd, "export"))
 		port(atc, alst);
 	else if (!ft_strcmp(parse->cmd, "$?"))

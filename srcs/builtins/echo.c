@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:35 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/14 13:11:28 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/25 16:09:06 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,39 +56,3 @@ void	ft_echo(t_parse *parse)
 	if (t == 0)
 		printf("\n");
 }
-
-
-/*
-void	ft_echo(t_parse *parse)
-{
-	int	i;
-	int	t;
-
-	t = 0;
-	i = 0;
-<<<<<<< HEAD
-	printf("test = |%s|\n", parse->arg[i]);
-	if (echo_check_flag(parse->flag) == 1)
-		t = 1;
-	while (parse->arg && parse->arg[i])
-	{
-		printf("%s ", parse->arg[i]);
-=======
-	if (echo_check_flag(parse->flag) == 1)
-		printf("%s ", parse->flag);
-	else if (ft_strlen(parse->flag) == 1)
-		t = 0;
-	else
-		t = 1;
-	while (parse->arg && parse->arg[i])
-	{
-		if (i == 0)
-			printf("%s", parse->arg[i]);
-		else
-			printf(" %s", parse->arg[i]);
->>>>>>> 38499905634d9587ee5b273bad508e0b29a99a84
-		i++;
-	}
-	if (t == 0)
-		printf("\n");
-}*/

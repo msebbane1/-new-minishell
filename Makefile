@@ -6,7 +6,7 @@
 #    By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/09/21 20:45:34 by vl-hotel         ###   ########.fr        #
+#    Updated: 2022/09/25 21:09:34 by vl-hotel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,10 @@ READ	=	-lreadline ./include/libreadline.a -lcurses -o
 
 SRCS = srcs/minishell.c \
 		$(addprefix srcs/lexer/, lexer.c lexer_utils.c here_doc.c quotes.c redirection.c cmd_and_arg.c) \
-		$(addprefix srcs/builtins/, env.c path_dir.c unset.c export.c exp.c exit.c echo.c pwd.c cd.c) \
+		$(addprefix srcs/builtins/, env.c unset.c export.c exp.c exit.c echo.c cd.c) \
 		$(addprefix srcs/, print_init.c signal.c check_path.c) \
-		$(addprefix srcs/utils/, utils1.c utils2.c utils3.c utils4.c utils5.c) \
-		$(addprefix srcs/remp/, remplace.c cmdi.c flagi.c argi.c dollar.c argtoflag.c) \
+		$(addprefix srcs/utils/, utils1.c) \
+		$(addprefix srcs/remp/, remplace.c cmdi.c dollar.c flagi.c argi.c argtoflag.c) \
 		$(addprefix srcs/free_proc/, free_proc.c) \
 		$(addprefix srcs/execution/, exec.c brain.c utilexec.c) \
 

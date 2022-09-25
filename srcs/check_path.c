@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:19:04 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/17 16:57:13 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/25 21:00:15 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*check_path_access(t_list *alst, char *cmd)
 	i = -1;
 	tab_path = NULL;
 	tab_path = split_path(alst, tab_path);
-	while (tab_path[++i])
+	while (tab_path && tab_path[++i])
 	{
 		if (!back_slash(tab_path[i]))
 		{

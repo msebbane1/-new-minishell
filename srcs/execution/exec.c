@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/25 12:38:28 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/25 20:57:52 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,7 @@ void	ft_execve(t_parse *parse, t_list *alst, char **lab)
 		if (execve(check_path_access(alst, parse->cmd),
 				lab, enov(alst)) == -1)
 		{
-			perror(parse->cmd);
-			printf("%s: command not found dd\n", parse->cmd);
+			printf("%s: command not found\n", parse->cmd);
 			g_global.status = 127;
 			exit(EXIT_FAILURE);
 		}
@@ -104,11 +103,11 @@ void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 	else if (!ft_strcmp(tolower2(parse->cmd), "echo"))
 		ft_echo(parse);
 	else if (!ft_strcmp(tolower2(parse->cmd), "pwd"))
-		ft_pwd(alst);
+		printf("%s\n", getcwd(NULL, 0));
 	else if (!ft_strncmp(parse->cmd, "cd", 2))
 		cd(parse, alst);
 	else if (!ft_strcmp(parse->cmd, "unset"))
-		destroy(&alst, &atc);
+		unset(&alst, &atc);
 	else if (!ft_strcmp(parse->cmd, "export"))
 		port(atc, alst);
 	else if (!ft_strcmp(parse->cmd, "$?"))
@@ -117,8 +116,8 @@ void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 		ft_execve(parse, alst, lab);
 	else
 	{
-		perror(parse->cmd);
-		// printf("%s: command not found ss\n", parse->cmd);
+		// perror(parse->cmd);
+		printf("%s: command not found ss\n", parse->cmd);
 		g_global.status = 127;
 	}
 }

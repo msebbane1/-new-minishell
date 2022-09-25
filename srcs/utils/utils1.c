@@ -3,83 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:24:26 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/09 14:02:33 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/25 21:01:52 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	is_letter(char c)
+char	*tolower2(char *cmd)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	int	i;
+
+	i = 0;
+	while (cmd[i])
+	{
+		if (cmd[i] >= 'A' && cmd[i] <= 'Z')
+			cmd[i] += 32;
+		i++;
+	}
+	return (cmd);
+}
+
+int	ft_cmpchar(char s1, char s2)
+{
+	if (s1 != s2)
+		return (1);
+	else
+		return (0);
+}
+
+int	back_slash(char *str)
+{
+	if (str[ft_strlen(str)] == '/')
 		return (1);
 	return (0);
 }
 
-int	len_str(char **tab)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
-	int	res;
+	unsigned char	*str1;
+	unsigned char	*str2;
+	int				i;
 
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
 	i = -1;
-	res = 0;
-	while (tab[++i])
-		res += ft_strlen(tab[i]);
-	return (res + i - 1);
-}
-
-char	*concat_wspace(char **tab)
-{
-	int		i;
-	int		j;
-	int		k;
-	char	*final;
-
-	final = malloc(sizeof(char) * len_str(tab) + 1);
-	i = -1;
-	j = -1;
-	k = 0;
-	while (tab[++i])
+	while (str1[++i] && str2[i])
 	{
-		while (tab[i][++j])
-			final[k++] = tab[i][j];
-		final[k] = ' ';
-		k++;
-		j = -1;
+		if (str1[i] != str2[i])
+			break ;
 	}
-	final[k] = '\0';
-	return (final);
+	return (str1[i] - str2[i]);
 }
 
-char	*ft_strcpy(char *s, char *str)
+int	len_envp(char **envp)
 {
 	int	i;
 
 	i = 0;
-	str = malloc(sizeof(char) * ft_strlen(s) + 1);
-	while (s[i])
-	{
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-int	len_list(t_list *alst)
-{
-	t_list	*lst;
-	int		i;
-
-	i = 0;
-	lst = alst;
-	while (lst)
+	if (!envp)
+		return (0);
+	while (envp && envp[i] != '\0')
 	{
 		i++;
-		lst = lst->next;
 	}
 	return (i);
 }
