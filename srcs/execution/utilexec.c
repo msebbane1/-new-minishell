@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:36:02 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/25 20:42:06 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/26 22:16:57 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,9 @@ void	exec_cmdmulti(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 				lab, enov(alst)) == -1)
 		{
 			perror(parse->cmd);
-			// printf("%s: command not found dd\n", parse->cmd);
 			g_global.status = 127;
 		}
 	}
-	exit(12333);
 }
 
 void	execlab(t_parse *elem, t_list *alst, t_exp *atc)
@@ -80,11 +78,14 @@ void	execlab(t_parse *elem, t_list *alst, t_exp *atc)
 	lab = check_elem(elem, alst, lab);
 	if (lab[0] == NULL)
 	{
-		signals();
+		init_signals();
 		return ;
 	}
 	if (len_parse() == 1)
 		exec_cmd(elem, alst, atc, lab);
 	else
+	{
 		exec_cmdmulti(elem, alst, atc, lab);
+		exit(0);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:37:20 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/06 22:25:13 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:26:09 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	ft_strncmp(const char	*first, const char	*second, size_t length)
 	i = 0;
 	
 	if (length == 0)
+		return (0);
+	if (!first || !second)
 		return (0);
 	while (f[i] == s[i] && f[i] != '\0' && s[i] != '\0'
 		&& i < length - 1)

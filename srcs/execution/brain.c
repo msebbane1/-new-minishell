@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:35:11 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/25 12:28:34 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/26 22:20:58 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@ void	ft_fils(t_parse *elem, t_list *alst, t_exp *atc, int fdin)
 	if (pipe(fd) == -1)
 		msg_error("pipe error\n");
 	pid = fork();
-	if (pid == -1)
-		msg_error("fork error\n");
 	if (pid == 0)
 	{
 		close(fd[0]);
-		if (elem->outfile != 1)
+		if (elem->outfile != 1 || elem->indice == len_parse())
 			dup2(elem->outfile, STDOUT_FILENO);
 		else
 			dup2(fd[1], STDOUT_FILENO);
@@ -47,7 +45,9 @@ void	brain(t_list *alst, t_exp *atc)
 {
 	t_parse	*elem;
 
+	init_signals();
 	elem = g_global.parse;
+	echo_control_seq(1);
 	if (cmdin_parse(elem) == 1)
 		return ;
 	else if (elem->indice == len_parse())

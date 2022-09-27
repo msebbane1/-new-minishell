@@ -6,7 +6,7 @@
 #    By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/09/25 21:09:34 by vl-hotel         ###   ########.fr        #
+#    Updated: 2022/09/27 14:03:51 by vl-hotel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ LIB		=	libft.a
 
 LIBINC =	-L/Users?$(USER)/.brew/Cellar/readline/8.1.2/lib/
 
-READ	=	-lreadline ./include/libreadline.a -lcurses -o 
+READLINE_PATH = vendor/readline/
+
+READ	=	libft.a -L$(READLINE_PATH)/lib -lreadline
 
 SRCS = srcs/minishell.c \
 		$(addprefix srcs/lexer/, lexer.c lexer_utils.c here_doc.c quotes.c redirection.c cmd_and_arg.c) \
@@ -46,18 +48,23 @@ OBJS = $(SRCS:.c=.o)
 
 RM = rm -rf
 
-all: ${NAME}
+all: readline ${NAME}
+
+$(READLINE_PATH):
+	sh ./install_readline.sh
+
+readline: $(READLINE_PATH)
 
 .c.o: $(SRCS)
 	@printf $(GREEN)"\r\033[KCreating object files 👉 "$(YELLOW)"<$<> "$(RESET)
-	@$(CC) $(CFLAGS) $(HEADER) -c $< -o $(<:.c=.o)
+	@$(CC) $(CFLAGS) -I$(READLINE_PATH)/include $(HEADER) -c $< -o $(<:.c=.o)
 	
 ${NAME}: ${OBJS}
 		@make -C libft
 		@make bonus -C libft
 		@mv libft/$(LIB) .
 		@printf $(GREEN)"\r\033[K✅ SUCCESS: "$(WHITE)$(LIB)$(GREEN)" has been created\n"$(RESET)
-		@$(CC) $(OBJS) $(CFLAGS) $(LIB) -o $(READ) $(NAME)
+		@$(CC) $(OBJS) $(CFLAGS) $(READ) $(LIB) -o $(NAME)
 		@printf $(GREEN)"\r\033[K✅ SUCCESS: "$(WHITE)$(FRONTNAME)$(GREEN)" has been created\n"$(RESET)
 
 clean :
@@ -72,4 +79,4 @@ fclean: clean
 		
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re readline

@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:45:22 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/25 11:13:04 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/26 19:13:35 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	free_tab(char **tab)
 
 void	free_all(void)
 {
-	t_parse *tete;
+	t_parse	*tete;
+
 	tete = g_global.parse;
 	killhere();
 	while (tete)

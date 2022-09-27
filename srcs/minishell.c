@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/25 20:51:03 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/27 00:53:32 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ struct s_global	g_global;
 char	*rl_gets(void)
 {
 	static char	*line_read;
+	char	*res;
 
 	if (line_read)
 	{
@@ -25,18 +26,23 @@ char	*rl_gets(void)
 	}
 	line_read = readline ("minishell>> ");
 	if (line_read && *line_read)
-		add_history (line_read);
+	{
+		res = ft_strtrim(line_read, " \t\v\f\r");
+		if(ft_strlen(res) > 0)
+			add_history(res);
+		free(res);
+	}
 	return (line_read);
 }
 
-void	line_prompt(char *line, char **argv, int argc)
+char	*line_prompt(char *line, char **argv, int argc)
 {
 	(void)argc;
+	(void)argv;
 	if (!line) {
 		signal_exit();
 	}
-	line = ft_strtrim(line, " "); // leaks
-	argv = ft_split(line, ' '); // leaks
+	return (line);
 }
 
 void	init_global(char **envp)
@@ -45,6 +51,7 @@ void	init_global(char **envp)
 	g_global.env = envp;
 	g_global.indice = malloc(sizeof(int) * 1);
 	g_global.indice[0] = 0;
+	g_global.here = 0;
 }
 
 int	main(int ac, char **av, char **envp)
@@ -58,14 +65,14 @@ int	main(int ac, char **av, char **envp)
 	g_global.old_stdout = dup(STDOUT_FILENO);
 	insert_env(envp, &alst);
 	insert_exp(envp, &atc);
-	signals();
 	while (1)
 	{
+		init_signals();
 		line = rl_gets();
-		line_prompt(line, av, ac);
+		line = line_prompt(line, av, ac);
 		init_global(envp);
 		lexer(line);
-		print_global();
+		// print_global();
 		remplace(g_global.parse, atc);
 		brain(alst, atc);
 		free_all();

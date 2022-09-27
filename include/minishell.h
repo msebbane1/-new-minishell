@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/25 20:17:21 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:57:03 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@
 # include <dirent.h>
 # include <string.h>
 # include <sys/wait.h>
+# include <sys/ioctl.h>
 # include <fcntl.h>
+# include <termios.h>
+# include <sys/stat.h>
 
 /* ************************ STRUCTURES ************************ */
 typedef struct s_parse
@@ -57,6 +60,7 @@ typedef struct s_global
 	t_parse		*parse;
 	int			status;
 	int			nb_cmd;
+	int			here;
 	int			*indice;
 	char		**env;
 	int			old_stdin;
@@ -65,7 +69,7 @@ typedef struct s_global
 
 extern struct s_global	g_global;
 
-// int		rl_on_new_line(void);
+int		rl_on_new_line(void);
 void	rl_replace_line(const char *buffer, int something);
 
 /* *************************** INIT ************************** */
@@ -73,9 +77,9 @@ void	rl_replace_line(const char *buffer, int something);
 void	init_global(char **envp);
 void	insert_env(char **envp, t_list **alst);
 void	insert_exp(char **envp, t_exp **atc);
-void	line_prompt(char *line, char **argv, int argc);
+char	*line_prompt(char *line, char **argv, int argc);
 char	*readline(const char *prompt);
-int		add_history(const char *string_for_history);
+// int		add_history(const char *string_for_history);
 char	*rl_gets(void);
 
 /* *************************** LEXER ************************** */
@@ -151,8 +155,10 @@ char	*check_path_access(t_list *alst, char *cmd);
 
 /* *************************** SIGNAL ************************** */
 void	ft_signal(int signum);
+void	ft_signalquit(int signum);
 void	signal_exit(void);
-void	signals(void);
+void	init_signals(void);
+void	echo_control_seq(int c);
 
 /* *************************** FREE-ALL ************************** */
 void	free_all(void);

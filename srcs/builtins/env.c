@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:23:38 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/25 20:08:30 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/26 18:38:28 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	insert_env(char **envp, t_list **alst)
 	}
 	if (envp[0] == NULL)
 	{
-		printf("insert_env envp[o]\n");
 		new = ft_lstnew(ft_strdup(getcwd(NULL, 0)), "PWD=");
 		ft_lstadd_back(alst, new);
 	}

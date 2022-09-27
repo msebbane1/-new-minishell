@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:52:44 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/25 20:53:45 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/27 01:18:50 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	heredoc(char *stop, t_parse *parse)
 	line = NULL;
 	while (1)
 	{
-		line = readline("here_doc >>");
+		line = readline("> ");
+		if(!line || line == NULL)
+			break;
 		if (ft_strncmp(line, stop, ft_strlen(stop)) == 0
 			&& (ft_strlen(stop) == ft_strlen(line)))
 		{

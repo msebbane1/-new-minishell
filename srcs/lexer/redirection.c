@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 15:11:15 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/25 11:06:24 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/27 17:48:14 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,9 @@ int	redirection_v2(char *line, int i, t_parse *parse)
 	{
 		j += 2;
 		nextw = nextword(line + i + 2, &j);
+		g_global.here = 1;
 		heredoc(nextw, parse);
+		g_global.here = 0;
 	}
 	else if (line[i] == '<' && line[i + 1] != '<')
 	{

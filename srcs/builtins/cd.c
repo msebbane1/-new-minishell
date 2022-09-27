@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:34:19 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/25 16:20:18 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/26 19:07:23 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	cd_only(t_list *alst)
 {
 	t_list	*tete;
 	int		i;
-	
-	tete =  alst;
+
+	tete = alst;
 	i = 0;
 	while (tete)
 	{
@@ -32,7 +32,7 @@ int	cd_only(t_list *alst)
 	return (i);
 }
 
-char *findpwd(t_list	*alst)
+char	*findpwd(t_list	*alst)
 {
 	t_list	*list;
 
