@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:45:22 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/26 19:13:35 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:05:01 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	killhere(void)
 		}
 		tete = tete->next;
 	}
+	unlink("/tmp/heredoc.tmp");
 }
 
 void	free_tab(char **tab)

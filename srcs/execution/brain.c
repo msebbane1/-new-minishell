@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:35:11 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 14:10:34 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 14:32:24 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ void	ft_fils(t_parse *elem, t_list *alst, t_exp *atc, int fdin)
 	if (pid == 0)
 	{
 		close(fd[0]);
-		if (elem->outfile != 1 || elem->indice == len_parse())
-			dup2(elem->outfile, STDOUT_FILENO);
-		else
-			dup2(fd[1], STDOUT_FILENO);
-		dup2(fdin, STDIN_FILENO);
+		dupfunction(elem, fd, fdin);
 		execlab(elem, alst, atc);
 	}
 	else
@@ -39,6 +35,18 @@ void	ft_fils(t_parse *elem, t_list *alst, t_exp *atc, int fdin)
 		close(fd[0]);
 		waitpid(pid, NULL, 0);
 	}
+}
+
+void dupfunction(t_parse *elem, int *fd, int fdin)
+{
+	if (elem->outfile != 1 || elem->indice == len_parse())
+		dup2(elem->outfile, STDOUT_FILENO);
+	else
+		dup2(fd[1], STDOUT_FILENO);
+	if (elem->infile != fdin)
+		dup2(elem->infile, STDIN_FILENO);
+	else
+		dup2(fdin, STDIN_FILENO);
 }
 
 void	brain(t_list *alst, t_exp *atc)

@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:42:54 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/25 12:25:02 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:21:10 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	gestion_quotes(char *line, int i, t_parse *parse)
 	else
 	{
 		i = len_envp(parse->arg);
-		printf("gestion quotes i =%i\n", i);
 		parse->arg = ft_realloc2char(parse->arg, len_envp(parse->arg) + 1, 0);
 		parse->arg[i] = nextw;
 	}

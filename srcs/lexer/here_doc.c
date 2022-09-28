@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:52:44 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/27 01:18:50 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:07:39 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ void	heredoc(char *stop, t_parse *parse)
 		write(file, "\n", 1);
 		free(line);
 	}
+	close(file);
+	file = open("/tmp/heredoc.tmp", O_RDONLY, 0777);
 	init_file(file, 2, parse);
 }
