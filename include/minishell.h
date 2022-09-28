@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/27 17:57:03 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 13:55:38 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ char	**check_elem(t_parse *parse, t_list *alst, char **lab);
 void	ft_execve(t_parse *parse, t_list *alst, char **lab);
 void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab);
 char	*check_path_access(t_list *alst, char *cmd);
+void	dupfunction(t_parse *elem, int *fd, int fdin);
 
 /* *************************** SIGNAL ************************** */
 void	ft_signal(int signum);
@@ -178,5 +179,6 @@ char	*tolower2(char *cmd);
 
 void	print_global(void);
 void	print_tab(char ** tab);
+char *get_nl(int fd);
 
 #endif
