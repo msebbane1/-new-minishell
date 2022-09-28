@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 15:58:37 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:02:00 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	rl_replace_line(const char *buffer, int something);
 
 /* *************************** INIT ************************** */
 
-void	init_global(char **envp);
+void	init_global();
 void	insert_env(char **envp, t_list **alst);
 void	insert_exp(char **envp, t_exp **atc);
 char	*line_prompt(char *line, char **argv, int argc);

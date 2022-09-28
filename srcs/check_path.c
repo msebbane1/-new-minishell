@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:19:04 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 14:30:18 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 14:40:16 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ char	*check_path_access(t_list *alst, char *cmd)
 			free(test);
 			return (path);
 		}
-		//else
-			//path = ft_strjoin(tab_path[i], cmd);
 		free(path);
 		free(test);
 	}

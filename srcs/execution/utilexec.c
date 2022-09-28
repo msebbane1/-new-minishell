@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilexec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:36:02 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 14:29:46 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 14:39:12 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void	execlab(t_parse *elem, t_list *alst, t_exp *atc)
 	else
 	{
 		exec_cmdmulti(elem, alst, atc, lab);
+		//free_tab(lab);
 		exit(0);
 	}
+	//free_tab(lab);
 }
