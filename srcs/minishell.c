@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 17:02:11 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/28 18:18:46 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ char	*line_prompt(char *line, char **argv, int argc)
 
 void	init_global(void)
 {
-	g_global.parse = malloc(sizeof(t_parse)); // free toute la struct avant de free global.parse
-	//g_global.env = envp;
+	g_global.parse = malloc(sizeof(t_parse));
 	g_global.indice = malloc(sizeof(int) * 1);
 	g_global.indice[0] = 0;
 	g_global.here = 0;
@@ -72,7 +71,6 @@ int	main(int ac, char **av, char **envp)
 		line = line_prompt(line, av, ac);
 		init_global();
 		lexer(line);
-		// print_global();
 		remplace(g_global.parse, atc);
 		brain(alst, atc);
 		free_all();

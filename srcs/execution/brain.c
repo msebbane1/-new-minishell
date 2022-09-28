@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:35:11 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 15:59:31 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 18:10:33 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_fils(t_parse *elem, t_list *alst, t_exp *atc, int fdin)
 	}
 }
 
-void dupfunction(t_parse *elem, int *fd, int fdin)
+void	dupfunction(t_parse *elem, int *fd, int fdin)
 {
 	if (elem->outfile != 1 || elem->indice == len_parse())
 		dup2(elem->outfile, STDOUT_FILENO);
@@ -46,7 +46,7 @@ void dupfunction(t_parse *elem, int *fd, int fdin)
 	if (elem->infile != 0)
 		dup2(elem->infile, STDIN_FILENO);
 	else
-	dup2(fdin, STDIN_FILENO);
+		dup2(fdin, STDIN_FILENO);
 }
 
 void	brain(t_list *alst, t_exp *atc)
