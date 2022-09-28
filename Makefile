@@ -6,7 +6,11 @@
 #    By: lbally <lbally@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/09/28 11:13:12 by lbally           ###   ########.fr        #
+=======
+#    Updated: 2022/09/28 10:39:34 by vl-hotel         ###   ########.fr        #
+>>>>>>> 51323857b0d07b9e58151296be6ec26a5de6b1cf
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +55,7 @@ RM = rm -rf
 all: readline ${NAME}
 
 $(READLINE_PATH):
-	sh ./install_readline.sh
+	sh ./include/install_readline.sh
 
 readline: $(READLINE_PATH)
 

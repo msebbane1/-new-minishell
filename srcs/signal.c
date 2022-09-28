@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:23:46 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/27 18:01:45 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:21:36 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,12 @@ void	echo_control_seq(int c)
 void	ft_signal(int signum)
 {
 	(void)signum;
-	// printf("\e[2K");
-	// rl_on_new_line();
-	// rl_redisplay();
-	// printf("\n");
-	// rl_replace_line("", 0);
-	// rl_on_new_line();
-	// rl_redisplay();
 	if(g_global.here == 1)
 	{
-	// 	rl_on_new_line();
-	// 	rl_redisplay();
 		printf("\r");
 		write(1, "\n", 1);
 		close(0);
 		g_global.here = 2;
-		// printf("\n");
-		// rl_replace_line("", 0);
-		// rl_on_new_line();
-		// rl_redisplay();
-		// printf("signal|%i|\n", g_global.here);
 	}
 	else
 	{
@@ -64,8 +50,6 @@ void	ft_signalquit(int signum)
 	(void)signum;
 	if(g_global.here == 1)
 	{
-	// 	rl_on_new_line();
-	// 	rl_redisplay();
 		close(0);
 		g_global.here = 2;
 	}
@@ -89,8 +73,6 @@ void	signal_exit(void)
 
 void	init_signals(void)
 {
-	//if (!ft_strcmp(str, "cat") && signal(SIGQUIT, ft_signal))
-		//printf("^Quit: 3");
 	signal(SIGINT, ft_signal);
 	signal(SIGQUIT, ft_signalquit);
 	echo_control_seq(0);
