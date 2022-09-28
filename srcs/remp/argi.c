@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:02:42 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/19 15:19:27by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 12:24:14 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 	g = 0;
 	r = 0;
 	c = 0;
-	// printf("CMD3 ===== %s\n", arg);
 	while (arg[i])
 	{
 		if (!ft_cmpchar(arg[i], '\"'))
@@ -48,12 +47,9 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 			}
 		}
 		i++;
-		// printf("CMD2 ===== %c\n", arg[i]);
 	}
 	h = i;
 	i = 0;
-	// printf("CMD2 ===== %s\n", arg);
-	// printf("GGGG ===== %d\n", g);
 	if (g == 0)
 	{
 		if (c == 0)
@@ -98,16 +94,17 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 		{
 			if (!ft_cmpchar(arg[i], '\''))
 				d++;
-			if (!ft_cmpchar(arg[i], '$') && (ft_cmpchar(arg[i + 1], '?') || d != 0))
+			if (!ft_cmpchar(arg[i], '$') || d != 0)
 			{
 				i++;
-				if (!arg[i])
+				if (!ft_cmpchar(arg[i], '?'))
+					parse->arg[w] = ft_itoa(g_global.status);
+				else if (!arg[i])
 					parse->arg[w] = arg;
 				else if (ft_isdigit(arg[i]) || (d != 0 && c != 0))
 				{
 					dolli = dollar(arg, c);
 					parse->arg[w] = dolli;
-					// printf("PIIPIP ====== %s\n\n", parse->arg[w]);
 				}
 				else
 				{
@@ -124,7 +121,6 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 							d++;
 						}
 						dolli[d] = '\0';
-						// printf("dolli1 ===== %s 1\n", dolli);
 					}
 					else
 					{
@@ -164,7 +160,6 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 					lala = malloc(sizeof(char) * (h - g + d));
 					d = 0;
 					h = 0;
-					// printf("dolli ===== %s\n", dolli);
 					while (arg[i])
 					{
 						if (!ft_cmpchar(arg[i], '\"') && c == 0)
@@ -177,8 +172,6 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 							{
 								while (ft_isprint(dolli[h]) == 1)
 								{
-									//								if (!ft_cmpchar(arg[i], '\"') && c == 0)
-									//									i++;
 									lala[d] = dolli[h];
 									d++;
 									h++;
@@ -186,7 +179,6 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 							}
 							while (i < g)
 								i++;
-							//			free (dolli);
 						}
 						if (!ft_cmpchar(arg[i], '\"') && c == 0)
 							i++;
@@ -197,8 +189,6 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 						d++;
 					}
 					parse->arg[w] = lala;
-					//	free (lala);
-					// printf("PAAPAP ====== %s\n\n", parse->arg[w]);
 				}
 			}
 			i++;
