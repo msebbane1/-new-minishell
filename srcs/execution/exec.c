@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 16:02:14 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:15:59 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ char	**check_elem(t_parse *parse, t_list *alst, char **lab)
 	if (parse->cmd != NULL)
 		lab[0] = check_path_access(alst, parse->cmd);
 	if (ft_strlen(parse->flag) > 1)
-		lab[1] = parse->flag;
+		lab[1] = ft_strdup(parse->flag);
 	if (parse->arg != NULL)
 	{
 		while (parse->arg[t])
-			lab[i++] = parse->arg[t++];
+			lab[i++] = ft_strdup(parse->arg[t++]);
 	}
 	else
 		return (NULL);

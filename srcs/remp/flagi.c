@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flagi.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:01:52 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 11:25:10 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 17:02:39 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	flagi(t_parse *parse, t_exp *atc)
 				i++;
 			}
 			str[d] = '\0';
+			free(parse->flag);
 			parse->flag = str;
 		}
 		else
@@ -89,6 +90,7 @@ void	flagi(t_parse *parse, t_exp *atc)
 				d++;
 			}
 			str[d] = '\0';
+			free(parse->flag);
 			parse->flag = str;
 		}
 	}

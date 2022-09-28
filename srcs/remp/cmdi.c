@@ -69,8 +69,8 @@ void cmdi(t_parse *parse, t_exp *atc)
 				d++;
 			}
 			doll[d] = '\0';
-			free (parse->cmd);
 			parse->cmd = NULL;
+			free(parse->cmd);
 			parse->cmd = doll;
 		}
 		else
@@ -88,6 +88,7 @@ void cmdi(t_parse *parse, t_exp *atc)
 				d++;
 			}
 			doll[d] = '\0';
+			free(parse->cmd);
 			parse->cmd = doll;
 		}
 	}
