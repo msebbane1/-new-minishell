@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:01:52 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 22:30:35by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 22:38:25 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,51 @@ void	flagi(t_parse *parse, t_exp *atc)
 	h = i;
 	i = 0;
 	if (g == 0)
+<<<<<<< HEAD
 		flagi2(parse, r, c, h);
+=======
+	{
+		// printf("CCCC ==== %d     RRRRR ==== %d\n", c, r);
+		if (c == 0)
+		{
+			str = NULL;
+			str = malloc(sizeof(char) * (h - r + 1));
+			while (i < h)
+			{
+				if (!ft_cmpchar(parse->flag[i], '\"'))
+				{
+					i++;
+					continue ;
+				}
+				str[d] = parse->flag[i];
+				d++;
+				i++;
+			}
+			str[d] = '\0';
+			free(parse->flag);
+			parse->flag = str;
+		}
+		else
+		{
+			str = NULL;
+			str = malloc(sizeof(char) * (h - c + 1));
+			while (parse->flag[i])
+			{
+				if (!ft_cmpchar(parse->flag[i], '\''))
+				{
+					i++;
+					continue ;
+				}
+				str[d] = parse->flag[i];
+				i++;
+				d++;
+			}
+			str[d] = '\0';
+			free(parse->flag);
+			parse->flag = str;
+		}
+	}
+>>>>>>> abcfe636f5bc096d322d0d7e70912da211adfeec
 	else
 	{
 		while (parse->flag[i])

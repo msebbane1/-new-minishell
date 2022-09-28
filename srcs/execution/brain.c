@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:35:11 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 21:53:47 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 22:42:30 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	dupfunction(t_parse *elem, int *fd, int fdin)
 		dup2(elem->outfile, STDOUT_FILENO);
 	else
 		dup2(fd[1], STDOUT_FILENO);
-	if (elem->infile != fdin)
+	if (elem->infile != 0)
 		dup2(elem->infile, STDIN_FILENO);
 	else
 		dup2(fdin, STDIN_FILENO);

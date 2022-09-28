@@ -6,7 +6,11 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:23:46 by lbally            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/28 21:57:54 by lbally           ###   ########.fr       */
+=======
+/*   Updated: 2022/09/28 18:19:12 by vl-hotel         ###   ########.fr       */
+>>>>>>> abcfe636f5bc096d322d0d7e70912da211adfeec
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +18,7 @@
 
 void	echo_control_seq(int c)
 {
+<<<<<<< HEAD
     struct	termios	conf;
 
     ioctl(ttyslot(), TIOCGETA, &conf);
@@ -22,6 +27,16 @@ void	echo_control_seq(int c)
     else if (c == 0)
     	conf.c_lflag &= ~(ECHOCTL);
     ioctl(ttyslot(), TIOCSETA, &conf);
+=======
+	struct termios	conf;
+
+	ioctl(ttyslot(), TIOCGETA, &conf);
+	if (c == 1)
+		conf.c_lflag |= ECHOCTL;
+	else if (c == 0)
+		conf.c_lflag &= ~(ECHOCTL);
+	ioctl(ttyslot(), TIOCSETA, &conf);
+>>>>>>> abcfe636f5bc096d322d0d7e70912da211adfeec
 }
 
 void	ft_signal(int signum)
@@ -39,7 +54,7 @@ void	ft_signal(int signum)
 		printf("\r");
 		printf("\n");
 		if (rl_done)
-		return ;
+			return ;
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
@@ -49,12 +64,12 @@ void	ft_signal(int signum)
 void	ft_signalquit(int signum)
 {
 	(void)signum;
-	if(g_global.here == 1)
+	if (g_global.here == 1)
 	{
 		close(0);
 		g_global.here = 2;
 	}
-	if(rl_done)
+	if (rl_done)
 	{
 		printf("Quit: 3\n");
 		return ;

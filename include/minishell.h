@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 20:14:28 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 22:40:05 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	rl_replace_line(const char *buffer, int something);
 
 /* *************************** INIT ************************** */
 
-void	init_global(char **envp);
+void	init_global();
 void	insert_env(char **envp, t_list **alst);
 void	insert_exp(char **envp, t_exp **atc);
 char	*line_prompt(char *line, char **argv, int argc);
@@ -88,7 +88,6 @@ void	init_file(int fd, int i, t_parse *parse);
 void	open_file(char *str, int i, t_parse *parse);
 char	*nextword(char *line, int *j);
 char	*ft_strncpy(char *s, int j);
-int		redirection_v(char *line, int i, t_parse *parse);
 int		ft_flag(char *line, int i, t_parse *tete);
 void	lexer(char *line);
 char	*ft_strjoin_no_spc(const char *s1, const char *s2);
@@ -153,6 +152,8 @@ int		ismore(char *lala, char *lolo);
 
 /* ****************** UNSET *******************/
 void	unset(t_list **alst, t_exp **atc);
+/* ****************** PWD *******************/
+void	ft_pwd(void);
 /* *************************** EXEC ************************** */
 
 void	brain(t_list *alst, t_exp *atc);

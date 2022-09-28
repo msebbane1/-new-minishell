@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:02:42 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 22:03:34 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 22:38:15 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 				i++;
 			}
 			dolli[d] = '\0';
+			
 			parse->arg[w] = dolli;
 		}
 		else

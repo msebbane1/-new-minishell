@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 18:18:45 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 22:43:00 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ char	**check_elem(t_parse *parse, t_list *alst, char **lab)
 		i++;
 		size++;
 	}
-	lab = ft_calloc(sizeof(char *), size);
+	lab = ft_calloc(sizeof(char *), size); // leaks
 	if (parse->cmd != NULL)
 		lab[0] = check_path_access(alst, parse->cmd);
 	if (ft_strlen(parse->flag) > 1)
-		lab[1] = parse->flag;
+		lab[1] = ft_strdup(parse->flag);
 	if (parse->arg != NULL)
 	{
 		while (parse->arg[t])
-			lab[i++] = parse->arg[t++];
+			lab[i++] = ft_strdup(parse->arg[t++]);
 	}
 	else
 		return (NULL);
@@ -102,7 +102,7 @@ void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 	else if (!ft_strcmp(tolower2(parse->cmd), "echo"))
 		ft_echo(parse);
 	else if (!ft_strcmp(tolower2(parse->cmd), "pwd"))
-		printf("%s\n", getcwd(NULL, 0));
+		ft_pwd();
 	else if (!ft_strncmp(parse->cmd, "cd", 2))
 		cd(parse, alst);
 	else if (!ft_strcmp(parse->cmd, "unset"))

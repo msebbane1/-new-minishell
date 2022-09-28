@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:19:04 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 22:00:08 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 22:42:03 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ char	**split_path(t_list *alst, char **tab_path)
 		alst = alst->next;
 	}
 	return (tab_path);
+}
+
+static char	*check_path2(char	**tab_path, char	*test, char	*path)
+{
+	free_tab(tab_path);
+	free(test);
+	return (path);
 }
 
 char	*check_path_access(t_list *alst, char *cmd)
@@ -44,11 +51,15 @@ char	*check_path_access(t_list *alst, char *cmd)
 			path = ft_strjoin(test, cmd);
 		}
 		if (!access(path, F_OK))
+<<<<<<< HEAD
 		{
 			free_tab(tab_path);
 			free(test);
 			return (path);
 		}
+=======
+			return (check_path2(tab_path, test, path));
+>>>>>>> abcfe636f5bc096d322d0d7e70912da211adfeec
 		free(path);
 		free(test);
 	}
