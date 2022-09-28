@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 14:09:38 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:58:37 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	init_file(int fd, int i, t_parse *parse);
 void	open_file(char *str, int i, t_parse *parse);
 char	*nextword(char *line, int *j);
 char	*ft_strncpy(char *s, int j);
-int		redirection_v(char *line, int i, t_parse *parse);
 int		ft_flag(char *line, int i, t_parse *tete);
 void	lexer(char *line);
 char	*ft_strjoin_no_spc(const char *s1, const char *s2);

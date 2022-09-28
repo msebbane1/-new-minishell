@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   brain.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:35:11 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 14:32:24 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 15:59:31 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void dupfunction(t_parse *elem, int *fd, int fdin)
 		dup2(elem->outfile, STDOUT_FILENO);
 	else
 		dup2(fd[1], STDOUT_FILENO);
-	if (elem->infile != fdin)
+	if (elem->infile != 0)
 		dup2(elem->infile, STDIN_FILENO);
 	else
-		dup2(fdin, STDIN_FILENO);
+	dup2(fdin, STDIN_FILENO);
 }
 
 void	brain(t_list *alst, t_exp *atc)
