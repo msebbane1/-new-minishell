@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   flagi.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:01:52 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/23 17:58:40 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:25:10 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void flagi(t_parse *parse, t_exp *atc)
+void	flagi(t_parse *parse, t_exp *atc)
 {
-	char *str;
-	int i;
-	int d;
-	int h;
-	int g;
-	int r;
-	int c;
-	char *lala;
+	char	*str;
+	int		i;
+	int		d;
+	int		h;
+	int		g;
+	int		r;
+	int		c;
+	char	*lala;
 
 	i = 0;
 	d = 0;

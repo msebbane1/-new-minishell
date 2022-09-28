@@ -29,8 +29,6 @@ void cmdi(t_parse *parse, t_exp *atc)
 	r = 0;
 	c = 0;
 	lala = parse->cmd;
-//	if (!parse->cmd)
-//		return (parse);
 	while (parse->cmd[i])
 	{
 		if (!ft_cmpchar(parse->cmd[i], '\"'))
@@ -53,7 +51,6 @@ void cmdi(t_parse *parse, t_exp *atc)
 	}
 	h = i;
 	i = 0;
-	// printf("CMD2 ===== %s\n", parse->cmd);
 	if (g == 0)
 	{
 		if (c == 0)
@@ -100,19 +97,17 @@ void cmdi(t_parse *parse, t_exp *atc)
 		{
 			if (!ft_cmpchar(parse->cmd[i], '\''))
 				d++;
-			if (!ft_cmpchar(parse->cmd[i], '$') && (ft_cmpchar(parse->cmd[i + 1], '?') || d != 0))
+			if (!ft_cmpchar(parse->cmd[i], '$') || d != 0)
 			{
 				i++;
-				if (!parse->cmd[i])
+				if (!ft_cmpchar(parse->cmd[i], '?'))
+					parse->cmd = ft_itoa(g_global.status);
+				else if (!parse->cmd[i])
 					parse->cmd = parse->cmd;
-				//				return (parse);
 				else if (ft_isdigit(parse->cmd[i]) || (d != 0 && c != 0))
 				{
 					doll = dollar(parse->cmd, c);
-					// printf("DOLL ==== %s\n", doll);
 					parse->cmd = doll;
-					// printf("PIIPIP ====== %s\n\n", parse->cmd);
-					//				return (parse);
 				}
 				else
 				{
@@ -169,7 +164,6 @@ void cmdi(t_parse *parse, t_exp *atc)
 					lala = malloc(sizeof(char) * (h - g + d));
 					d = 0;
 					h = 0;
-					//				printf("DOLL ===== %s\n", doll);
 					while (parse->cmd[i])
 					{
 						if (!ft_cmpchar(parse->cmd[i], '\"') && c == 0)
@@ -182,14 +176,11 @@ void cmdi(t_parse *parse, t_exp *atc)
 							{
 								while (ft_isprint(doll[h]) == 1)
 								{
-									//								if (!ft_cmpchar(parse->cmd[i], '\"') && c == 0)
-									//									i++;
 									lala[d] = doll[h];
 									d++;
 									h++;
 								}
 							}
-							//						free (doll);
 							while (i < g)
 								i++;
 						}
@@ -202,8 +193,6 @@ void cmdi(t_parse *parse, t_exp *atc)
 						d++;
 					}
 					parse->cmd = lala;
-					// printf("PAAPAP ====== %s\n\n", parse->cmd);
-					//				return (parse);
 				}
 			}
 			i++;

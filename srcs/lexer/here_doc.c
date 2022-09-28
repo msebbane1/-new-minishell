@@ -6,34 +6,11 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:52:44 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 14:04:30 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:07:39 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-
-char *get_nl(int fd)
-{
-    int 	i = 0;
-    int 	rd = 0;
-    char	character;
-    char 	*buffer = malloc(10000);
-
-    while ((rd = read(fd, &character, 1)) > 0)
-    {
-        buffer[i++] = character;
-        if (character == '\n')
-            break;
-    }
-    if ((!buffer[i - 1] && !rd) || rd == -1)
-    {
-        free(buffer);
-        return (NULL);
-    }
-    buffer[i] =  '\0';
-    return(buffer);
-}
 
 void	heredoc(char *stop, t_parse *parse)
 {

@@ -3,13 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/09/28 13:55:38 by vl-hotel         ###   ########.fr       */
+=======
+/*   Updated: 2022/09/27 23:23:37 by lbally           ###   ########.fr       */
+>>>>>>> bbcb197452dc29407c236308fb719840f23fc8cb
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -92,16 +95,16 @@ char	*ft_strncpy(char *s, int j);
 int		redirection_v(char *line, int i, t_parse *parse);
 int		ft_flag(char *line, int i, t_parse *tete);
 void	lexer(char *line);
-char	*ft_strjoin_no_spc(const char *s1,const char *s2);
+char	*ft_strjoin_no_spc(const char *s1, const char *s2);
 t_parse	*ft_lstnew_parse(void);
 char	**ft_realloc2char(char **src, int size, int start);
 int		ft_cmd_arg(char *line, int i, t_parse *tete);
 void	heredoc(char *stop, t_parse *parse);
 void	ft_lstadd_back_parse(t_parse **alst, t_parse *new);
 int		verif_quotes(char *str, int i);
-int 	gestion_quotes(char *line, int i, t_parse *parse);
+int		gestion_quotes(char *line, int i, t_parse *parse);
 char	*trflag(char *str);
-int     redirection_v(char *line, int i, t_parse *parse);
+int		redirection_v(char *line, int i, t_parse *parse);
 int		redirection_v2(char *line, int i, t_parse *parse);
 
 /* *************************** EXTEND ************************** */
@@ -136,8 +139,9 @@ t_exp	*add3(t_exp *atc, char *str);
 t_exp	*add4(t_exp *atc, char *str);
 t_list	*add5(t_list *alst, char *str);
 void	port(t_exp *atc, t_list *alst);
+char	*ft_concatenate(char *line, char *bf);
 
-/* ****************** EXPORT *******************/
+/* ****************** UNSET *******************/
 void	unset(t_list **alst, t_exp **atc);
 /* *************************** EXEC ************************** */
 
@@ -178,7 +182,6 @@ char	*tolower2(char *cmd);
 /* *************************** TEST ************************** */
 
 void	print_global(void);
-void	print_tab(char ** tab);
-char *get_nl(int fd);
+void	print_tab(char **tab);
 
 #endif

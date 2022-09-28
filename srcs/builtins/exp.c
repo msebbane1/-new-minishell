@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:29:52 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/25 20:08:44 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:43:55by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ t_exp	*add(t_exp *atc, char *str)
 	g = 0;
 	tmp = atc;
 	baba = atc;
+	prt = NULL;
 	prt = (char **)malloc(sizeof(char *) * 3);
 	prt = ft_split(str, '=');
 	while (baba)
@@ -98,6 +99,12 @@ t_exp	*add(t_exp *atc, char *str)
 		new->mean = prt[1];
 		new->next = NULL;
 	}
+	else
+	{
+		while (ft_strcmp(tmp->name, prt[0]) != 0)
+			tmp = tmp->next;
+		tmp->mean = prt[1];
+	}
 	return (atc);
 }
 
@@ -110,7 +117,7 @@ t_exp	*add3(t_exp *atc, char *str)
 
 	g = 0;
 	baba = atc;
-	new = malloc(sizeof(*tmp));
+	new = malloc(sizeof(t_exp) * 1);
 	tmp = atc;
 	while (baba)
 	{
@@ -123,8 +130,8 @@ t_exp	*add3(t_exp *atc, char *str)
 		while (tmp->next != NULL)
 			tmp = tmp->next;
 		tmp->next = new;
-		new->name = str;
-		new->mean = "(null)";
+		new->name = ft_strdup(str);
+		new->mean = ft_strdup("(null)");
 		new->next = NULL;
 	}
 	return (atc);
@@ -166,6 +173,19 @@ t_exp	*add4(t_exp *atc, char *str)
 			i++;
 		}
 		new->next = NULL;
+	}
+	else
+	{
+		while (ft_strcmp(tmp->name, prt[0]))
+			tmp = tmp->next;
+		tmp->mean = ft_concatenate(prt[1], "=");
+		tmp->mean = ft_concatenate(tmp->mean, prt[2]);
+		while (prt[i])
+		{
+			tmp->mean = ft_concatenate(tmp->mean, "=");
+			tmp->mean = ft_concatenate(tmp->mean, prt[i]);
+			i++;
+		}
 	}
 	return (atc);
 }
