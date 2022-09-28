@@ -6,7 +6,7 @@
 #    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/09/28 18:18:24 by msebbane         ###   ########.fr        #
+#    Updated: 2022/09/28 20:33:58 by msebbane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ READ	=	libft.a -L$(READLINE_PATH)/lib -lreadline
 
 SRCS = srcs/minishell.c \
 		$(addprefix srcs/lexer/, lexer.c lexer_utils.c here_doc.c quotes.c redirection.c cmd_and_arg.c) \
-		$(addprefix srcs/builtins/, env.c unset.c export.c exp.c exit.c echo.c cd.c) \
+		$(addprefix srcs/builtins/, env.c unset.c export.c exp.c exit.c echo.c cd.c pwd.c) \
 		$(addprefix srcs/, print_init.c signal.c check_path.c) \
 		$(addprefix srcs/utils/, utils1.c) \
 		$(addprefix srcs/remp/, remplace.c cmdi.c dollar.c flagi.c argi.c argtoflag.c) \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:34:19 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/26 19:07:23 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 20:42:38 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,15 @@ char	*findpwd(t_list	*alst)
 	return (ft_strdup(""));
 }
 
+static void	old_pwd(char *oldpwd, t_list *list, t_list *alst)
+{
+	free(list->content);
+	if (oldpwd == NULL)
+			list->content = findpwd(alst);
+	else
+		list->content = (oldpwd);
+}
+
 void	update_env(t_list *alst)
 {
 	t_list	*list;
@@ -64,15 +73,10 @@ void	update_env(t_list *alst)
 			list->content = ft_strdup(pwd);
 		}
 		if (!ft_strcmp(list->key, "OLDPWD"))
-		{
-			free(list->content);
-			if (oldpwd == NULL)
-				list->content = findpwd(alst);
-			else
-				list->content = (oldpwd);
-		}
+			old_pwd(oldpwd, list, alst);
 		list = list->next;
 	}
+	free(pwd);
 }
 
 void	cd(t_parse *parse, t_list *alst)

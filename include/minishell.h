@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 16:02:00 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 20:35:11 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,8 @@ char	*ft_concatenate(char *line, char *bf);
 
 /* ****************** UNSET *******************/
 void	unset(t_list **alst, t_exp **atc);
+/* ****************** PWD *******************/
+void	ft_pwd(void);
 /* *************************** EXEC ************************** */
 
 void	brain(t_list *alst, t_exp *atc);
