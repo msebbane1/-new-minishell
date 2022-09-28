@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   env2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 12:32:00 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 17:49:49 by lbally           ###   ########.fr       */
+/*   Created: 2022/09/28 18:50:36 by lbally            #+#    #+#             */
+/*   Updated: 2022/09/28 18:56:57 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/minishell.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*add5(t_list *alst, char *str)
 {
-	t_list	*new_lst;
-	t_list	*new_elem;
+	t_list	*tmp;
+	char	**prt;
+	t_list	*baba;
+	int		g;
 
-	new_elem = NULL;
-	new_lst = new_elem;
-	if (!lst || !f)
-		return (NULL);
-	while (lst)
+	g = 0;
+	baba = alst;
+	tmp = alst;
+	prt = ft_split(str, '=');
+	while (baba)
 	{
-		new_elem = ft_lstnew(f(lst->content), lst->key);
-		if (!new_elem)
-		{
-			ft_lstclear(&lst, del);
-		}
-		lst = lst->next;
-		ft_lstadd_back(&new_lst, new_elem);
+		if (!ft_strcmp(baba->key, prt[0]))
+			g++;
+		baba = baba->next;
 	}
-	return (new_lst);
+	if (g == 0)
+		tmp = add5_2(tmp, prt);
+	else
+		tmp = add5_3(tmp, prt);
+	return (alst);
 }

@@ -6,22 +6,22 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:00:55 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/19 12:48:29by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 22:03:45 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void cmdi(t_parse *parse, t_exp *atc)
+void	cmdi(t_parse *parse, t_exp *atc)
 {
-	char *doll;
-	int i;
-	int d;
-	int h;
-	int g;
-	int r;
-	int c;
-	char *lala;
+	char	*doll;
+	int		i;
+	int		d;
+	int		h;
+	int		g;
+	int		r;
+	int		c;
+	char	*lala;
 
 	i = 0;
 	d = 0;
@@ -118,9 +118,9 @@ void cmdi(t_parse *parse, t_exp *atc)
 						while (parse->cmd[i])
 						{
 							if (!ft_cmpchar(parse->cmd[i], '\"') && c == 0)
-								break;
+								break ;
 							if (!ft_cmpchar(parse->cmd[i], '\'') && c == 0)
-								break;
+								break ;
 							doll[d] = parse->cmd[i];
 							i++;
 							d++;
@@ -131,11 +131,10 @@ void cmdi(t_parse *parse, t_exp *atc)
 					{
 						d = 0;
 						doll = malloc(sizeof(char) * (g));
-						// printf("DOLL2 ===== %s\n", doll);
 						while (parse->cmd[i])
 						{
 							if (!ft_cmpchar(parse->cmd[i], '\''))
-								break;
+								break ;
 							doll[d] = parse->cmd[i];
 							i++;
 							d++;

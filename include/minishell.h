@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 14:09:38 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 20:14:28 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,12 +130,26 @@ int		ft_exit(char **str);
 /* ****************** EXPORT *******************/
 void	print_exp(t_exp *atc);
 t_exp	*add(t_exp *atc, char *str);	
+t_exp	*add_2(t_exp *tmp, char **prt, int g);
+t_exp	*add_3(t_exp *tmp, char **prt);
 t_list	*add2(t_list *alst, char *str);
 t_exp	*add3(t_exp *atc, char *str);
 t_exp	*add4(t_exp *atc, char *str);
+t_exp	*add4_2(t_exp *tmp, char **prt);
+t_exp	*add4_3(t_exp *tmp, char **prt);
 t_list	*add5(t_list *alst, char *str);
+t_list	*add5_2(t_list *tmp, char **prt);
+t_list	*add5_3(t_list *tmp, char **prt);
 void	port(t_exp *atc, t_list *alst);
+void	export(t_exp *atc);
+char	**export2(char **tab, t_exp *tmp);
+char	**export4(char **tab, t_exp *tmp, t_exp *atc);
+char	**export5(char **tab, t_exp *atc);
 char	*ft_concatenate(char *line, char *bf);
+int		check(char *str);
+int		ft_find_space(char *str);
+char	*ft_concatenate(char *line, char *bf);
+int		ismore(char *lala, char *lolo);
 
 /* ****************** UNSET *******************/
 void	unset(t_list **alst, t_exp **atc);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:23:46 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 10:21:36 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 21:57:54 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 void	echo_control_seq(int c)
 {
-    struct termios  conf;
+    struct	termios	conf;
+
     ioctl(ttyslot(), TIOCGETA, &conf);
     if (c == 1)
-        conf.c_lflag |= ECHOCTL;
+    	conf.c_lflag |= ECHOCTL;
     else if (c == 0)
-        conf.c_lflag &= ~(ECHOCTL);
+    	conf.c_lflag &= ~(ECHOCTL);
     ioctl(ttyslot(), TIOCSETA, &conf);
 }
 
 void	ft_signal(int signum)
 {
 	(void)signum;
-	if(g_global.here == 1)
+	if (g_global.here == 1)
 	{
 		printf("\r");
 		write(1, "\n", 1);

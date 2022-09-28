@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:35:11 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 14:32:24 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 21:53:47 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_fils(t_parse *elem, t_list *alst, t_exp *atc, int fdin)
 	}
 }
 
-void dupfunction(t_parse *elem, int *fd, int fdin)
+void	dupfunction(t_parse *elem, int *fd, int fdin)
 {
 	if (elem->outfile != 1 || elem->indice == len_parse())
 		dup2(elem->outfile, STDOUT_FILENO);

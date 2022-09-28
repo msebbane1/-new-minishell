@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   export3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 12:32:00 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 17:49:49 by lbally           ###   ########.fr       */
+/*   Created: 2022/09/28 20:07:43 by lbally            #+#    #+#             */
+/*   Updated: 2022/09/28 20:13:23 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/minishell.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+char	**export5(char **tab, t_exp *atc)
 {
-	t_list	*new_lst;
-	t_list	*new_elem;
+	t_exp	*list;
+	int		i;
 
-	new_elem = NULL;
-	new_lst = new_elem;
-	if (!lst || !f)
-		return (NULL);
-	while (lst)
+	i = 0;
+	list = atc;
+	while (list->next != NULL)
 	{
-		new_elem = ft_lstnew(f(lst->content), lst->key);
-		if (!new_elem)
+		if (list->mean)
 		{
-			ft_lstclear(&lst, del);
+			list->name = ft_concatenate(list->name, "=");
+			tab[i] = ft_concatenate(list->name, list->mean);
 		}
-		lst = lst->next;
-		ft_lstadd_back(&new_lst, new_elem);
+		else
+			tab[i] = list->name;
+		i++;
+		list = list->next;
 	}
-	return (new_lst);
+	tab[i] = NULL;
+	return (tab);
 }

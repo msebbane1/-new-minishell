@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:52:44 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 14:07:39 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 21:53:31 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	heredoc(char *stop, t_parse *parse)
 	while (1)
 	{
 		line = readline("> ");
-		if(!line || line == NULL)
-			break;
+		if (!line || line == NULL)
+			break ;
 		if (ft_strncmp(line, stop, ft_strlen(stop)) == 0
 			&& (ft_strlen(stop) == ft_strlen(line)))
 		{

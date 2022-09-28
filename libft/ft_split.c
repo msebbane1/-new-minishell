@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:35:28 by lbally            #+#    #+#             */
-/*   Updated: 2022/07/22 15:08:03 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 17:53:54 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_is_charset(const char *str, char c)
+static int	ft_is_charset(const char *str, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[i] == c)
@@ -22,10 +22,10 @@ static int		ft_is_charset(const char *str, char c)
 	return (1);
 }
 
-static int		ft_count_word(const char *str, char c)
+static int	ft_count_word(const char *str, char c)
 {
-	int word;
-	int i;
+	int	word;
+	int	i;
 
 	word = 0;
 	i = 0;
@@ -43,7 +43,7 @@ static int		ft_count_word(const char *str, char c)
 	return (word);
 }
 
-static char		*ft_malloc(const char *str, char c)
+static char	*ft_malloc(const char *str, char c)
 {
 	char	*tab;
 	int		i;
@@ -51,7 +51,8 @@ static char		*ft_malloc(const char *str, char c)
 	i = 0;
 	while (str[i] && ft_is_charset(&str[i], c))
 		i++;
-	if (!(tab = (char *)malloc(sizeof(char) * (i + 1))))
+	tab = (char *)malloc(sizeof(char) * (i + 1));
+	if (!tab)
 		return (NULL);
 	i = -1;
 	while (str[++i] && ft_is_charset(&str[i], c))
@@ -60,7 +61,7 @@ static char		*ft_malloc(const char *str, char c)
 	return (tab);
 }
 
-char			**ft_split(char const *str, char c)
+char	**ft_split(char const *str, char c)
 {
 	char	**tab;
 	int		i;
@@ -68,7 +69,8 @@ char			**ft_split(char const *str, char c)
 
 	i = ft_count_word(str, c);
 	j = 0;
-	if (!(tab = (char **)malloc(sizeof(char *) * (i + 1))))
+	tab = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!tab)
 		return (NULL);
 	i = 0;
 	while (str[j])
