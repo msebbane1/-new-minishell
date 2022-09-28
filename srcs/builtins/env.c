@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:23:38 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/26 18:38:28 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 00:51:14 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@ t_list	*add2(t_list *alst, char *str)
 		new->content = prt[1];
 		new->next = NULL;
 	}
+	else
+	{
+		while (ft_strcmp(tmp->key, prt[0]) != 0)
+			tmp = tmp->next;
+		tmp->content = prt[1];
+	}
 	return (alst);
 }
 
@@ -101,6 +107,19 @@ t_list	*add5(t_list *alst, char *str)
 			i++;
 		}
 		new->next = NULL;
+	}
+	else
+	{
+		while (ft_strcmp(tmp->key, prt[0]))
+			tmp = tmp->next;
+		tmp->content = ft_concatenate(prt[1], "=");
+		tmp->content = ft_concatenate(tmp->content, prt[2]);
+		while (prt[i])
+		{
+			tmp->content = ft_concatenate(tmp->content, "=");
+			tmp->content = ft_concatenate(tmp->content, prt[i]);
+			i++;
+		}
 	}
 	return (alst);
 }

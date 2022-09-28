@@ -1,4 +1,4 @@
-prefix=/Users/vl-hotel/Documents/newmini/vendor/readline
+prefix=/Users/lbally/tronc_commun/minishell/vendor/readline
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:23:58 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/25 21:00:42 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 02:05:39 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@ void	print_list(t_list *alst)
 	g_global.status = 0;
 }
 
-void	print_tab(char ** tab)
+void	print_tab(char **tab)
 {
 	int	i;
+
 	i = 0;
 	while (tab && tab[i])
 	{
 		printf("%s\n", tab[i]);
-		i++;	
+		i++;
 	}
 }
 

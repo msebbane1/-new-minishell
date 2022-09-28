@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 07:16:25 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/25 17:02:00 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 01:56:54 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,34 @@ char	*ft_concatenate(char *line, char *bf)
 	return (line);
 }
 
-int	check(void)
+int	ft_find_space(char *str)
 {
-	t_parse	*pp;
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '=')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	check(char *str)
+{
 	int		i;
 	int		j;
-	int		g;
 
-	pp = g_global.parse;
-	g = 0;
 	i = 0;
 	j = 0;
-	while (pp->arg[g][i])
+	while (str[i])
 	{
-		if (!ft_isalpha(pp->arg[g][0]))
+		if (!ft_isalpha(str[0]))
 			return (0);
-		if (pp->arg[g][i] == ' ')
+		if (str[i] == ' ')
 			return (0);
-		if (pp->arg[g][i] == '=')
+		if (str[i] == '=')
 			j++;
 		i++;
 	}
@@ -79,19 +89,24 @@ void	export(t_exp *atc)
 	list = atc;
 	tmp = atc;
 	i = 0;
-	while (tmp2)
+	while (tmp2->next != NULL)
 	{
 		tmp2 = tmp2->next;
 		i++;
 	}
-	tab = (char **)malloc(sizeof(char *) * i + 1);
+	tab = (char **)malloc(sizeof(char *) * (i + 1));
 	i = 0;
-	while (list)
+	while (list->next != NULL)
 	{
-		list->name = ft_concatenate(list->name, "=");
-		tab[i] = ft_concatenate(list->name, list->mean);
-		list = list->next;
+		if (list->mean)
+		{
+			list->name = ft_concatenate(list->name, "=");
+			tab[i] = ft_concatenate(list->name, list->mean);
+		}
+		else
+			tab[i] = list->name;
 		i++;
+		list = list->next;
 	}
 	tab[i] = NULL;
 	i = 0;
@@ -115,21 +130,26 @@ void	export(t_exp *atc)
 	j = 1;
 	while (tab[i])
 	{
-		tot = ft_split(tab[i], '=');
-		tmp->name = tot[0];
-		tmp->mean = tot[1];
-		if (tot[2] != NULL)
+		if (ft_find_space(tab[i]))
 		{
-			tmp->mean = ft_concatenate(tmp->mean, "=");
-			tmp->mean = ft_concatenate(tmp->mean, tot[j + 1]);
-			j++;
-			while (tot[j + 1] != NULL)
+			tot = ft_split(tab[i], '=');
+			tmp->name = tot[0];
+			tmp->mean = tot[1];
+			if (tot[2] != NULL)
 			{
 				tmp->mean = ft_concatenate(tmp->mean, "=");
 				tmp->mean = ft_concatenate(tmp->mean, tot[j + 1]);
 				j++;
+				while (tot[j + 1] != NULL)
+				{
+					tmp->mean = ft_concatenate(tmp->mean, "=");
+					tmp->mean = ft_concatenate(tmp->mean, tot[j + 1]);
+					j++;
+				}
 			}
 		}
+		else
+			tmp->name = tab[i];
 		tmp = tmp->next;
 		i++;
 		j = 1;
@@ -142,31 +162,36 @@ void	port(t_exp *atc, t_list *alst)
 {
 	t_parse	*elem;
 	int		i;
+	int		p;
 
 	elem = g_global.parse;
 	i = 0;
+	p = 0;
 	if (elem->arg[elem->i] == NULL)
 		export(atc);
 	else
 	{
-		i = check();
-		if (i == 0)
-			perror("export");
-		else
+		while (elem->arg[p])
 		{
-			printf("[port] valeur de elem->i =%i\n", elem->i);
-			if (i == 1)
-			{
-				add(atc, elem->arg[0]);
-				add2(alst, elem->arg[0]);
-			}
-			else if (i == 2)
-				add3(atc, elem->arg[0]);
+			i = check(elem->arg[p]);
+			if (i == 0)
+				perror("export");
 			else
 			{
-				add4(atc, elem->arg[0]); // export 2 fois ajouter aussi dans env
-				add5(alst, elem->arg[0]);
-			}	
-		}		
+				if (i == 1)
+				{
+					add(atc, elem->arg[p]);
+					add2(alst, elem->arg[p]);
+				}
+				else if (i == 2)
+					add3(atc, elem->arg[p]);
+				else
+				{
+					add4(atc, elem->arg[p]);
+					add5(alst, elem->arg[p]);
+				}	
+			}
+			p++;
+		}
 	}
 }
