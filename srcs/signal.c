@@ -6,11 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:23:46 by lbally            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/28 21:57:54 by lbally           ###   ########.fr       */
-=======
-/*   Updated: 2022/09/28 18:19:12 by vl-hotel         ###   ########.fr       */
->>>>>>> abcfe636f5bc096d322d0d7e70912da211adfeec
+/*   Updated: 2022/09/28 22:44:30 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +14,6 @@
 
 void	echo_control_seq(int c)
 {
-<<<<<<< HEAD
-    struct	termios	conf;
-
-    ioctl(ttyslot(), TIOCGETA, &conf);
-    if (c == 1)
-    	conf.c_lflag |= ECHOCTL;
-    else if (c == 0)
-    	conf.c_lflag &= ~(ECHOCTL);
-    ioctl(ttyslot(), TIOCSETA, &conf);
-=======
 	struct termios	conf;
 
 	ioctl(ttyslot(), TIOCGETA, &conf);
@@ -36,7 +22,6 @@ void	echo_control_seq(int c)
 	else if (c == 0)
 		conf.c_lflag &= ~(ECHOCTL);
 	ioctl(ttyslot(), TIOCSETA, &conf);
->>>>>>> abcfe636f5bc096d322d0d7e70912da211adfeec
 }
 
 void	ft_signal(int signum)

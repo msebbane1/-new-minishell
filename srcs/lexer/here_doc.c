@@ -6,11 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:52:44 by vl-hotel          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/09/28 21:53:31 by lbally           ###   ########.fr       */
-=======
-/*   Updated: 2022/09/28 18:09:29 by vl-hotel         ###   ########.fr       */
->>>>>>> abcfe636f5bc096d322d0d7e70912da211adfeec
+/*   Updated: 2022/09/28 22:43:53 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +44,5 @@ void	heredoc(char *stop, t_parse *parse)
 		write(file, "\n", 1);
 		free(line);
 	}
-<<<<<<< HEAD
-	close(file);
-	file = open("/tmp/heredoc.tmp", O_RDONLY, 0777);
-	init_file(file, 2, parse);
-=======
 	here2(file, parse);
->>>>>>> abcfe636f5bc096d322d0d7e70912da211adfeec
 }
