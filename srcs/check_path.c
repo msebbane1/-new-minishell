@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:19:04 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/25 21:00:15 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:30:18 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ char	*check_path_access(t_list *alst, char *cmd)
 		free(test);
 	}
 	free_tab(tab_path);
+	g_global.status = 127;
 	return (cmd);
 }

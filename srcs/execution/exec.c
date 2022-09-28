@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/26 19:10:14 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:28:54 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	ft_execve(t_parse *parse, t_list *alst, char **lab)
 				lab, enov(alst)) == -1)
 		{
 			printf("%s: command not found\n", parse->cmd);
-			g_global.status = 127;
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -110,13 +109,6 @@ void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 		unset(&alst, &atc);
 	else if (!ft_strcmp(parse->cmd, "export"))
 		port(atc, alst);
-	else if (!ft_strcmp(parse->cmd, "$?"))
-		printf(" %i: command not found\n", g_global.status);
-	else if (parse->cmd)
-		ft_execve(parse, alst, lab);
 	else
-	{
-		printf("%s: command not found ss\n", parse->cmd);
-		g_global.status = 127;
-	}
+		ft_execve(parse, alst, lab);
 }
