@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 17:02:11 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/28 19:59:57 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ char	*line_prompt(char *line, char **argv, int argc)
 void	init_global(void)
 {
 	g_global.parse = malloc(sizeof(t_parse)); // free toute la struct avant de free global.parse
-	//g_global.env = envp;
 	g_global.indice = malloc(sizeof(int) * 1);
 	g_global.indice[0] = 0;
 	g_global.here = 0;
@@ -76,6 +75,13 @@ int	main(int ac, char **av, char **envp)
 		remplace(g_global.parse, atc);
 		brain(alst, atc);
 		free_all();
+		/*while (g_global.parse)
+		{
+			free_tab(g_global.parse->arg);
+			free(g_global.parse->cmd);
+			free(g_global.parse->flag);
+			g_global.parse = g_global.parse->next;
+		}*/
 		free(g_global.parse);
 	}
 }
@@ -83,6 +89,7 @@ int	main(int ac, char **av, char **envp)
 /*
 A FIX :
 
+ls - == doit afficher ls: -: No such file or directory
 - Multi here_doc <<q <<w <<e
 - Gerer les termios
 
@@ -118,14 +125,6 @@ A FIX :
 	- ec"ho" ou l's' = ne trouve pas la commande
 	-l' --> ne dois pas segfault
 	- echo "fsdfsd" ou 'asd' --> segfault vers gestion_quotes ??
-
-- SIGNAUX :
-	cat + ctrl \ doit afficher = ^\Quit: 3
-	exit sur la meme ligne
-- PIPE :
-	- ls | cat doit executer qu'une commande																						A REGLER(pipe exceve: MARIE)
-	- mkdir test1 | ls ----> segfault
-	- mkdir "test1" | ls --> ne dois pas creer un dossier avec les quotes
 
 + LEAKS
 (valgrind --leak-check=full ./minishell)

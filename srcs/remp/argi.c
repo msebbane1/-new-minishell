@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:02:42 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 17:40:24 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/28 19:22:34 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 				i++;
 			}
 			dolli[d] = '\0';
-			free(parse->arg[w]);
+			
 			parse->arg[w] = dolli;
 		}
 		else
@@ -86,7 +86,6 @@ void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
 				d++;
 			}
 			dolli[d] = '\0';
-			free(parse->arg[w]);
 			parse->arg[w] = dolli;
 		}
 	}
