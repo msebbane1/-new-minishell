@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:02 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 19:54:50 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/28 20:03:28 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_parse	*ft_lstnew_parse(void)
 	t_parse	*newlist;
 
 	g_global.indice[0] += 1;
-	newlist = malloc(sizeof(t_parse)); // leaks
+	newlist = malloc(sizeof(t_parse));
 	if (!newlist)
 		return (NULL);
 	newlist->first = 0;

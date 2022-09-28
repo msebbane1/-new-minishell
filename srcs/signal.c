@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:23:46 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 13:07:32 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/28 18:19:12 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_signal(int signum)
 		printf("\r");
 		printf("\n");
 		if (rl_done)
-		return ;
+			return ;
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();

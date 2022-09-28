@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 19:21:46 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/28 20:03:40 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**check_elem(t_parse *parse, t_list *alst, char **lab)
 		i++;
 		size++;
 	}
-	lab = ft_calloc(sizeof(char *), size); // leaks
+	lab = ft_calloc(sizeof(char *), size);
 	if (parse->cmd != NULL)
 		lab[0] = check_path_access(alst, parse->cmd);
 	if (ft_strlen(parse->flag) > 1)

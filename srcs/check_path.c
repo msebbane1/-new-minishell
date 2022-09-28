@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:19:04 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 14:40:16 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/28 18:17:58 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ char	**split_path(t_list *alst, char **tab_path)
 	return (tab_path);
 }
 
+static char	*check_path2(char	**tab_path, char	*test, char	*path)
+{
+	free_tab(tab_path);
+	free(test);
+	return (path);
+}
+
 char	*check_path_access(t_list *alst, char *cmd)
 {
 	char	**tab_path;
@@ -40,15 +47,11 @@ char	*check_path_access(t_list *alst, char *cmd)
 	{
 		if (!back_slash(tab_path[i]))
 		{
-			test = ft_strjoin(tab_path[i], "/"); // perd pointeur
+			test = ft_strjoin(tab_path[i], "/");
 			path = ft_strjoin(test, cmd);
 		}
 		if (!access(path, F_OK))
-		{
-			free_tab(tab_path);
-			free(test);
-			return (path);
-		}
+			return (check_path2(tab_path, test, path));
 		free(path);
 		free(test);
 	}
