@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 13:09:36 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:40:39 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ char	**check_elem(t_parse *parse, t_list *alst, char **lab);
 void	ft_execve(t_parse *parse, t_list *alst, char **lab);
 void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab);
 char	*check_path_access(t_list *alst, char *cmd);
+void	dupfunction(t_parse *elem, int *fd, int fdin);
 
 /* *************************** SIGNAL ************************** */
 void	ft_signal(int signum);

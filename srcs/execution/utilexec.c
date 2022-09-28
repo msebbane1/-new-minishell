@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:36:02 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 13:50:45 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:39:12 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,7 @@ void	exec_cmdmulti(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 	{
 		if (execve(check_path_access(alst, parse->cmd),
 				lab, enov(alst)) == -1)
-		{
 			perror(parse->cmd);
-			g_global.status = 127;
-		}
 	}
 }
 

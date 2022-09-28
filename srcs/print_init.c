@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:23:58 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 02:05:39 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 12:34:20 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	print_exp(t_exp *atc)
 	lala = atc;
 	while (lala)
 	{
-		if (!ft_strcmp(lala->mean, "(null)"))
+		if (lala->mean == NULL)
+			printf("declare -x %s=\"\" \n", lala->name);
+		else if (!ft_strcmp(lala->mean, "(null)"))
 			printf("declare -x %s \n", lala->name);
 		else
 			printf("declare -x %s=\"%s\" \n", lala->name, lala->mean);
@@ -31,7 +33,10 @@ void	print_list(t_list *alst)
 {
 	while (alst)
 	{
-		printf("%s=%s \n", alst->key, alst->content);
+		if (alst->content == NULL)
+			printf("%s= \n", alst->key);
+		else
+			printf("%s=%s \n", alst->key, alst->content);
 		alst = alst->next;
 	}
 	g_global.status = 0;
