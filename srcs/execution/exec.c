@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/26 19:10:14 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 13:39:16 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**check_elem(t_parse *parse, t_list *alst, char **lab)
 		i++;
 		size++;
 	}
-	lab = ft_calloc(sizeof(char *), size);
+	lab = ft_calloc(sizeof(char *), size); // leaks
 	if (parse->cmd != NULL)
 		lab[0] = check_path_access(alst, parse->cmd);
 	if (ft_strlen(parse->flag) > 1)
@@ -85,8 +85,8 @@ void	ft_execve(t_parse *parse, t_list *alst, char **lab)
 		if (execve(check_path_access(alst, parse->cmd),
 				lab, enov(alst)) == -1)
 		{
-			printf("%s: command not found\n", parse->cmd);
 			g_global.status = 127;
+			printf("%s: command not found\n", parse->cmd);
 			exit(EXIT_FAILURE);
 		}
 	}

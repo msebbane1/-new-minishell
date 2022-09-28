@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 10:36:07 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/28 13:53:13 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ struct s_global	g_global;
 char	*rl_gets(void)
 {
 	static char	*line_read;
-	char	*res;
+	char		*res;
 
 	if (line_read)
 	{
@@ -28,7 +28,7 @@ char	*rl_gets(void)
 	if (line_read && *line_read)
 	{
 		res = ft_strtrim(line_read, " \t\v\f\r");
-		if(ft_strlen(res) > 0)
+		if (ft_strlen(res) > 0)
 			add_history(res);
 		free(res);
 	}
@@ -39,19 +39,19 @@ char	*line_prompt(char *line, char **argv, int argc)
 {
 	(void)argc;
 	(void)argv;
-	if (!line) {
+	if (!line)
 		signal_exit();
-	}
 	return (line);
 }
 
-void	init_global(char **envp)
+void	init_global(void)
 {
 	g_global.parse = malloc(sizeof(t_parse)); // free toute la struct avant de free global.parse
-	g_global.env = envp;
+	//g_global.env = envp;
 	g_global.indice = malloc(sizeof(int) * 1);
 	g_global.indice[0] = 0;
 	g_global.here = 0;
+	free(g_global.parse);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -70,12 +70,13 @@ int	main(int ac, char **av, char **envp)
 		init_signals();
 		line = rl_gets();
 		line = line_prompt(line, av, ac);
-		init_global(envp);
+		init_global();
 		lexer(line);
 		// print_global();
 		remplace(g_global.parse, atc);
 		brain(alst, atc);
 		free_all();
+		free(g_global.parse);
 	}
 }
 
@@ -85,8 +86,7 @@ A FIX :
 - Multi here_doc <<q <<w <<e
 - Gerer les termios
 
-- CD :
-	- cd .. apres la suppression d'un fichier creer segfault																		A REGLER(pipe exceve: MARIE)
+- CD :																	A REGLER(pipe exceve: MARIE)
 	si je unset home puis que je fais cd et enfin pwd ---> cela segfault
 - EXPORT :
 	- a=b=d=c ----> sáffiche dans env 																								OKKKKKKKKK
@@ -128,6 +128,7 @@ A FIX :
 	- mkdir "test1" | ls --> ne dois pas creer un dossier avec les quotes
 
 + LEAKS
+(valgrind --leak-check=full ./minishell)
 
 
 NEW PROBLEMES:
