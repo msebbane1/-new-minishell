@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:28:26 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 17:59:30 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/29 18:59:01 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ typedef struct s_list
 
 t_list				*ft_lstnew(void *content, char *key);
 t_list				*ft_lstlast(t_list *lst);
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-void				(*del)(void *));
+t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), void(*del)(void *));
 void				ft_lstadd_back(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 void				ft_lstadd_front(t_list **alst, t_list *new);
@@ -55,7 +54,7 @@ int					ft_isdigit(int c);
 int					ft_isalpha(int c);
 int					ft_isprint(int c);
 int					ft_memcmp(const void *str1, const void *str2, size_t n);
-int					ft_strncmp(const char	*first, const char	*second, size_t length);
+int					ft_strncmp(const char *first, const char *second, size_t l);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_lstsize(t_list *lst);
@@ -68,7 +67,7 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strrchr(const char *str, int c);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strtrim(char const *s1, char const *set);
-char				*ft_substr(char const *s, unsigned int start, size_t len);
+//char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				**ft_split(char const *s, char c);
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);

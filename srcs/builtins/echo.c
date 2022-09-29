@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:35 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/25 16:09:06 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:17:04 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int	echo_check_flag(char *str)
 		return (0);
 	while (str[i])
 	{
-		printf("[echo_flag] %c\n", str[i]);
 		if (str[i] != '-' && str[i] != 'n')
 		{
-			printf("[echo_flag] in return %c\n", str[i]);
 			return (1);
 		}
 		i++;

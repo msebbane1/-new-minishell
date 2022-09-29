@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:19:04 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/29 13:44:24 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:55:54 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static char	*check_path2(char	**tab_path, char	*test, char	*path)
 {
 	free_tab(tab_path);
 	free(test);
+	g_global.status = 0;
 	return (path);
 }
 

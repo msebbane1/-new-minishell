@@ -3,57 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 12:30:32 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 17:47:28 by lbally           ###   ########.fr       */
+/*   Created: 2021/10/19 14:44:16 by msebbane          #+#    #+#             */
+/*   Updated: 2022/09/29 18:19:16 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long int	ft_ola(long int nb)
+static int	ft_len_nb(long n)
 {
-	if (nb < 0)
+	int	i;
+
+	i = 1;
+	if (n < 0)
+		i++;
+	while ((n / 10) != 0)
 	{
-		return (-nb);
+		n = n / 10;
+		i++;
 	}
-	return (nb);
+	return (i);
 }
 
-int	ft_len(long int nb)
-{
-	int		len;
-
-	len = (nb <= 0) ? 1 : 0;
-	while (nb != 0)
-	{
-		nb = nb / 10;
-		len++;
-	}
-	return (len);
-}
-
+/** 
+ * Alloue (avec malloc(3)) et retourne une chaine de
+ * caractères représentant l’integer reçu en argument.
+ * Les nombres négatifs doivent être gérés.
+ **/
 char	*ft_itoa(int n)
 {
+	char	*str;
+	long	nb;
 	int		len;
-	int		sign;
-	char	*c;
 
-	sign = (n < 0) ? -1 : 1;
-	len = ft_len(n);
-	c = (char *)malloc(sizeof(char) * len + 1);
-	if (c == NULL)
-		return (0);
-	c[len] = '\0';
-	len--;
-	while (len >= 0)
+	nb = n;
+	len = ft_len_nb(nb);
+	str = (char *) malloc(sizeof(char) * len + 1);
+	if (!str)
+		return (NULL);
+	if (nb == 0)
+		str[0] = '0';
+	if (nb < 0)
 	{
-		c[len] = '0' + ft_ola(n % 10);
-		n = ft_ola(n / 10);
+		nb = -nb;
+		str[0] = '-';
+	}
+	str[len--] = '\0';
+	while (nb > 0)
+	{
+		str[len] = nb % 10 + '0';
+		nb = nb / 10;
 		len--;
 	}
-	if (sign == -1)
-		c[0] = '-';
-	return (c);
+	return (str);
 }

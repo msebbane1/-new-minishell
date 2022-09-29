@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flagi.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:01:52 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/29 08:09:49 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/29 17:16:04 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	flagi3(t_parse *parse, t_remp *remp)
 
 	remp->i = 0;
 	remp->d = 0;
-	printf("lala\n");
 	str = NULL;
 	str = malloc(sizeof(char) * (remp->h - remp->r + 1));
 	while (remp->i < remp->h)

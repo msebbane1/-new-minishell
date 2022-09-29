@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/29 13:44:06 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:17:26 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ char	**check_elem(t_parse *parse, t_list *alst, char **lab)
 		i++;
 		size++;
 	}
-	lab = ft_calloc(sizeof(char *), size); // leaks
+	lab = ft_calloc(sizeof(char *), size);
 	if (parse->cmd != NULL)
-		lab[0] = check_path_access(alst, parse->cmd);
+		lab[0] = ft_strdup(check_path_access(alst, parse->cmd));
 	if (ft_strlen(parse->flag) > 1)
 		lab[1] = ft_strdup(parse->flag);
 	if (parse->arg != NULL)
@@ -83,7 +83,10 @@ void	ft_execve(t_parse *parse, t_list *alst, char **lab)
 		if (execve(check_path_access(alst, parse->cmd),
 				lab, enov(alst)) == -1)
 		{
-			printf("%s: command not found\n", parse->cmd);
+			if (!ft_strncmp(parse->cmd, "/bin/", 2))
+				printf("%s: No such file or directory\n", parse->cmd);
+			else
+				printf("%s: command not found\n", parse->cmd);
 			exit(EXIT_FAILURE);
 		}
 	}
