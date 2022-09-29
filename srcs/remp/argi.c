@@ -6,193 +6,111 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 18:02:42 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 22:38:15 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/29 11:55:59 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	argi(t_parse *parse, t_exp *atc, char *arg, int w)
+void	argi4(char *arg, t_remp *remp, t_parse *parse, char *dolli)
 {
-	char	*dolli;
-	int		i;
-	int		d;
-	int		h;
-	int		g;
-	int		r;
-	int		c;
-	char	*lala;
-
-	i = 0;
-	d = 0;
-	g = 0;
-	r = 0;
-	c = 0;
-	while (arg[i])
+	dolli = malloc(sizeof(char) * (remp->h - remp->c + 1));
+	while (arg[remp->i])
 	{
-		if (!ft_cmpchar(arg[i], '\"'))
-			r++;
-		if (!ft_cmpchar(arg[i], '\'') && r == 0)
-			c++;
-		if (!ft_cmpchar(arg[i], '$'))
+		if (!ft_cmpchar(arg[remp->i], '\''))
 		{
-			while (arg[i])
-			{
-				if (!ft_cmpchar(arg[i], '\"'))
-					r++;
-				if (!ft_cmpchar(arg[i], '\'') && r == 0)
-					c++;
-				i++;
-				g++;
-			}
+			remp->i++;
+			continue ;
 		}
-		i++;
+		dolli[remp->d] = arg[remp->i];
+		remp->i++;
+		remp->d++;
 	}
-	h = i;
-	i = 0;
-	if (g == 0)
+	dolli[remp->d] = '\0';
+	parse->arg[remp->w] = dolli;
+}
+
+void	argi3(char *arg, t_remp *remp, t_parse *parse, char *dolli)
+{
+	if (remp->c == 0)
 	{
-		if (c == 0)
+		dolli = NULL;
+		dolli = malloc(sizeof(char) * (remp->h - remp->r + 1));
+		while (arg[remp->i])
 		{
-			dolli = NULL;
-			dolli = malloc(sizeof(char) * (h - r + 1));
-			while (arg[i])
+			if (!ft_cmpchar(arg[remp->i], '\"'))
 			{
-				if (!ft_cmpchar(arg[i], '\"'))
-				{
-					i++;
-					continue ;
-				}
-				dolli[d] = arg[i];
-				d++;
-				i++;
+				remp->i++;
+				continue ;
 			}
-			dolli[d] = '\0';
-			
-			parse->arg[w] = dolli;
+			dolli[remp->d] = arg[remp->i];
+			remp->d++;
+			remp->i++;
 		}
-		else
-		{
-			dolli = malloc(sizeof(char) * (h - c + 1));
-			while (arg[i])
-			{
-				if (!ft_cmpchar(arg[i], '\''))
-				{
-					i++;
-					continue ;
-				}
-				dolli[d] = arg[i];
-				i++;
-				d++;
-			}
-			dolli[d] = '\0';
-			parse->arg[w] = dolli;
-		}
+		dolli[remp->d] = '\0';
+		parse->arg[remp->w] = dolli;
 	}
 	else
+		argi4(arg, remp, parse, dolli);
+}
+
+void	argi2(char *arg, t_remp *remp)
+{
+	while (arg[remp->i])
 	{
-		while (arg[i])
+		if (!ft_cmpchar(arg[remp->i], '\"'))
+			remp->r++;
+		if (!ft_cmpchar(arg[remp->i], '\'') && remp->r == 0)
+			remp->c++;
+		if (!ft_cmpchar(arg[remp->i], '$'))
 		{
-			if (!ft_cmpchar(arg[i], '\''))
-				d++;
-			if (!ft_cmpchar(arg[i], '$') || d != 0)
+			while (arg[remp->i])
 			{
-				i++;
-				if (!ft_cmpchar(arg[i], '?'))
-					parse->arg[w] = ft_itoa(g_global.status);
-				else if (!arg[i])
-					parse->arg[w] = arg;
-				else if (ft_isdigit(arg[i]) || (d != 0 && c != 0))
+				if (!ft_cmpchar(arg[remp->i], '\"'))
+					remp->r++;
+				if (!ft_cmpchar(arg[remp->i], '\'') && remp->r == 0)
+					remp->c++;
+				remp->i++;
+				remp->g++;
+			}
+		}
+		remp->i++;
+	}
+	remp->h = remp->i;
+	remp->i = 0;
+}
+
+void	argi0(char *arg, t_remp *remp)
+{
+	init(remp);
+	argi2(arg, remp);
+}
+
+void	argi(t_parse *parse, t_exp *atc, char *arg, t_remp *remp)
+{
+	char	*dolli;
+
+	dolli = NULL;
+	argi0(arg, remp);
+	if (remp->g == 0)
+		argi3(arg, remp, parse, dolli);
+	else
+	{
+		while (arg[remp->i])
+		{
+			if (!ft_cmpchar(arg[remp->i], '\''))
+				remp->d++;
+			if (!ft_cmpchar(arg[remp->i], '$') || remp->d != 0)
+			{
+				remp->i++;
+				if (!argi_11(arg, remp, dolli, parse))
 				{
-					dolli = dollar(arg, c);
-					parse->arg[w] = dolli;
-				}
-				else
-				{
-					if (r == 0)
-					{
-						d = 0;
-						dolli = ft_calloc(g, sizeof(char));
-						while (arg[i])
-						{
-							if (!ft_cmpchar(arg[i], '\''))
-								break ;
-							dolli[d] = arg[i];
-							i++;
-							d++;
-						}
-						dolli[d] = '\0';
-					}
-					else
-					{
-						d = 0;
-						dolli = malloc(sizeof(char) * (g - 1));
-						while (arg[i])
-						{
-							if (!ft_cmpchar(arg[i], '\"') && c == 0)
-								break ;
-							if (!ft_cmpchar(arg[i], '\'') && c == 0)
-								break ;
-							dolli[d] = arg[i];
-							i++;
-							d++;
-						}
-					}
-					g = i;
-					d = 0;
-					i = 0;
-					while (atc)
-					{
-						if (!ft_strcmp(dolli, atc->name))
-						{
-							dolli = atc->mean;
-							d++;
-						}
-						atc = atc->next;
-					}
-					if (d == 0)
-						dolli = NULL;
-					else
-					{
-						d = 0;
-						while (dolli[d])
-							d++;
-					}
-					lala = malloc(sizeof(char) * (h - g + d));
-					d = 0;
-					h = 0;
-					while (arg[i])
-					{
-						if (!ft_cmpchar(arg[i], '\"') && c == 0)
-							i++;
-						if (!ft_cmpchar(arg[i], '\'') && c != 0)
-							i++;
-						if (!ft_cmpchar(arg[i], '$'))
-						{
-							if (dolli != NULL)
-							{
-								while (ft_isprint(dolli[h]) == 1)
-								{
-									lala[d] = dolli[h];
-									d++;
-									h++;
-								}
-							}
-							while (i < g)
-								i++;
-						}
-						if (!ft_cmpchar(arg[i], '\"') && c == 0)
-							i++;
-						if (!ft_cmpchar(arg[i], '\'') && c != 0)
-							i++;
-						lala[d] = arg[i];
-						i++;
-						d++;
-					}
-					parse->arg[w] = lala;
+					dolli = argi5(arg, remp, dolli);
+					dolli = argi7(remp, dolli, atc);
+					argi8(arg, remp, dolli, parse);
 				}
 			}
-			i++;
+			remp->i++;
 		}
 	}
 }

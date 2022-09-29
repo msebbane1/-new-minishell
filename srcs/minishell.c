@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 22:39:39 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 23:41:35 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int ac, char **av, char **envp)
 		lexer(line);
 		remplace(g_global.parse, atc);
 		brain(alst, atc);
-		free_all();
+//		free_all();
 		free(g_global.parse);
 	}
 }

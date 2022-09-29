@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 19:14:26 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 21:38:32 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 23:52:27 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	port(t_exp *atc, t_list *alst)
 	elem = g_global.parse;
 	i = 0;
 	p = 0;
-	if (elem->arg[elem->i] == NULL)
+	if (elem->arg[0] == NULL)
 		export(atc);
 	else
 	{

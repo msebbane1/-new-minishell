@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 22:40:05 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/29 11:38:41 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,17 @@ typedef struct s_parse
 	int				outfile;
 	int				fd_kill;
 }				t_parse;
+
+typedef struct s_remp
+{
+	int			i;
+	int			d;
+	int			h;
+	int			g;
+	int			r;
+	int			c;
+	int			w;
+}				t_remp;
 
 typedef struct s_exp
 {
@@ -103,11 +114,27 @@ int		redirection_v(char *line, int i, t_parse *parse);
 int		redirection_v2(char *line, int i, t_parse *parse);
 
 /* *************************** EXTEND ************************** */
-void	flagi(t_parse *parse, t_exp *atc);
-void	argi(t_parse *parse, t_exp *atc, char *arg, int w);
-void	cmdi(t_parse *parse, t_exp *atc);
+void	flagi(t_parse *parse, t_exp *atc, t_remp *remp);
+void	flagi5(t_remp *remp, t_parse *parse);
+char	*flagi6(t_remp *remp, t_parse *parse);
+void	flagi8(t_remp *remp, t_parse *parse, char *str);
+void	flagi9(t_remp *remp, t_parse *parse);
+char	*flagi_10(t_remp *remp, t_parse *parse, char *str, char *lala);
+void	flagi_11(t_remp *remp, t_parse *parse, char *str, t_exp *atc);
+void	flagi_12(t_remp *remp, t_parse *parse, char *str, t_exp *atc);
+void	argi(t_parse *parse, t_exp *atc, char *arg, t_remp *remp);
+char	*argi5(char *arg, t_remp *remp, char *dolli);
+char	*argi7(t_remp *remp, char *dolli, t_exp *atc);
+void	argi8(char *arg, t_remp *remp, char *dolli, t_parse *parse);
+int		argi_11(char *arg, t_remp *remp, char *dolli, t_parse *parse);
+void	cmdi(t_parse *parse, t_exp *atc, t_remp *remp);
+char	*cmdi5(t_parse *parse, t_remp *remp, char *doll);
+void	cmdi7(t_parse *parse, t_remp *remp, char *doll);
+void	cmdi_10(t_parse *parse, t_remp *remp, char *doll, t_exp *atc);
+void	cmdi_11(t_parse *parse, t_remp *remp, char *doll, t_exp *atc);
 t_parse	*remplace(t_parse *parse, t_exp *atc);
 char	*dollar(char *str, int c);
+void	init(t_remp *remp);
 
 /* *************************** BUILT-IN ************************** */
 /* ****************** CD *******************/

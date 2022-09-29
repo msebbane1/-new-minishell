@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 18:10:36 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 18:48:27 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/29 06:30:30 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_exp	*add_3(t_exp *tmp, char **prt)
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	tmp->next = new;
-	new->name = prt[0];
-	new->mean = prt[1];
+	new->name = strdup(prt[0]);
+	new->mean = strdup(prt[1]);
 	new->next = NULL;
 	return (tmp);
 }
