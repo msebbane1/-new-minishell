@@ -6,25 +6,18 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:18:59 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 13:17:51 lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 19:09:17 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	unset(t_list **alst, t_exp **atc)
+void	unset2(t_list **alst, int i, t_parse *elem)
 {
 	t_list	*head;
 	t_list	*temp;
-	t_parse	*elem;
-	t_exp	*head2;
-	t_exp	*temp2;
-	int		i;
 
 	head = *alst;
-	head2 = *atc;
-	elem = g_global.parse;
-	i = 0;
 	while (elem->arg[i])
 	{
 		while ((*alst)->next)
@@ -42,8 +35,15 @@ void	unset(t_list **alst, t_exp **atc)
 		}
 		*alst = head;
 		i++;
-	}
-	i = 0;
+	}	
+}
+
+void	unset3(t_exp **atc, int i, t_parse *elem)
+{
+	t_exp	*head2;
+	t_exp	*temp2;
+
+	head2 = *atc;
 	while (elem->arg[i])
 	{
 		while (*atc)
@@ -61,6 +61,17 @@ void	unset(t_list **alst, t_exp **atc)
 		}
 		*atc = head2;
 		i++;
-	}
+	}	
+}
+
+void	unset(t_list **alst, t_exp **atc)
+{
+	t_parse	*elem;
+	int		i;
+
+	elem = g_global.parse;
+	i = 0;
+	unset2(alst, i, elem);
+	unset3(atc, i, elem);
 	g_global.status = 0;
 }

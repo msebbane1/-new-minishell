@@ -3,64 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:30:32 by lbally            #+#    #+#             */
-/*   Updated: 2022/07/22 12:30:34 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 17:47:28 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int			ft_itoa_size(int n)
+long int	ft_ola(long int nb)
 {
-	int				size;
-	int				neg;
-
-	size = 0;
-	neg = 0;
-	if (n < 0 && n > -2147483648)
+	if (nb < 0)
 	{
-		neg = 1;
-		size++;
-		n = -n;
+		return (-nb);
 	}
-	else if (n == 0)
-		return (1);
-	else if (n == -2147483648)
-		return (11);
-	while (n >= 1)
-	{
-		n /= 10;
-		size++;
-	}
-	return (size);
+	return (nb);
 }
 
-char				*ft_itoa(int n)
+int	ft_len(long int nb)
 {
-	char			*str;
-	int				i;
-	int				size;
-	int				neg;
-	unsigned int	tmp;
+	int		len;
 
-	size = ft_itoa_size(n);
-	neg = (n < 0 ? 1 : 0);
-	i = 1;
-	if (!((str = (char *)malloc(sizeof(char) * size + 1))))
-		return (NULL);
-	tmp = (n < 0 ? -n : n);
-	if (tmp == 0)
-		str[tmp] = '0';
-	while (tmp >= 1)
+	len = (nb <= 0) ? 1 : 0;
+	while (nb != 0)
 	{
-		str[size - i] = (tmp % 10) + '0';
-		tmp /= 10;
-		i++;
+		nb = nb / 10;
+		len++;
 	}
-	if (neg)
-		*str = '-';
-	str[size] = '\0';
-	return (str);
+	return (len);
+}
+
+char	*ft_itoa(int n)
+{
+	int		len;
+	int		sign;
+	char	*c;
+
+	sign = (n < 0) ? -1 : 1;
+	len = ft_len(n);
+	c = (char *)malloc(sizeof(char) * len + 1);
+	if (c == NULL)
+		return (0);
+	c[len] = '\0';
+	len--;
+	while (len >= 0)
+	{
+		c[len] = '0' + ft_ola(n % 10);
+		n = ft_ola(n / 10);
+		len--;
+	}
+	if (sign == -1)
+		c[0] = '-';
+	return (c);
 }

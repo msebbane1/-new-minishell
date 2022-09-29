@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+         #
+#    By: lbally <lbally@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/09/28 20:33:58 by msebbane         ###   ########.fr        #
+#    Updated: 2022/09/29 13:34:24 by lbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,10 @@ READ	=	libft.a -L$(READLINE_PATH)/lib -lreadline
 
 SRCS = srcs/minishell.c \
 		$(addprefix srcs/lexer/, lexer.c lexer_utils.c here_doc.c quotes.c redirection.c cmd_and_arg.c) \
-		$(addprefix srcs/builtins/, env.c unset.c export.c exp.c exit.c echo.c cd.c pwd.c) \
+		$(addprefix srcs/builtins/, env.c env2.c unset.c export.c export2.c export3.c exp.c exp2.c exp3.c exit.c echo.c cd.c pwd.c) \
 		$(addprefix srcs/, print_init.c signal.c check_path.c) \
 		$(addprefix srcs/utils/, utils1.c) \
-		$(addprefix srcs/remp/, remplace.c cmdi.c dollar.c flagi.c argi.c argtoflag.c) \
+		$(addprefix srcs/remp/, remplace.c cmdi.c cmdi2.c cmdi3.c dollar.c flagi.c flagi2.c flagi3.c argi.c argi2.c argi3.c argtoflag.c) \
 		$(addprefix srcs/free_proc/, free_proc.c) \
 		$(addprefix srcs/execution/, exec.c brain.c utilexec.c) \
 

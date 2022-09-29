@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:32:13 by lbally            #+#    #+#             */
-/*   Updated: 2022/08/12 15:34:27 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 17:50:50 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_list	*ft_lstnew(void *content, char *key)
 {
 	t_list	*element;
 
-	if (!(element = malloc(sizeof(*element))))
+	element = malloc(sizeof(*element));
+	if (!element)
 		return (NULL);
 	element->content = content;
 	element->key = key;

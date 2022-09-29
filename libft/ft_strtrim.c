@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:40:16 by lbally            #+#    #+#             */
-/*   Updated: 2022/07/26 17:04:07 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 17:58:15 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 #include "libft.h"
 
-static int		ft_isin(char c, const char *set)
+static int	ft_isin(char c, const char *set)
 {
 	int		i;
 
@@ -35,7 +35,7 @@ static int		ft_isin(char c, const char *set)
 	return (0);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 	int		i;
@@ -52,7 +52,8 @@ char			*ft_strtrim(char const *s1, char const *set)
 	while (ft_isin(s1[j], set) == 1)
 		j--;
 	size = i > j ? 2 : (j - i);
-	if (!(str = malloc(sizeof(char) * (size + 2))))
+	str = malloc(sizeof(char) * (size + 2));
+	if (!str)
 		return (NULL);
 	while (i <= j)
 		str[k++] = s1[i++];

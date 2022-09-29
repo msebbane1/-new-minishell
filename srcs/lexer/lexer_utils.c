@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 16:13:36 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/25 21:00:31 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/29 13:35:52 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*ft_strncpy(char *s, int j)
 	i = 0;
 	if (s == NULL || j == 0)
 		return (NULL);
-	str = malloc(sizeof(char) * j + 1);
+	str = malloc(sizeof(char) * (j + 1));
 	while (s[i] && i < j)
 	{
 		str[i] = s[i];

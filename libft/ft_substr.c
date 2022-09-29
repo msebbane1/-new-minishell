@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:40:32 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/07 10:19:02 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/28 21:51:16 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 	}
 	i = 0;
+	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (pop % 2 == 0 && pop != 0)
 		res = (char *)malloc(sizeof(char) * (len + 1));
 	else if (pop % 2 == 1 && pop != 0)
 		return (NULL);
-	else if (!(res = (char *)malloc(sizeof(char) * (len + 1))))
+	else if (!res)
 		return (NULL);
 	while (i < len)
 	{
