@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 20:15:14 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:28:44 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	init_global(void)
 	g_global.indice[0] = 0;
 	g_global.here = 0;
 	free(g_global.parse);
+	//free(g_global.indice);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -76,6 +77,7 @@ int	main(int ac, char **av, char **envp)
 		brain(alst, atc);
 		free_all();
 		free(g_global.parse);
+		free(g_global.indice);
 	}
 }
 

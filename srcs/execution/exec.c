@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/28 20:33:21 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/28 21:39:38 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ char	**check_elem(t_parse *parse, t_list *alst, char **lab)
 		while (parse->arg[t])
 			lab[i++] = ft_strdup(parse->arg[t++]);
 	}
-	else
-		return (NULL);
 	return (lab);
 }
 
