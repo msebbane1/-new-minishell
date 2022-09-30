@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lbally <lbally@student.42.fr>              +#+  +:+       +#+         #
+#    By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/09/29 13:34:24 by lbally           ###   ########.fr        #
+#    Updated: 2022/09/29 21:37:59 by vl-hotel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS = srcs/minishell.c \
 		$(addprefix srcs/utils/, utils1.c) \
 		$(addprefix srcs/remp/, remplace.c cmdi.c cmdi2.c cmdi3.c dollar.c flagi.c flagi2.c flagi3.c argi.c argi2.c argi3.c argtoflag.c) \
 		$(addprefix srcs/free_proc/, free_proc.c) \
+		$(addprefix srcs/rempval/, rempv.c repquotes.c remputils.c) \
 		$(addprefix srcs/execution/, exec.c brain.c utilexec.c) \
 
 OBJS = $(SRCS:.c=.o)

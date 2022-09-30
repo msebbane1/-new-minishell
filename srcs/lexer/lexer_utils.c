@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 16:13:36 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/29 13:35:52 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/30 02:17:04 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_strjoin_no_spc(const char *s1, const char *s2)
 	slen = ft_strlen((char *)s1) + ft_strlen(s2);
 	i = -1;
 	j = -1;
-	str = malloc(sizeof(char) * slen + 1);
+	str = malloc(sizeof(char) * (slen + 1));
 	if (!str)
 		return (NULL);
 	while (s1[++i])
@@ -49,6 +49,7 @@ char	*ft_strjoin_no_spc(const char *s1, const char *s2)
 	while (s2[++j])
 		str[i++] = s2[j];
 	str[i] = '\0';
+	// printf("[joinnospace] i=%i slen=%i\n", i, slen + 1);
 	free ((void *)s1);
 	free ((void *)s2);
 	return (str);

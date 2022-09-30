@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/29 11:38:41 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/30 02:41:07 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_exp
 typedef struct s_global
 {
 	t_parse		*parse;
+	t_exp		*atc;
 	int			status;
 	int			nb_cmd;
 	int			here;
@@ -89,7 +90,6 @@ void	insert_env(char **envp, t_list **alst);
 void	insert_exp(char **envp, t_exp **atc);
 char	*line_prompt(char *line, char **argv, int argc);
 char	*readline(const char *prompt);
-// int		add_history(const char *string_for_history);
 char	*rl_gets(void);
 
 /* *************************** LEXER ************************** */
@@ -135,6 +135,18 @@ void	cmdi_11(t_parse *parse, t_remp *remp, char *doll, t_exp *atc);
 t_parse	*remplace(t_parse *parse, t_exp *atc);
 char	*dollar(char *str, int c);
 void	init(t_remp *remp);
+
+/* *************************** REMPVAL ************************** */
+void	remplacev(t_exp *atc);
+char	 *ft_expand(char *str);
+int		find(char c, char *search);
+int		countbefc(char *str, char *search);
+char 	*findexp(t_exp *atc, char *str);
+char	*ft_strdup2(const char *s, int size);
+char	*repelse(int *i, const char *res, char *str);
+char	*repquotes(int *i, const char *res, char *str);
+char	*repdblquotes(int *i, const char *res, char *str);
+char	*repdollar(int *i, const char *res, char *str);
 
 /* *************************** BUILT-IN ************************** */
 /* ****************** CD *******************/

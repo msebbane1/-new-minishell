@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/29 13:43:46 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:57:51 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_global(void)
 	g_global.indice = malloc(sizeof(int) * 1);
 	g_global.indice[0] = 0;
 	g_global.here = 0;
-	free(g_global.parse);
+	// free(g_global.parse);
 	//free(g_global.indice);
 }
 
@@ -65,6 +65,7 @@ int	main(int ac, char **av, char **envp)
 	g_global.old_stdout = dup(STDOUT_FILENO);
 	insert_env(envp, &alst);
 	insert_exp(envp, &atc);
+	g_global.atc = atc;
 	while (1)
 	{
 		init_signals();
@@ -72,7 +73,10 @@ int	main(int ac, char **av, char **envp)
 		line = line_prompt(line, av, ac);
 		init_global();
 		lexer(line);
-		remplace(g_global.parse, atc);
+		print_global();
+		remplacev(atc);
+		print_global();
+		// remplace(g_global.parse, atc);
 		brain(alst, atc);
 //		free_all();
 		free(g_global.parse);

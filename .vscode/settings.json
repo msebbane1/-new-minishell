@@ -7,6 +7,7 @@
 		"complex": "c",
 		"iterator": "c",
 		"memory": "c",
-		"vector": "c"
+		"vector": "c",
+		"minishell.h": "c"
 	}
 }
