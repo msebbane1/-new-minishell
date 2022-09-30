@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:29:39 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/30 02:41:31 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/30 02:46:44 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char *ft_expand(char *str)
 	return (res);
 }
 
-void	remplacev(t_exp *atc)
+void	remplacev(void)
 {
 	t_parse	*tete;
 	int		i;

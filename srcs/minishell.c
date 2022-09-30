@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/29 22:57:51 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/30 02:47:59 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*line_prompt(char *line, char **argv, int argc)
 
 void	init_global(void)
 {
-	g_global.parse = malloc(sizeof(t_parse)); // free toute la struct avant de free global.parse
+	g_global.parse = malloc(sizeof(t_parse));
 	g_global.indice = malloc(sizeof(int) * 1);
 	g_global.indice[0] = 0;
 	g_global.here = 0;
@@ -73,13 +73,25 @@ int	main(int ac, char **av, char **envp)
 		line = line_prompt(line, av, ac);
 		init_global();
 		lexer(line);
-		print_global();
-		remplacev(atc);
-		print_global();
-		// remplace(g_global.parse, atc);
+		remplacev();
 		brain(alst, atc);
-//		free_all();
-		free(g_global.parse);
-		free(g_global.indice);
+		//free_all();
+		//free(g_global.parse);
+		//free(g_global.indice);
 	}
 }
+
+/*
+Norme OK juste enlever lstmap
+
+minishell>> ls | fsds | ls
+doit afficher : ldf: command not found
+
+minishell>> sdf | fsds | sda
+doit afficher 3 fois command not found ---> voir putstr fd
+
+HERE :
+<sfda
+bash: sfda: No such file or directory
+
+*/

@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:11:27 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/30 02:42:30 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/30 02:47:33 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,11 @@ char	*repdollar(int *i, const char *res, char *str)
 	if(str[0] == '?')
 	{
 		*i += 1;
-		printf("in $?\n");
 		tmp = ft_strjoin_no_spc(res, ft_itoa(g_global.status));
 		return (tmp);
 	}
 	if(str[0] == '\0')
 	{
-		printf("in $\n");
 		*i += 1;
 		tmp = ft_strjoin_no_spc(res, ft_strdup("$"));
 		return (tmp);

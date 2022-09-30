@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:36:02 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 21:22:51 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:19:28 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,12 @@ void	exec_cmdmulti(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 	{
 		if (execve(check_path_access(alst, parse->cmd),
 				lab, enov(alst)) == -1)
-			perror(parse->cmd);
+		{
+			if (!ft_strncmp(parse->cmd, "/bin/", 2))
+				printf("%s: No such file or directory\n", parse->cmd);
+			else
+				printf("%s: command not found\n", parse->cmd);
+		}
 	}
 }
 

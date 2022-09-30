@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 15:11:15 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/27 17:48:14 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/29 19:33:29 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,11 @@ void	open_file(char *str, int i, t_parse *parse)
 	{
 		file = open(str, O_RDONLY, 0777);
 		if (file == -1)
-			msg_error("ce fichier n'existe pas");
+		{
+			printf("syntax error near unexpected token `newline'\n");
+			parse->infile = 0;
+		}
 	}
-	if (file == -1)
-		msg_error("ouverture file");
 	free(str);
 	init_file(file, i, parse);
 }

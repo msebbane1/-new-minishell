@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argi2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 10:11:04 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/29 11:35:24 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/29 17:16:21 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,4 @@ void	argi8(char *arg, t_remp *remp, char *dolli, t_parse *parse)
 	remp->h = 0;
 	lala = argi9(arg, remp, dolli, lala);
 	parse->arg[remp->w] = lala;
-	printf("LALA === %s\n", parse->arg[remp->w]);
 }
