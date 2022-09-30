@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/30 02:47:59 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:19:34 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,9 @@ int	main(int ac, char **av, char **envp)
 		init_global();
 		lexer(line);
 		remplacev();
+		print_global();
 		brain(alst, atc);
-		//free_all();
+		free_all();
 		//free(g_global.parse);
 		//free(g_global.indice);
 	}
@@ -84,7 +85,7 @@ int	main(int ac, char **av, char **envp)
 /*
 Norme OK juste enlever lstmap
 
-minishell>> ls | fsds | ls
+minishell>> ls | fsds | ls								perror
 doit afficher : ldf: command not found
 
 minishell>> sdf | fsds | sda

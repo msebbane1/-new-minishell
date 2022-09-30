@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/30 02:47:17 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/30 13:39:33 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_parse
 	char			*cmd;
 	char			**arg;
 	char			*flag;
+	char			*sfile;
 	int				first;
 	int				i;
 	int				indice;

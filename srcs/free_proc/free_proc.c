@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_proc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:45:22 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/29 18:49:43 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:26:00 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	free_all(void)
 		free(tete->cmd);
 		//printf("FLAG -----\n");
 		free(tete->flag);
+		// free(tete->sfile);
 		tete = tete->next;
 	}
 	free(g_global.indice);

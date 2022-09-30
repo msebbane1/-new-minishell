@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilexec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:36:02 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/29 19:19:28 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:22:50 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,13 @@ int	cmdin_parse(t_parse *parse)
 	lst = parse;
 	while (lst)
 	{
-		if (lst->cmd == NULL || !lst->cmd)
-			return (1);
+		if (lst->infile == 0 && lst->outfile == 1 &&
+			lst->cmd == NULL && ft_strlen(lst->flag) == 1)
+			{
+				ft_putstr_fd("syntax error near unexpected token `|'\n", 2);
+				g_global.status = 258;
+				return (1);
+			}
 		lst = lst->next;
 	}
 	return (0);

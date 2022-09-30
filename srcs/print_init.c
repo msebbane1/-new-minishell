@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:23:58 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 12:34:20 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/30 16:12:34 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	print_global(void)
 		printf("\nindice %i\n", tete->indice);
 		printf("cmd = %s, flag = %s\n", tete->cmd, tete->flag);
 		printf("infile = %i, outfile = %i\n", tete->infile, tete->outfile);
+		printf("infile = %s\n", tete->sfile);
 		while (tete->arg && tete->arg[i])
 		{
 			printf("argument n: %i = %s\n", i, tete->arg[i]);

@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 16:13:36 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/30 02:17:04 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/30 13:37:14 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	*ft_strjoin_no_spc(const char *s1, const char *s2)
 	while (s2[++j])
 		str[i++] = s2[j];
 	str[i] = '\0';
-	// printf("[joinnospace] i=%i slen=%i\n", i, slen + 1);
 	free ((void *)s1);
 	free ((void *)s2);
 	return (str);

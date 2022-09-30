@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:02 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/29 13:37:35 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:30:56 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void	lexer(char *line)
 		else if (line[i] == '|')
 		{
 			i++;
+			if(tete->sfile == NULL || !tete->sfile)
+				tete->sfile = ft_strdup("NOinfile");
 			ft_lstadd_back_parse(&g_global.parse, ft_lstnew_parse());
 			tete = (t_parse *)ft_lstlast((t_list *)g_global.parse);
 		}
