@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:19:04 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/29 17:55:54 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/30 14:07:06 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ char	*check_path_access(t_list *alst, char *cmd)
 		}
 		if (!access(path, F_OK))
 			return (check_path2(tab_path, test, path));
-		free(path);
 		free(test);
+		free(path);
 	}
 	free_tab(tab_path);
 	g_global.status = 127;
-	return (cmd);
+	return (NULL);
 }

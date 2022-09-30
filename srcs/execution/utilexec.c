@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:36:02 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/29 19:19:28 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/09/30 14:18:43 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	exec_cmdmulti(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 		port(atc, alst);
 	else
 	{
-		if (execve(check_path_access(alst, parse->cmd),
+		if (execve(lab[0],
 				lab, enov(alst)) == -1)
 		{
 			if (!ft_strncmp(parse->cmd, "/bin/", 2))
@@ -76,11 +76,6 @@ void	execlab(t_parse *elem, t_list *alst, t_exp *atc)
 
 	lab = NULL;
 	lab = check_elem(elem, alst, lab);
-	if (lab[0] == NULL)
-	{
-		init_signals();
-		return ;
-	}
 	if (len_parse() == 1)
 		exec_cmd(elem, alst, atc, lab);
 	else

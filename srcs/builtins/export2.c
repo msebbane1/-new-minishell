@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 19:14:26 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 23:52:27 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/30 13:31:24 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_exp	*export3(char **tab, t_exp *tmp, int i)
 			j++;
 		}
 	}
+	free(tot);
 	return (tmp);
 }
 
