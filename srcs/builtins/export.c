@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 07:16:25 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 21:04:31 by lbally           ###   ########.fr       */
+/*   Updated: 2022/09/30 13:31:54 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ void	export(t_exp *atc)
 	tab = export4(tab, tmp, atc);
 	tab = export2(tab, tmp);
 	print_exp(atc);
+	free_tab(tab);
 	g_global.status = 0;
 }

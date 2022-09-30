@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:45:22 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/30 16:26:00 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:34:14 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void	free_all(void)
 {
 	t_parse	*tete;
 
-	//printf("debut de free_all\n");
+	printf("debut de free_all\n");
 	tete = g_global.parse;
 	killhere();
 	while (tete)
 	{
-		//printf("ARG -----\n");
+		printf("ARG -----\n");
 		free_tab(tete->arg);
-		//printf("CMD -----\n");
+		printf("CMD -----\n");
 		free(tete->cmd);
-		//printf("FLAG -----\n");
+		printf("FLAG -----\n");
 		free(tete->flag);
 		// free(tete->sfile);
 		tete = tete->next;
