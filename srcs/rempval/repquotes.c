@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:11:27 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/30 02:47:33 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/09/30 02:51:39 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char	*repdollar(int *i, const char *res, char *str)
 	result = ft_strdup(findexp(g_global.atc, tmp));
 	result = ft_strjoin_no_spc(res, result);
 	*i += size;
+	free(tmp);
 	return (result);
 }
 
