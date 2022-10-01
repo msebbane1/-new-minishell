@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/30 16:34:01 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:53:42 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ void	init_global(void)
 	g_global.indice = malloc(sizeof(int) * 1);
 	g_global.indice[0] = 0;
 	g_global.here = 0;
-	free(g_global.parse);
-	//free(g_global.indice);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -72,10 +70,16 @@ int	main(int ac, char **av, char **envp)
 		line = rl_gets();
 		line = line_prompt(line, av, ac);
 		init_global();
+		// printf("LEXER\n");
 		lexer(line);
+		// printf("valeur de infile = |%s|\n", g_global.parse->sfile);
+		print_global();
+		printf("EXTEND\n");
 		remplacev();
 		print_global();
+		// printf("BRAIN\n");
 		brain(alst, atc);
+		// printf("FREE ALL\n");
 		free_all();
 		free(g_global.parse);
 		//free(g_global.indice);

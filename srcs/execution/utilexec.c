@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:36:02 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/30 16:34:36 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:57:54 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,22 @@ int	cmdin_parse(t_parse *parse)
 	lst = parse;
 	while (lst)
 	{
-		if (lst->infile == 0 && lst->outfile == 1 &&
-			lst->cmd == NULL && ft_strlen(lst->flag) == 1)
-			{
-				ft_putstr_fd("syntax error near unexpected token `|'\n", 2);
-				g_global.status = 258;
+		if (lst->infile == 0 && lst->outfile == 1
+			&& lst->cmd == NULL && ft_strlen(lst->flag) == 1)
+		{
+			if (len_parse() == 1)
 				return (1);
-			}
+			ft_putstr_fd("syntax error near unexpected token `|'\n", 2);
+			g_global.status = 258;
+			return (1);
+		}
+		if ((lst->infile == -1 || lst->outfile == -1)
+			&& lst->sfile[0] == '\0')
+		{
+			ft_putstr_fd("syntax error near unexpected token `newline'\n", 2);
+			g_global.status = 258;
+			return (1);
+		}
 		lst = lst->next;
 	}
 	return (0);
@@ -67,10 +76,7 @@ void	exec_cmdmulti(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 		if (execve(lab[0],
 				lab, enov(alst)) == -1)
 		{
-			if (!ft_strncmp(parse->cmd, "/bin/", 2))
-				printf("%s: No such file or directory\n", parse->cmd);
-			else
-				printf("%s: command not found\n", parse->cmd);
+			ft_err_excve(parse);
 		}
 	}
 }

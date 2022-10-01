@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 15:11:15 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/30 16:17:25 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:00:59 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,6 @@ void	open_file(char *str, int i, t_parse *parse)
 	int	file;
 
 	file = 0;
-	file = open(str, O_DIRECTORY, O_RDONLY);
-	if (file != -1)
-		msg_error("it's a folder and not a file");
-	close(file);
 	if (i == 0)
 	{
 		file = open(str, O_WRONLY | O_CREAT | O_APPEND, 0777);
@@ -85,8 +81,7 @@ int	redirection_v(char *line, int i, t_parse *parse)
 int	redirection_v2(char *line, int i, t_parse *parse)
 {
 	int		j;
-	// char *tmp;
-	
+
 	j = i;
 	if (line[i] == '<' && line[i + 1] == '<')
 	{
@@ -100,9 +95,7 @@ int	redirection_v2(char *line, int i, t_parse *parse)
 	{
 		j++;
 		parse->sfile = nextword(line + i + 1, &j);
-		printf("[redirection_v2] |%s|\n", parse->sfile);
 		parse->sfile = ft_expand(parse->sfile);
-		printf("[redirection_v2] after |%s|\n", parse->sfile);
 		open_file(parse->sfile, 2, parse);
 	}
 	return (j);

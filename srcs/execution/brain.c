@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:35:11 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/30 16:34:56 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:56:34 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void	dupfunction(t_parse *elem, int *fd, int fdin)
 		dup2(elem->infile, STDIN_FILENO);
 	else
 		dup2(fdin, STDIN_FILENO);
-	if(elem->infile < 0)
-		{
-			perror(elem->sfile);
-			g_global.status = 1;
-			exit (1);
-		}
+	if (elem->infile < 0)
+	{
+		perror(elem->sfile);
+		g_global.status = 1;
+		exit (1);
+	}
 }
 
 void	brain(t_list *alst, t_exp *atc)
@@ -66,12 +66,13 @@ void	brain(t_list *alst, t_exp *atc)
 		return ;
 	else if (elem->indice == len_parse())
 	{
-		printf("une cmd++\n");
-		if(elem->infile < 0)
-			{
-				perror(elem->sfile);
-				return ;
-			}
+		if (elem->infile < 0)
+		{
+			perror(elem->sfile);
+			return ;
+		}
+		else if (!elem->cmd || elem->cmd == NULL)
+			return ;
 		dup2(elem->infile, STDIN_FILENO);
 		dup2(elem->outfile, STDOUT_FILENO);
 		execlab(elem, alst, atc);

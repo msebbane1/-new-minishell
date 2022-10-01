@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/30 13:39:33 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:53:11 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,10 +139,10 @@ void	init(t_remp *remp);
 
 /* *************************** REMPVAL ************************** */
 void	remplacev(void);
-char	 *ft_expand(char *str);
+char	*ft_expand(char *str);
 int		find(char c, char *search);
 int		countbefc(char *str, char *search);
-char 	*findexp(t_exp *atc, char *str);
+char	*findexp(t_exp *atc, char *str);
 char	*ft_strdup2(const char *s, int size);
 char	*repelse(int *i, const char *res, char *str);
 char	*repquotes(int *i, const char *res, char *str);
@@ -159,6 +159,7 @@ char	*findpwd(t_list	*alst);
 /* ****************** ECHO *******************/
 int		echo_check_flag(char *str);
 void	ft_echo(t_parse *parse);
+int		helpecho(t_parse *parse, int j);
 
 /* ****************** ENV *******************/
 void	print_list(t_list *alst);
@@ -229,6 +230,9 @@ int		ft_cmpchar(char s1, char s2);
 int		back_slash(char *str);
 char	*ft_concatenate(char *line, char *bf);
 char	*tolower2(char *cmd);
+t_parse	*ft_parselast(t_parse *lst);
+void	ft_perror(char *s1, char *s2, int index);
+void	ft_err_excve(t_parse *parse);
 
 /* *************************** TEST ************************** */
 

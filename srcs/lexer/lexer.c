@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:02 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/30 16:30:56 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:59:16 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,16 @@ int	ft_flag(char *line, int i, t_parse *tete)
 	int		j;
 	char	*nextw;
 
-	while (line[i] == '-')
-		i++;
+	i++;
 	j = i;
 	nextw = nextword(line + i, &j);
-	tete->flag = ft_strjoin_no_spc(tete->flag, nextw);
+	if (tete->first == 0)
+	{
+		tete->cmd = ft_strjoin_no_spc(ft_strdup("-"), nextw);
+		tete->first++;
+	}
+	else
+		tete->flag = ft_strjoin_no_spc(tete->flag, nextw);
 	return (j);
 }
 
@@ -50,6 +55,7 @@ t_parse	*ft_lstnew_parse(void)
 	newlist->arg = malloc(sizeof(char *));
 	newlist->arg[0] = NULL;
 	newlist->cmd = NULL;
+	newlist->sfile = NULL;
 	return (newlist);
 }
 
@@ -61,7 +67,7 @@ void	ft_lstadd_back_parse(t_parse **alst, t_parse *new)
 		*alst = new;
 	else
 	{
-		tmp = (t_parse *)ft_lstlast((t_list *)*alst);
+		tmp = ft_parselast(*alst);
 		tmp->next = new;
 	}
 }
@@ -87,12 +93,14 @@ void	lexer(char *line)
 		else if (line[i] == '|')
 		{
 			i++;
-			if(tete->sfile == NULL || !tete->sfile)
+			if (tete->sfile == NULL || !tete->sfile)
 				tete->sfile = ft_strdup("NOinfile");
 			ft_lstadd_back_parse(&g_global.parse, ft_lstnew_parse());
-			tete = (t_parse *)ft_lstlast((t_list *)g_global.parse);
+			tete = tete->next;
 		}
 		else
 			i = ft_cmd_arg(line, i, tete);
 	}
+	if (tete->sfile == NULL || !tete->sfile)
+		tete->sfile = ft_strdup("NOinfile");
 }

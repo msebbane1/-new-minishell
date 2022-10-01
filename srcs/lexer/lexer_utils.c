@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 16:13:36 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/30 13:37:14 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:17:01 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*nextword(char *line, int *j)
 	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
 	start = i;
-	while (line[i] && ft_isprint(line[i]) == 1)
+	while (line[i] && ft_isprint(line[i]) == 1 && find(line[i], "<>|") == 0)
 	{
 		i = verif_quotes(line, i);
 	}

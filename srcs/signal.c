@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:23:46 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 22:44:30 by lbally           ###   ########.fr       */
+/*   Updated: 2022/10/01 16:59:01 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ft_signal(int signum)
 		printf("\r");
 		write(1, "\n", 1);
 		close(0);
-		g_global.here = 2;
 	}
 	else
 	{
@@ -49,11 +48,6 @@ void	ft_signal(int signum)
 void	ft_signalquit(int signum)
 {
 	(void)signum;
-	if (g_global.here == 1)
-	{
-		close(0);
-		g_global.here = 2;
-	}
 	if (rl_done)
 	{
 		printf("Quit: 3\n");

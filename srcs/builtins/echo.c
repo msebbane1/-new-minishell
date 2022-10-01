@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:35 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/29 17:17:04 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:54:33 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,39 @@ int	echo_check_flag(char *str)
 	return (0);
 }
 
+int	helpecho(t_parse *parse, int j)
+{
+	if (echo_check_flag(parse->flag) == 1 && j > 0)
+		return (0);
+	if (echo_check_flag(parse->flag) == 1 && j == 0)
+	{
+		printf("%s ", parse->flag);
+		return (0);
+	}
+	else if (ft_strlen(parse->flag) == 1)
+		return (0);
+	return (1);
+}
+
 void	ft_echo(t_parse *parse)
 {
 	int	i;
-	int	t;
+	int	j;
 
-	t = 0;
 	i = 0;
-	if (echo_check_flag(parse->flag) == 1)
-		printf("%s ", parse->flag);
-	else if (ft_strlen(parse->flag) == 1)
-		t = 0;
-	else
-		t = 1;
+	j = 0;
+	helpecho(parse, j);
 	while (parse->arg && parse->arg[i])
 	{
-		if (i == 0)
+		if (j == 0 && parse->arg[i][0])
+		{
+			j = 1;
 			printf("%s", parse->arg[i]);
-		else
+		}
+		else if (parse->arg[i][0])
 			printf(" %s", parse->arg[i]);
 		i++;
 	}
-	if (t == 0)
+	if (helpecho(parse, j) == 0)
 		printf("\n");
 }

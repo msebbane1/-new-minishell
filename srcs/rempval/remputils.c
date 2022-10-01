@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:29:26 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/30 02:41:35 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:02:30 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,31 @@
 
 int	find(char c, char *search)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	while(search && search[++i])
+	while (search && search[++i])
 	{
-		if(c == search[i])
+		if (c == search[i])
 			return (1);
 	}
-	return(0);
+	return (0);
 }
 
 int	countbefc(char *str, char *search)
 {
-	int i;
-	i = -1;
+	int	i;
 
-	while(str && str[++i])
+	i = -1;
+	while (str && str[++i])
 	{
-		if(find(str[i], search) == 1)
+		if (find(str[i], search) == 1)
 			return (i);
 	}
 	return (i);
 }
 
-char *findexp(t_exp *atc, char *str)
+char	*findexp(t_exp *atc, char *str)
 {
 	t_exp	*tete;
 
@@ -56,7 +56,7 @@ char *findexp(t_exp *atc, char *str)
 
 char	*ft_strdup2(const char *s, int size)
 {
-	int	i;
+	int		i;
 	char	*new;
 
 	if (s == NULL || !s)

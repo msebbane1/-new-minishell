@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/09/30 14:19:22 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:34:51 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,7 @@ void	ft_execve(t_parse *parse, t_list *alst, char **lab)
 		if (execve(lab[0],
 				lab, enov(alst)) == -1)
 		{
-			if (!ft_strncmp(parse->cmd, "/bin/", 2))
-				printf("%s: No such file or directory\n", parse->cmd);
-			else
-				printf("%s: command not found\n", parse->cmd);
+			ft_err_excve(parse);
 			exit(EXIT_FAILURE);
 		}
 	}
