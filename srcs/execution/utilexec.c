@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilexec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:36:02 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/02 14:37:43 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/02 17:15:23 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	cmdin_parse(t_parse *parse)
 
 void	exec_cmdmulti(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 {
-	if (!ft_strcmp(tolower2(parse->cmd), "exit"))
+	if (!ft_strcmp(parse->cmd, "exit"))
 		ft_exit(parse->arg);
 	else if (!ft_strcmp(tolower2(parse->cmd), "env"))
 		print_list(alst);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/02 14:39:27 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/02 17:13:42 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_execve(t_parse *parse, t_list *alst, char **lab)
 
 void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 {
-	if (!ft_strcmp(tolower2(parse->cmd), "exit"))
+	if (!ft_strcmp(parse->cmd, "exit"))
 		ft_exit(parse->arg);
 	else if (!ft_strcmp(tolower2(parse->cmd), "env"))
 		print_list(alst);
