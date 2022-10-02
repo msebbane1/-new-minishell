@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:02 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/01 22:23:54 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/02 15:22:22 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,7 @@ void	lexer(char *line)
 		else if (line[i] == '-' && line[i + 1] != '-' && tete->arg[0] == NULL)
 			i = ft_flag(line, i, tete);
 		else if (line[i] == '|')
-		{
-			i++;
-			if (tete->sfile == NULL || !tete->sfile)
-				tete->sfile = ft_strdup("NOinfile");
-			ft_lstadd_back_parse(&g_global.parse, ft_lstnew_parse());
-			tete = tete->next;
-		}
+			tete = ft_pipe(tete, &i);
 		else
 			i = ft_cmd_arg(line, i, tete);
 	}

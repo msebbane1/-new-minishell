@@ -6,11 +6,18 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:29:26 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/01 22:02:30 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/02 16:38:10 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+int	firtime(int t)
+{
+	if (t == 0)
+		t++;
+	return (t);
+}
 
 int	find(char c, char *search)
 {

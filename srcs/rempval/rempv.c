@@ -6,11 +6,33 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:29:39 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/02 14:11:04 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/02 16:46:24 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+char	*inexpand(int *i, const char *res, char *str)
+{
+	char	*tmp;
+
+	if (str[*i] == '\'')
+	{
+		*i += 1;
+		tmp = repquotes(i, res, str);
+	}
+	else if (str[*i] == '\"')
+	{
+		*i += 1;
+		tmp = repdblquotes(i, res, str);
+	}
+	else
+	{
+		*i += 1;
+		tmp = repdollar(i, res, str);
+	}
+	return (tmp);
+}
 
 char	*ft_expand(char *str)
 {
@@ -21,26 +43,28 @@ char	*ft_expand(char *str)
 	i = 0;
 	while (str && str[i])
 	{
-		if (str[i] == '\'')
-		{
-			i++;
-			res = repquotes(&i, res, str);
-		}
-		else if (str[i] == '\"')
-		{
-			i++;
-			res = repdblquotes(&i, res, str);
-		}
-		else if (str[i] == '$')
-		{
-			i++;
-			res = repdollar(&i, res, str);
-		}
+		if (find(str[i], "\'\"$") == 1)
+			res = inexpand(&i, res, str);
 		else
 			res = repelse(&i, res, str);
 	}
 	free(str);
 	return (res);
+}
+
+char	*else_dbl(int *i, const char *res, char *str, int t)
+{
+	int		size;
+	char	*result;
+
+	size = countbefc(str + *i, "\"$");
+	if (t == 0)
+		result = ft_strjoin_no_spc(res, ft_strdup2(str + *i, size));
+	else
+		result = ft_strjoin_no_spc(result, ft_strdup2(str + *i, size));
+	t++;
+	*i += size;
+	return (result);
 }
 
 void	remplacev(void)

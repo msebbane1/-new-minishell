@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:19:04 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/02 14:35:06 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/02 14:51:01 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*check_path_access(t_list *alst, char *cmd)
 
 	i = -1;
 	if (!access(cmd, F_OK))
-			return (ft_strdup(cmd));
+		return (ft_strdup(cmd));
 	tab_path = NULL;
 	tab_path = split_path(alst, tab_path);
 	while (tab_path && tab_path[++i])

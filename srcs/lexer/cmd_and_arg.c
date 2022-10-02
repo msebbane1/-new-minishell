@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_and_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:53:53 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 18:13:21 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/02 15:25:53 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,14 @@ char	**ft_realloc2char(char **src, int size, int start)
 	}
 	free_tab(src);
 	return (dest);
+}
+
+t_parse	*ft_pipe(t_parse *tete, int *i)
+{
+	*i += 1;
+	if (tete->sfile == NULL || !tete->sfile)
+		tete->sfile = ft_strdup("NOinfile");
+	ft_lstadd_back_parse(&g_global.parse, ft_lstnew_parse());
+	tete = tete->next;
+	return (tete);
 }
