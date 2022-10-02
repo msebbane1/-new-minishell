@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:04:58 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/01 22:10:05 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/02 14:39:07 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_perror(char *s1, char *s2, int index)
 
 void	ft_err_excve(t_parse *parse)
 {
-	perror("repere");
 	if (parse->infile < 0)
 	{
 		perror(parse->sfile);

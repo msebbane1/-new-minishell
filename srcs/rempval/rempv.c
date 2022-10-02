@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:29:39 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/01 22:04:25 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/02 14:11:04 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ char	*ft_expand(char *str)
 		if (str[i] == '\'')
 		{
 			i++;
-			res = repquotes(&i, res, str + i);
+			res = repquotes(&i, res, str);
 		}
 		else if (str[i] == '\"')
 		{
 			i++;
-			res = repdblquotes(&i, res, str + i);
+			res = repdblquotes(&i, res, str);
 		}
 		else if (str[i] == '$')
 		{
 			i++;
-			res = repdollar(&i, res, str + i);
+			res = repdollar(&i, res, str);
 		}
 		else
-			res = repelse(&i, res, str + i);
+			res = repelse(&i, res, str);
 	}
 	free(str);
 	return (res);

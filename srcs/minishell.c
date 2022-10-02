@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/02 13:16:38 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/02 14:16:04 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,31 +71,9 @@ int	main(int ac, char **av, char **envp)
 		line = rl_gets();
 		line = line_prompt(line, av, ac);
 		init_global();
-		// printf("LEXER\n");
 		lexer(line);
-		// printf("valeur de infile = |%s|\n", g_global.parse->sfile);
-		// print_global();
 		remplacev();
-		// print_global();
-		// printf("BRAIN\n");
 		brain(alst, atc);
-		// printf("FREE ALL\n");
 		free_all();
-		//free(g_global.indice);
 	}
 }
-
-/*
-Norme OK juste enlever lstmap
-
-minishell>> ls | fsds | ls								perror
-doit afficher : ldf: command not found
-
-minishell>> sdf | fsds | sda
-doit afficher 3 fois command not found ---> voir putstr fd
-
-HERE :
-<sfda
-bash: sfda: No such file or directory
-
-*/

@@ -6,7 +6,7 @@
 #    By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 21:50:04 by marvin            #+#    #+#              #
-#    Updated: 2022/10/01 21:50:46 by vl-hotel         ###   ########.fr        #
+#    Updated: 2022/10/02 14:13:18 by vl-hotel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ CC = gcc
 
 OBJECTS	= ./bin
  
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 LIB		=	libft.a
 
