@@ -1,0 +1,13 @@
+Makefile
+include
+infile
+infile2
+libft
+libft.a
+minishell
+minishell.dSYM
+sf
+srcs
+test
+test1
+vendor

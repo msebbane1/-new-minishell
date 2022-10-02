@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:52:44 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 22:43:53 by lbally           ###   ########.fr       */
+/*   Updated: 2022/10/02 16:32:39 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	heredoc(char *stop, t_parse *parse)
 
 	file = open("/tmp/heredoc.tmp", O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (file < 0)
-		printf("probleme avec le here doc\n");
+		ft_putstr_fd("problem with here doc\n", 2);
 	g_global.parse->fd_kill = file;
 	line = NULL;
 	while (1)
