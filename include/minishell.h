@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/01 21:53:11 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:06:08 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,6 @@ void	echo_control_seq(int c);
 /* *************************** FREE-ALL ************************** */
 void	free_all(void);
 void	free_tab(char **tab);
-void	free_lst(t_list *alst);
 void	free_atc(t_exp *alst);
 
 /* *************************** UTILS ************************** */

@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/01 21:34:51 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:43:38 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,14 @@ char	**enov(t_list *alst)
 	int		i;
 	char	**env;
 
-	i = 0;
 	list = alst;
-	while (list)
-	{
-		list = list->next;
-		i++;
-	}
-	env = malloc(sizeof(char **) * i + 1);
+	i = ft_lstsize(list);
+	env = malloc(sizeof(char *) * (i + 1));
 	i = 0;
 	while (alst)
 	{
 		env[i] = ft_concatenate(alst->key, "=");
-		env[i] = ft_strjoin(env[i], alst->content);
+		env[i] = ft_concatenate(env[i], alst->content);
 		i++;
 		alst = alst->next;
 	}

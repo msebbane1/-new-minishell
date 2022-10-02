@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:02 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/01 21:59:16 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:23:54 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ int	ft_flag(char *line, int i, t_parse *tete)
 {
 	int		j;
 	char	*nextw;
+	char	*tmp;
 
 	i++;
 	j = i;
 	nextw = nextword(line + i, &j);
 	if (tete->first == 0)
 	{
-		tete->cmd = ft_strjoin_no_spc(ft_strdup("-"), nextw);
+		tmp = ft_strdup("-");
+		tete->cmd = ft_strjoin_no_spc(tmp, nextw);
 		tete->first++;
 	}
 	else

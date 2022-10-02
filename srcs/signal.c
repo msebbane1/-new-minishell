@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 22:23:46 by lbally            #+#    #+#             */
-/*   Updated: 2022/10/01 16:59:01 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:39:55 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_signal(int signum)
 		rl_replace_line("", 0);
 		rl_redisplay();
 	}
+	g_global.status = 1;
 }
 
 void	ft_signalquit(int signum)
@@ -51,11 +52,13 @@ void	ft_signalquit(int signum)
 	if (rl_done)
 	{
 		printf("Quit: 3\n");
+		g_global.status = 131;
 		return ;
 	}
 	printf("\e[2K");
 	rl_on_new_line();
 	rl_redisplay();
+	g_global.status = 0;
 }
 
 void	signal_exit(void)

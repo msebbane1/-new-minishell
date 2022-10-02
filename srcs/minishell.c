@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/01 21:53:42 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/02 13:16:38 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*line_prompt(char *line, char **argv, int argc)
 
 void	init_global(void)
 {
-	g_global.parse = malloc(sizeof(t_parse));
+	g_global.parse = NULL;
 	g_global.indice = malloc(sizeof(int) * 1);
 	g_global.indice[0] = 0;
 	g_global.here = 0;
@@ -59,6 +59,7 @@ int	main(int ac, char **av, char **envp)
 	t_list	*alst;
 
 	alst = NULL;
+	atc = NULL;
 	g_global.old_stdin = dup(STDIN_FILENO);
 	g_global.old_stdout = dup(STDOUT_FILENO);
 	insert_env(envp, &alst);
@@ -73,15 +74,13 @@ int	main(int ac, char **av, char **envp)
 		// printf("LEXER\n");
 		lexer(line);
 		// printf("valeur de infile = |%s|\n", g_global.parse->sfile);
-		print_global();
-		printf("EXTEND\n");
+		// print_global();
 		remplacev();
-		print_global();
+		// print_global();
 		// printf("BRAIN\n");
 		brain(alst, atc);
 		// printf("FREE ALL\n");
 		free_all();
-		free(g_global.parse);
 		//free(g_global.indice);
 	}
 }
