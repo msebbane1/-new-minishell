@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:29:39 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/02 16:46:24 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:21:34 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ char	*ft_expand(char *str)
 	return (res);
 }
 
-char	*else_dbl(int *i, const char *res, char *str, int t)
+char	*else_dbl(int *i, const char *res, char *str, int *t)
 {
 	int		size;
 	char	*result;
 
 	size = countbefc(str + *i, "\"$");
-	if (t == 0)
+	if (*t == 0)
 		result = ft_strjoin_no_spc(res, ft_strdup2(str + *i, size));
 	else
 		result = ft_strjoin_no_spc(result, ft_strdup2(str + *i, size));
-	t++;
+	*t += 1;
 	*i += size;
 	return (result);
 }

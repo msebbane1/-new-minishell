@@ -3,19 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   brain.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:35:11 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/02 15:09:38 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/04 00:31:34 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+int	exitstatus(int status)
+{
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	else if (WIFSIGNALED(status))
+		return (WTERMSIG(status) + 128);
+	else if (WIFSTOPPED(status))
+		return (WTERMSIG(status) + 128);
+	return (0);
+}
+
 void	ft_fils(t_parse *elem, t_list *alst, t_exp *atc, int fdin)
 {
 	pid_t	pid;
 	int		fd[2];
+	int		t;
 
 	if (!elem)
 		return ;
@@ -33,7 +45,10 @@ void	ft_fils(t_parse *elem, t_list *alst, t_exp *atc, int fdin)
 		close(fd[1]);
 		ft_fils(elem->next, alst, atc, fd[0]);
 		close(fd[0]);
-		waitpid(pid, NULL, 0);
+		waitpid(pid, &elem->exit_code, 0);
+		t = exitstatus(elem->exit_code);
+		if (elem->indice == len_parse())
+			g_global.status = t;
 	}
 }
 

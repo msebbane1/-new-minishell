@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:03:27 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/02 16:58:59 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/04 00:30:02 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	main(int ac, char **av, char **envp)
 		lexer(line);
 		remplacev();
 		brain(alst, atc);
+		wronglastcmd(g_global.parse, alst);
 		free_all();
 	}
 }

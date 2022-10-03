@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/02 16:56:12 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/03 22:50:58 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # include <sys/types.h>
 # include <sys/ioctl.h>
 # include "../libft/libft.h"
-# include <readline/readline.h>
 # include <readline/history.h>
+# include <readline/readline.h>
 
 /* ************************ STRUCTURES ************************ */
 typedef struct s_parse
@@ -45,18 +45,8 @@ typedef struct s_parse
 	int				infile;
 	int				outfile;
 	int				fd_kill;
+	int				exit_code;
 }				t_parse;
-
-typedef struct s_remp
-{
-	int			i;
-	int			d;
-	int			h;
-	int			g;
-	int			r;
-	int			c;
-	int			w;
-}				t_remp;
 
 typedef struct s_exp
 {
@@ -127,7 +117,7 @@ char	*repdollar(int *i, const char *res, char *str);
 char	*repquotes(int *i, const char *res, char *str);
 char	*repdblquotes(int *i, const char *res, char *str);
 char	*repdollardbl(int *i, const char *res, char *str);
-char	*else_dbl(int *i, const char *res, char *str, int t);
+char	*else_dbl(int *i, const char *res, char *str, int *t);
 
 /* *************************** BUILT-IN ************************** */
 
@@ -140,15 +130,15 @@ void	cd(t_parse *parse, t_list *alst);
 /* ***************** ECHO ******************/
 void	ft_echo(t_parse *parse);
 int		echo_check_flag(char *str);
-int		helpecho(t_parse *parse, int j);
+int		helpecho(t_parse *parse, int *j);
 
 /* ****************** ENV ******************/
 void	print_list(t_list *alst);
 
-/* ****************** EXIT *******************/
+/* ***************** EXIT ******************/
 int		ft_exit(char **str);
 
-/* ****************** EXPORT *******************/
+/* **************** EXPORT *****************/
 int		check(char *str);
 void	export(t_exp *atc);
 void	print_exp(t_exp *atc);
@@ -172,16 +162,18 @@ t_exp	*add_2(t_exp *tmp, char **prt, int g);
 char	*ft_concatenate(char *line, char *bf);
 char	**export4(char **tab, t_exp *tmp, t_exp *atc);
 
-/* ***************** UNSET ******************/
+/* **************** UNSET ******************/
 void	unset(t_list **alst, t_exp **atc);
-/* ****************** PWD *******************/
+/* ****************** PWD ******************/
 void	ft_pwd(void);
 /* *************************** EXEC ************************** */
 
 int		len_parse(void);
 char	**enov(t_list *alst);
+int		exitstatus(int status);
 int		cmdin_parse(t_parse *parse);
 void	brain(t_list *alst, t_exp *atc);
+void	wronglastcmd(t_parse *lst, t_list *alst);
 char	*check_path_access(t_list *alst, char *cmd);
 void	dupfunction(t_parse *elem, int *fd, int fdin);
 void	execlab(t_parse *elem, t_list *alst, t_exp *atc);
@@ -204,7 +196,6 @@ void	free_tab(char **tab);
 void	free_atc(t_exp *alst);
 
 /* *************************** UTILS ************************** */
-int		firtime(int t);
 char	*tolower2(char *cmd);
 int		len_envp(char **envp);
 int		back_slash(char *str);

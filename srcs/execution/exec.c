@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/02 17:13:42 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/03 20:41:09 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ char	**enov(t_list *alst)
 void	ft_execve(t_parse *parse, t_list *alst, char **lab)
 {
 	int		pid;
-	int		status;
 	int		i;
 
 	pid = fork();
@@ -83,7 +82,10 @@ void	ft_execve(t_parse *parse, t_list *alst, char **lab)
 		}
 	}
 	else
-		waitpid(pid, &status, 0);
+	{
+		waitpid(pid, &parse->exit_code, 0);
+		g_global.status = exitstatus(parse->exit_code);
+	}
 }
 
 void	exec_cmd(t_parse *parse, t_list *alst, t_exp *atc, char **lab)

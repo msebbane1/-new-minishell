@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:33:10 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/13 11:21:20 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:49:39 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,16 @@ int	ft_exit(char **str)
 	if (str[0])
 	{
 		if (!ft_num(str[0]))
-			printf("exit: %s: numeric argument required\n", str[0]);
+		{
+			ft_perror("exit: ", str[0], 255);
+			ft_perror(": ", "numeric argument required\n", 255);
+		}
 		else
 		{
 			lolo = ft_atoi(str[0]);
 			i = lolo % 256;
-			exit(EXIT_SUCCESS);
+			exit(i);
 		}
 	}
-	exit(EXIT_SUCCESS);
+	exit(g_global.status);
 }

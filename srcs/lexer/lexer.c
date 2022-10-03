@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:02 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/02 15:22:22 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/02 22:11:33 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ t_parse	*ft_lstnew_parse(void)
 	newlist->arg[0] = NULL;
 	newlist->cmd = NULL;
 	newlist->sfile = NULL;
+	newlist->exit_code = 0;
 	return (newlist);
 }
 

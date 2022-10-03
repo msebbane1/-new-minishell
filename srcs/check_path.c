@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:19:04 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/02 14:51:01 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/03 20:23:14 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static char	*check_path2(char	**tab_path, char	*test, char	*path)
 {
 	free_tab(tab_path);
 	free(test);
-	g_global.status = 0;
 	return (path);
 }
 

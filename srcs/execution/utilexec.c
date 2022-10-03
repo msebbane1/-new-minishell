@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilexec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:36:02 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/02 17:15:23 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:51:14 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	exec_cmdmulti(t_parse *parse, t_list *alst, t_exp *atc, char **lab)
 	else if (!ft_strcmp(tolower2(parse->cmd), "echo"))
 		ft_echo(parse);
 	else if (!ft_strcmp(tolower2(parse->cmd), "pwd"))
-		printf("%s\n", getcwd(NULL, 0));
+		ft_pwd();
 	else if (!ft_strncmp(parse->cmd, "cd", 2))
 		cd(parse, alst);
 	else if (!ft_strcmp(parse->cmd, "unset"))

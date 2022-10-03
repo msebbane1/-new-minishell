@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:34:19 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/09/28 20:42:38 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:46:01 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	cd_only(t_list *alst)
 		}
 		tete = tete->next;
 	}
-	printf("minishell: cd: HOME not set\n");
+	ft_perror("cd", ": HOME not set\n", 1);
 	return (i);
 }
 
@@ -87,14 +87,15 @@ void	cd(t_parse *parse, t_list *alst)
 	if (!parse->arg[0])
 		res = (cd_only(alst));
 	else if (ft_strlen(parse->flag) > 1)
-		printf("minishell: cd: options are not handled\n");
+		ft_perror("cd", "options are not handled\n", 1);
 	else
 	{
 		res = chdir(parse->arg[0]);
 	}
 	if (res == -1)
 	{
-		printf("minishell: cd: %s: no such file or directory\n", parse->arg[0]);
+		ft_perror("cd:", parse->arg[0], 1);
+		ft_perror(": ", "no such file or directory\n", 1);
 	}
 	update_env(alst);
 	return ;
