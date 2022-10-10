@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/03 22:50:58 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:04:14 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ int		ft_exit(char **str);
 
 /* **************** EXPORT *****************/
 int		check(char *str);
+int		check2(char *str, int i, int j);
+int		check3(int j, int t);
 void	export(t_exp *atc);
 void	print_exp(t_exp *atc);
 int		ft_find_space(char *str);
@@ -147,20 +149,26 @@ t_exp	*add(t_exp *atc, char *str);
 t_exp	*add3(t_exp *atc, char *str);
 t_exp	*add4(t_exp *atc, char *str);
 t_list	*add5(t_list *alst, char *str);
+t_exp	*add6(t_exp *atc, char *str);
+t_list	*add7(t_list *alst, char *str);
 t_exp	*add_3(t_exp *tmp, char **prt);
 t_list	*add2(t_list *alst, char *str);
+void	add2_1(t_list *tmp, char **prt, int g);
+t_list	*add2_2(t_list *tmp, char **prt);
 void	port(t_exp *atc, t_list *alst);
 int		ismore(char *lala, char *lolo);
 t_exp	*add4_2(t_exp *tmp, char **prt);
 t_exp	*add4_3(t_exp *tmp, char **prt);
 t_list	*add5_3(t_list *tmp, char **prt);
 t_list	*add5_2(t_list *tmp, char **prt);
-char	**export2(char **tab, t_exp *tmp);
+void	export2(char **tab, t_exp *tmp);
 char	**export5(char **tab, t_exp *atc);
 char	*ft_concatenate(char *line, char *bf);
 t_exp	*add_2(t_exp *tmp, char **prt, int g);
 char	*ft_concatenate(char *line, char *bf);
-char	**export4(char **tab, t_exp *tmp, t_exp *atc);
+char	**export4(char **tab);
+char	*ft_prt(char *str);
+char	*ft_prt2(char *str);
 
 /* **************** UNSET ******************/
 void	unset(t_list **alst, t_exp **atc);
