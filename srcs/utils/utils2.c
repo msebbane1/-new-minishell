@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:04:58 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/04 00:35:21 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:44:11 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	wronglastcmd(t_parse *parse, t_list *alst)
 	{
 		if (lst->indice == len_parse())
 		{
-			if (!lst->cmd || lst->cmd == NULL)
+			if (!lst->cmd || lst->cmd == NULL || lst->cmd[0] == '\0')
 				return ;
 			if (isbuiltin(lst->cmd) == 1)
 				return ;

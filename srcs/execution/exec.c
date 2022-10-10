@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:04:43 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/03 20:41:09 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:38:55 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_execve(t_parse *parse, t_list *alst, char **lab)
 				lab, enov(alst)) == -1)
 		{
 			ft_err_excve(parse);
-			exit(EXIT_FAILURE);
+			exit(g_global.status);
 		}
 	}
 	else

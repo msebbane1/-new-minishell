@@ -6,7 +6,7 @@
 /*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:35:11 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/04 00:31:34 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:43:39 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ void	brain(t_list *alst, t_exp *atc)
 			perror(elem->sfile);
 			return ;
 		}
-		else if (!elem->cmd || elem->cmd == NULL || elem->cmd[0] == '\0')
-			return ;
 		dup2(elem->infile, STDIN_FILENO);
 		dup2(elem->outfile, STDOUT_FILENO);
 		execlab(elem, alst, atc);
