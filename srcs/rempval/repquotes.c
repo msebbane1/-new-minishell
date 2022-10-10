@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   repquotes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:11:27 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/03 23:22:05 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:41:44 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,16 @@ char	*repquotes(int *i, const char *res, char *str)
 char	*repdblquotes(int *i, const char *res, char *str)
 {
 	char	*result;
-	int		t;
+	int		size;
 
-	t = 0;
-	while (str[*i] != '\"' && str[*i])
+	size = countbefc(str + *i, "\"");
+	if (size == 0)
 	{
-		if (str[*i] == '$')
-		{
-			*i += 1;
-			if (t == 0)
-			{
-				t++;
-				result = repdollardbl(i, res, str);
-			}
-			else
-				result = repdollardbl(i, result, str);
-		}
-		else
-			result = else_dbl(i, res, str, &t);
+		*i += 1;
+		return ((char *)res);
 	}
+	while (str[*i] != '\"' && str[*i])
+		result = dblquotesdollar(i, res, str);
 	*i += 1;
 	return (result);
 }

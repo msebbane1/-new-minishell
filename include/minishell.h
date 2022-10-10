@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/03 22:50:58 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:42:58 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ char	*repdollar(int *i, const char *res, char *str);
 char	*repquotes(int *i, const char *res, char *str);
 char	*repdblquotes(int *i, const char *res, char *str);
 char	*repdollardbl(int *i, const char *res, char *str);
+char	*dblquotesdollar(int *i, const char *res, char *str);
 char	*else_dbl(int *i, const char *res, char *str, int *t);
 
 /* *************************** BUILT-IN ************************** */
