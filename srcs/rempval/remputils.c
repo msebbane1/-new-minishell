@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remputils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:29:26 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/03 22:50:46 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:27:27 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,10 @@ char	*ft_strdup2(const char *s, int size)
 	}
 	new[i] = '\0';
 	return (new);
+}
+
+char	*dblquotesdollar(int *i, const char *res)
+{
+	*i += 1;
+	return ((char *)res);
 }

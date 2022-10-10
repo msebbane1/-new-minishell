@@ -6,7 +6,7 @@
 /*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 20:07:43 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 20:13:23 by lbally           ###   ########.fr       */
+/*   Updated: 2022/10/10 14:07:13 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**export5(char **tab, t_exp *atc)
 
 	i = 0;
 	list = atc;
-	while (list->next != NULL)
+	while (list)
 	{
 		if (list->mean)
 		{
@@ -33,4 +33,43 @@ char	**export5(char **tab, t_exp *atc)
 	}
 	tab[i] = NULL;
 	return (tab);
+}
+
+int	check3(int j, int t)
+{
+	if (t != 0)
+		return (4);
+	if (j == 0)
+		return (2);
+	if (j > 1)
+		return (3);
+	return (1);
+}
+
+int	check2(char *str, int i, int j)
+{
+	int		t;
+	int		r;
+
+	t = 0;
+	r = 0;
+	while (str[i])
+	{
+		if (!ft_isalpha(str[0]))
+			return (0);
+		if (str[i] == '+' && j == 0)
+			r++;
+		if (str[i] == '-' || r > 1)
+			return (0);
+		if (str[i] == '=' && str[i - 1] == '+' && j == 0)
+			t++;
+		if (str[i] == '=')
+		{
+			j++;
+			while (str[i] == '=')
+				i++;
+		}
+		i++;
+	}
+	return (check3(j, t));
 }

@@ -3,26 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   export2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 19:14:26 by lbally            #+#    #+#             */
-/*   Updated: 2022/10/03 23:38:49 by vl-hotel         ###   ########.fr       */
+/*   Updated: 2022/10/10 13:33:39 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-char	**export4(char **tab, t_exp *tmp, t_exp *atc)
+char	**export4(char **tab)
 {
 	char	*temp;
 	int		i;
 	int		j;
 
 	i = 0;
-	j = i + 1;
-	tmp = atc;
 	while (tab[i])
 	{
+		j = i + 1;
 		while (tab[j])
 		{
 			if (!ismore(tab[i], tab[j]))
@@ -34,54 +33,29 @@ char	**export4(char **tab, t_exp *tmp, t_exp *atc)
 			j++;
 		}
 		i++;
-		j = i + 1;
 	}
 	return (tab);
 }
 
-t_exp	*export3(char **tab, t_exp *tmp, int i)
+void	export2(char **tab, t_exp *atc)
 {
-	int		j;
-	char	**tot;
-
-	j = 1;
-	tot = ft_split(tab[i], '=');
-	tmp->name = tot[0];
-	tmp->mean = tot[1];
-	if (tot[2] != NULL)
-	{
-		tmp->mean = ft_concatenate(tmp->mean, "=");
-		tmp->mean = ft_concatenate(tmp->mean, tot[j + 1]);
-		j++;
-		while (tot[j + 1] != NULL)
-		{
-			tmp->mean = ft_concatenate(tmp->mean, "=");
-			tmp->mean = ft_concatenate(tmp->mean, tot[j + 1]);
-			j++;
-		}
-	}
-	free(tot);
-	return (tmp);
-}
-
-char	**export2(char **tab, t_exp *tmp)
-{
-	int		j;
 	int		i;
+	t_exp	*tmp;
 
-	j = 1;
 	i = 0;
+	tmp = atc;
 	while (tab[i])
 	{
 		if (ft_find_space(tab[i]))
-			tmp = export3(tab, tmp, i);
+		{
+			tmp->name = ft_prt(tab[i]);
+			tmp->mean = ft_prt2(tab[i]);
+		}
 		else
 			tmp->name = tab[i];
 		tmp = tmp->next;
 		i++;
-		j = 1;
 	}
-	return (tab);
 }
 
 void	port2(t_list *alst, t_parse *elem, int p, t_exp *atc)
@@ -90,7 +64,7 @@ void	port2(t_list *alst, t_parse *elem, int p, t_exp *atc)
 
 	i = check(elem->arg[p]);
 	if (i == 0)
-		perror("export");
+		printf("export: `%s': not a valid identifier\n", elem->arg[p]);
 	else
 	{
 		if (i == 1)
@@ -100,10 +74,15 @@ void	port2(t_list *alst, t_parse *elem, int p, t_exp *atc)
 		}
 		else if (i == 2)
 			add3(atc, elem->arg[p]);
-		else
+		else if (i == 3)
 		{
 			add4(atc, elem->arg[p]);
 			add5(alst, elem->arg[p]);
+		}
+		else
+		{
+			add6(atc, elem->arg[p]);
+			add7(alst, elem->arg[p]);
 		}
 	}
 }
