@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:23:38 by lbally            #+#    #+#             */
-/*   Updated: 2022/10/02 16:06:17 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/10 13:52:13 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,16 @@ t_list	*add2(t_list *alst, char *str)
 	baba = alst;
 	tmp = alst;
 	prt = (char **)malloc(sizeof(char *) * 3);
-	prt = ft_split(str, '=');
+	prt[0] = ft_prt(str);
+	prt[1] = ft_prt2(str);
+	prt[2] = NULL;
 	while (baba)
 	{
 		if (!ft_strcmp(baba->key, prt[0]))
 			g++;
 		baba = baba->next;
 	}
-	if (g == 0)
-		tmp = add2_2(tmp, prt);
-	else
-	{
-		while (ft_strcmp(tmp->key, prt[0]) != 0)
-			tmp = tmp->next;
-		tmp->content = prt[1];
-	}
+	add2_1(tmp, prt, g);
 	return (alst);
 }
 
@@ -87,14 +82,7 @@ t_list	*add5_2(t_list *tmp, char **prt)
 		tmp = tmp->next;
 	tmp->next = new;
 	new->key = prt[0];
-	new->content = ft_concatenate(prt[1], "=");
-	new->content = ft_concatenate(new->content, prt[2]);
-	while (prt[i])
-	{
-		new->content = ft_concatenate(new->content, "=");
-		new->content = ft_concatenate(new->content, prt[i]);
-		i++;
-	}
+	new->content = prt[1];
 	new->next = NULL;
 	return (tmp);
 }
@@ -102,19 +90,10 @@ t_list	*add5_2(t_list *tmp, char **prt)
 t_list	*add5_3(t_list *tmp, char **prt)
 {
 	int		i;
-	t_list	*new;
 
 	i = 3;
-	new = malloc(sizeof(*tmp));
 	while (ft_strcmp(tmp->key, prt[0]))
 		tmp = tmp->next;
-	tmp->content = ft_concatenate(prt[1], "=");
-	tmp->content = ft_concatenate(tmp->content, prt[2]);
-	while (prt[i])
-	{
-		tmp->content = ft_concatenate(tmp->content, "=");
-		tmp->content = ft_concatenate(tmp->content, prt[i]);
-		i++;
-	}
+	tmp->content = prt[1];
 	return (tmp);
 }

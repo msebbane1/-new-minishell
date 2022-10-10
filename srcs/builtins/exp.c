@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 15:29:52 by lbally            #+#    #+#             */
-/*   Updated: 2022/10/02 16:21:34 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/09 21:02:11 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ t_exp	*add(t_exp *atc, char *str)
 	baba = atc;
 	prt = NULL;
 	prt = (char **)malloc(sizeof(char *) * 3);
-	prt = ft_split(str, '=');
+	prt[0] = ft_prt(str);
+	prt[1] = ft_prt2(str);
+	prt[2] = NULL;
 	while (baba)
 	{
 		if (!ft_strcmp(baba->name, prt[0]))

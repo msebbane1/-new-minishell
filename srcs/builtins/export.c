@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 07:16:25 by lbally            #+#    #+#             */
-/*   Updated: 2022/10/02 16:12:17 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:04:49 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,7 @@ int	check(char *str)
 
 	i = 0;
 	j = 0;
-	while (str[i])
-	{
-		if (!ft_isalpha(str[0]))
-			return (0);
-		if (str[i] == ' ')
-			return (0);
-		if (str[i] == '=')
-			j++;
-		i++;
-	}
-	if (j == 0)
-		return (2);
-	if (j > 1)
-		return (3);
-	return (1);
+	return (check2(str, i, j));
 }
 
 int	ismore(char *lala, char *lolo)
@@ -75,24 +61,22 @@ int	ismore(char *lala, char *lolo)
 void	export(t_exp *atc)
 {
 	t_exp	*list;
-	t_exp	*tmp;
 	t_exp	*tmp2;
 	char	**tab;
 	int		i;
 
 	tmp2 = atc;
 	list = atc;
-	tmp = atc;
 	i = 0;
-	while (tmp2->next != NULL)
+	while (tmp2)
 	{
 		tmp2 = tmp2->next;
 		i++;
 	}
 	tab = (char **)malloc(sizeof(char *) * (i + 1));
 	tab = export5(tab, atc);
-	tab = export4(tab, tmp, atc);
-	tab = export2(tab, tmp);
+	tab = export4(tab);
+	export2(tab, atc);
 	print_exp(atc);
 	free_tab(tab);
 	g_global.status = 0;

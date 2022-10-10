@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 18:10:36 by lbally            #+#    #+#             */
-/*   Updated: 2022/10/02 16:03:43 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/09 20:55:55 by lbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,7 @@ t_exp	*add4_2(t_exp *tmp, char **prt)
 		tmp = tmp->next;
 	tmp->next = new;
 	new->name = prt[0];
-	new->mean = ft_concatenate(prt[1], "=");
-	new->mean = ft_concatenate(new->mean, prt[2]);
-	while (prt[i])
-	{
-		new->mean = ft_concatenate(new->mean, "=");
-		new->mean = ft_concatenate(new->mean, prt[i]);
-		i++;
-	}
+	new->mean = prt[1];
 	new->next = NULL;
 	return (tmp);
 }
@@ -94,19 +87,10 @@ t_exp	*add4_2(t_exp *tmp, char **prt)
 t_exp	*add4_3(t_exp *tmp, char **prt)
 {
 	int		i;
-	t_exp	*new;
 
 	i = 3;
-	new = malloc(sizeof(*tmp));
 	while (ft_strcmp(tmp->name, prt[0]))
 		tmp = tmp->next;
-	tmp->mean = ft_concatenate(prt[1], "=");
-	tmp->mean = ft_concatenate(tmp->mean, prt[2]);
-	while (prt[i])
-	{
-		tmp->mean = ft_concatenate(tmp->mean, "=");
-		tmp->mean = ft_concatenate(tmp->mean, prt[i]);
-		i++;
-	}
+	tmp->mean = prt[1];
 	return (tmp);
 }
