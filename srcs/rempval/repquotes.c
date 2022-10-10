@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 21:11:27 by vl-hotel          #+#    #+#             */
-/*   Updated: 2022/10/10 14:41:44 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:31:03 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,26 @@ char	*repquotes(int *i, const char *res, char *str)
 char	*repdblquotes(int *i, const char *res, char *str)
 {
 	char	*result;
-	int		size;
+	int		t;
 
-	size = countbefc(str + *i, "\"");
-	if (size == 0)
-	{
-		*i += 1;
-		return ((char *)res);
-	}
+	if (str[*i] == '\"')
+		return (dblquotesdollar(i, res));
 	while (str[*i] != '\"' && str[*i])
-		result = dblquotesdollar(i, res, str);
+	{
+		if (str[*i] == '$')
+		{
+			*i += 1;
+			if (t == 0)
+			{
+				t++;
+				result = repdollardbl(i, res, str);
+			}
+			else
+				result = repdollardbl(i, result, str);
+		}
+		else
+			result = else_dbl(i, res, str, &t);
+	}
 	*i += 1;
 	return (result);
 }

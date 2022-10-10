@@ -6,7 +6,7 @@
 /*   By: msebbane <msebbane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:05:10 by msebbane          #+#    #+#             */
-/*   Updated: 2022/10/10 14:48:04 by msebbane         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:28:14 by msebbane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ char	*repdollar(int *i, const char *res, char *str);
 char	*repquotes(int *i, const char *res, char *str);
 char	*repdblquotes(int *i, const char *res, char *str);
 char	*repdollardbl(int *i, const char *res, char *str);
-char	*dblquotesdollar(int *i, const char *res, char *str);
+char	*dblquotesdollar(int *i, const char *res);
 char	*else_dbl(int *i, const char *res, char *str, int *t);
 
 /* *************************** BUILT-IN ************************** */
