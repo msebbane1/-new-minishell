@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbally <lbally@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vl-hotel <vl-hotel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:24:26 by lbally            #+#    #+#             */
-/*   Updated: 2022/09/28 22:40:41 by lbally           ###   ########.fr       */
+/*   Updated: 2022/10/10 18:09:39 by vl-hotel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*tolower2(char *cmd)
 	int	i;
 
 	i = 0;
+	if (!cmd || cmd == NULL)
+		return (NULL);
 	while (cmd[i])
 	{
 		if (cmd[i] >= 'A' && cmd[i] <= 'Z')
@@ -50,6 +52,8 @@ int	ft_strcmp(const char *s1, const char *s2)
 	str1 = (unsigned char *)s1;
 	str2 = (unsigned char *)s2;
 	i = -1;
+	if ((!s1 || s1 == NULL) || (!s2 || s2 == NULL))
+		return (-1);
 	while (str1[++i] && str2[i])
 	{
 		if (str1[i] != str2[i])
